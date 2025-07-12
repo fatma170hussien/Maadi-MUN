@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maadi MUN Events</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- AOS Library CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    body {
+  padding-top: 90px; /* علشان المحتوى ميتغطيش بالـnavbar */
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #000;
+      color: white;
+    }
+
+.navbar {
+  position: fixed; /* خليها ثابتة */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: linear-gradient(to right, #000000, #001f4d, rgba(255, 255, 255, 0.05));
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* ظل خفيف */
+}
+
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .navbar .logo img {
+      height: 35px;
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+ .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.15rem; /* ⬅️ حجم الخط */
+  transition: color 0.3s;
+}
+
+
+    .nav-links a:hover {
+      color: #00bfff;
+    }
+
+    .apply-btn {
+      border: 2px solid gold;
+      border-radius: 50px;
+      padding: 6px 18px;
+      color: gold;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .apply-btn:hover {
+      background-color: gold;
+      color: black;
+    }
+
+
+.hero-section {
+  position: relative;
+  left: 0;
+  right: 0;
+  width: 100vw; 
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 51, 102, 0.7), rgba(255, 255, 255, 0.05)),
+    url('event photo.jpg') center center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+    .hero-section h5 {
+      letter-spacing: 2px;
+      color: #d4af37;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .hero-section h1 span {
+      color: #d4af37;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      color: #e6e6e6;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .chemistry-network {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .chemistry-network canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-section > * {
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar" data-aos="fade-down">
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo">
+      Maadi Model United Nations
+    </div>
+   <div class="nav-links">
+  <a href="loading.html?next=index.html">Home</a>
+  <a href="loading.html?next=event.html">Events</a>
+  <a href="loading.html?next=alumni.html">History</a>
+  <a href="loading.html?next=conference.html">Conference</a>
+  <a href="loading.html?next=management.html">High board</a>
+  <a href="loading.html?next=contact.html">Contact</a>
+  <a href="loading.html?next=Article.html">Articles</a>
+  <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
+</div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="chemistry-network">
+      <canvas id="networkCanvas"></canvas>
+    </div>
+    <h5 data-aos="fade-up" data-aos-delay="100">MAADI MODEL UNITED NATIONS</h5>
+    <h1 data-aos="fade-up" data-aos-delay="300">Unleash Your <span>Leadership</span> at Our Life-Changing Events</h1>
+    <p data-aos="fade-up" data-aos-delay="600">
+      Join us for conferences, competitions, and community activities that foster diplomacy,
+      leadership, and global awareness.
+    </p>
+  </section>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+
+  <!-- Chemistry Network Script -->
+  <script>
+    const canvas = document.getElementById('networkCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let nodes = [];
+    const nodeCount = 40;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    function createNodes() {
+      nodes = [];
+      for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < nodeCount; i++) {
+        const nodeA = nodes[i];
+        for (let j = i + 1; j < nodeCount; j++) {
+          const nodeB = nodes[j];
+          const dx = nodeA.x - nodeB.x;
+          const dy = nodeA.y - nodeB.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(255,255,255,' + (1 - dist / 120) + ')';
+            ctx.lineWidth = 1;
+            ctx.moveTo(nodeA.x, nodeA.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.stroke();
+          }
+        }
+        nodeA.x += nodeA.vx;
+        nodeA.y += nodeA.vy;
+        if (nodeA.x < 0 || nodeA.x > width) nodeA.vx *= -1;
+        if (nodeA.y < 0 || nodeA.y > height) nodeA.vy *= -1;
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      createNodes();
+    });
+
+    resize();
+    createNodes();
+    draw();
+  </script>
+
+<!-- End of Notify Section -->
+<section style="padding-bottom: 100px;"></section>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MUN Community Outing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    *.event-container:hover {
+  transform: translateY(-10px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* لما تشاوري على الصورة جوه السلايدر */
+.slider-wrapper img {
+  transition: transform 0.4s ease;
+}
+
+.slider-wrapper img:hover {
+  transform: scale(1.05);
+}
+     {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      padding: 60px 20px;
+    }
+
+    .event-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+
+    .event-container.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .event-text, .event-slider {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .event-text h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #003d99;
+      position: relative;
+    }
+
+ .event-text h2::before {
+  content: '📅 2022 Outing';
+  position: absolute;
+  left: 0;
+  top: -30px;
+  font-size: 0.9rem;
+  background: #e0efff;
+  color: #003d99;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+    .event-text p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .slider-wrapper {
+      position: relative;
+    }
+
+    .slider-wrapper img {
+      width: 100%;
+      border-radius: 15px;
+      display: none;
+    }
+
+    .slider-wrapper img.active {
+      display: block;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(128, 128, 128, 0.5);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .arrow:hover {
+      transform: translateY(-50%) scale(1.2);
+      background-color: #003d99;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .event-container {
+        flex-direction: column;
+      }
+
+      .arrow {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="event-container" id="eventBox">
+    <div class="event-text">
+      <h2>MUN Community</h2>
+      <p>
+        Let's reflect on the remarkable achievements of our young diplomats during this season's outing.
+It was a wonderful chance for them to break the ice, strengthen their bonds, and expand their social connections. Alongside engaging in activities like the jumping rope contest, card games, and a spirited football match—each of which offered a blend of joy and meaningful interaction with peers—the event served as an ideal gateway to introduce the theme of mental well-being in a subtle yet impactful way.
+      </p>
+      <p>
+       This memorable experience highlighted the incredible talents within our community.
+We extend our deepest appreciation to all those who showcased their abilities, enriching the outing with energy, creativity, and a shared sense of purpose—bringing our theme of mental well-being to life throughout the season.
+
+      </p>
+    </div>
+
+    <div class="event-slider">
+      <div class="slider-wrapper">
+        <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+        <img src="Outing 1.jpg" class="active" />
+        <img src="Outing 2.jpg" />
+        <img src="Outing 3.jpg" />
+ <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // scroll animation
+    window.addEventListener('scroll', function () {
+      const eventBox = document.getElementById('eventBox');
+      const position = eventBox.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+
+      if (position < screenPosition) {
+        eventBox.classList.add('show');
+      }
+    });
+
+    // slider logic
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slider-wrapper img");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) {
+          slide.classList.add("active");
+        }
+      });
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+  </script>
+
+</body>
+</html>
+
+<!-- End of Notify Section -->
+<section style="padding-bottom: 100px;"></section>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MMUN Community Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #000000, #002244, #c0c0c0);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .glow-title {
+      font-size: 3em;
+      font-weight: 900;
+      background: linear-gradient(to right, gold, white, gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 2s infinite alternate;
+    }
+
+    @keyframes shine {
+      from {
+        filter: drop-shadow(0 0 5px gold);
+      }
+      to {
+        filter: drop-shadow(0 0 20px white);
+      }
+    }
+
+    .images-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 50px;
+      margin-top: 60px;
+    }
+
+    .photo-box {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background: white;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  margin: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.photo-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.photo-box img:not(.pin-image) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* الدبوس */
+.pin-image {
+  position: absolute;
+  top: -15px;
+  left: -15px; /* على الجنب اليسار */
+  width: 60px;
+  transform: rotate(-15deg); /* زاوية جميلة */
+  z-index: 5;
+}
+    .left-enter {
+      animation: slideInLeft 1s forwards;
+    }
+
+    .right-enter {
+      animation: slideInRight 1s forwards;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-150px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(150px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .event-description {
+      margin-top: 60px;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.1rem;
+      color: #f1f1f1;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="glow-title">MMUN Community Events</h1>
+
+<div class="images-row">
+  <div class="photo-box left-enter">
+    <img class="pin-image" src="pin.png" alt="pin">
+    <img src="Events1.jpg" alt="MMUN Event 1">
+  </div>
+  <div class="photo-box right-enter">
+    <img class="pin-image" src="pin.png" alt="pin">
+    <img src="Events2.jpg" alt="MMUN Event 2">
+  </div>
+</div>
+
+    <div class="event-description">
+      This season’s community event brought our young diplomats together for a day of energy, fun, and unforgettable connections. From laughter to teamwork, the outing was a vibrant reflection of MMUN spirit.
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+  <script>
+    const cards = document.querySelectorAll('.programs-card');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Join Section</title>
+  <style>
+    .join-section {
+      background: linear-gradient(to bottom right, #000000cc, #003366cc, #808080cc),
+                  url('your-image.jpg') center/cover no-repeat;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      position: relative;
+    }
+
+    .join-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .join-section p {
+      font-size: 1.1em;
+      margin-bottom: 40px;
+      color: #f0f0f0;
+    }
+
+  .join-btn {
+  background-color: #d4af37;
+  color: white;
+  text-decoration: none; /* يمنع الخط */
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 40px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.join-btn:hover {
+  background-color: #b48c1d; 
+  transform: scale(1.08); 
+  text-decoration: none; /* تأكيد عدم وجود خط */
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="join-section">
+    <h2>Ready to Join Our Next Event?</h2>
+    <p>Contact us to join inspiring events that grow your leadership skills and global understanding.
+
+</p>
+<a href="Contact.html" class="join-btn no-underline">Contact Us</a>  </div>
+
+</body>
+</html>
+
+<!-- Start of Get in Touch Section -->
+<div style="background-color: #0d0d0d; padding: 80px 20px; text-align: center; font-family: 'Segoe UI', sans-serif; color: #fff;">
+
+  <h1 style="
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px #00f0ff, 0 0 20px #00f0ff;
+  ">
+    Get in Touch
+  </h1>
+
+  <p style="
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    color: #ccc;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  ">
+    Ready to join <strong style="color:#00f0ff;">Maadi Model United Nations</strong>? Connect with us through social media and stay updated!
+  </p>
+
+  <!-- Social Media Icons with Hover Effect -->
+  <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 50px;">
+    <a href="https://www.facebook.com/share/1Akm3ATLJe/" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" style="width: 45px;">
+    </a>
+    <a href="https://www.instagram.com/maadistemmun?igsh=cno1bnEwN3hzeGZx" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="width: 45px;">
+    </a>
+    <a href="https://www.linkedin.com/company/maadimun/" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 45px;">
+    </a>
+    <a href="fhsyn2131@gmail.com" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail" style="width: 45px;">
+    </a>
+    <a href="https://chat.whatsapp.com/Kpir7SnulQXD3AO7wniaJN" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 45px;">
+    </a>
+  </div>
+
+  
+
+
+
+
+
+<div style="margin-bottom: 50px; text-align: center;">
+  <p style="color: #bbb; margin-bottom: 15px;">
+    Subscribe to get exclusive MMUN updates, events & opportunities!
+  </p>
+
+  <form 
+    action="https://formspree.io/f/mwpbjeyr" 
+    method="POST" 
+    style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;"
+  >
+    <input 
+      type="email" 
+      name="email" 
+      required 
+      placeholder="Your email address"
+      style="
+        padding: 12px 20px;
+        border-radius: 25px;
+        border: none;
+        width: 260px;
+        max-width: 90%;
+        box-shadow: 0 0 10px #00f0ff;
+      "
+    >
+
+    <button
+      type="submit"
+      style="
+        padding: 12px 25px;
+        border-radius: 25px;
+        border: none;
+        background: linear-gradient(45deg, #00f0ff, #007bff);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 0 10px #00f0ff, 0 0 20px #007bff;
+        transition: transform 0.3s ease;
+      "
+      onmouseover="this.style.transform='scale(1.05)'"
+      onmouseout="this.style.transform='scale(1)'"
+    >
+      Subscribe
+    </button>
+
+    <!-- redirect لو عايزة -->
+    <input type="hidden" name="_redirect" value="https://example.com/thank-you.html" />
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+  
+
+  <div style="color: #666; font-size: 0.9em;">
+    &copy; 2025 <span style="color: #00f0ff;">Maadi Model United Nations</span>. All rights reserved.
+  </div>
+</div>
+<!-- End of Get in Touch Section -->
+
+<!-- Scripts -->
+<script>
+  // Loader
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    setTimeout(() => {
+      loader.style.display = "none";
+      document.body.style.display = "block";
+    }, 2000);
+  });
+
+</body>
+</html>

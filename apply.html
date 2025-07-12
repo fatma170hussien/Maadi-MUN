@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High Board Application</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 10px;
+      background: linear-gradient(to right, #000, #1a1a40);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .welcome-screen, form, .success-message {
+      max-width: 800px;
+      margin: auto;
+      background-color: #111;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #0ff;
+      transition: transform 0.4s ease, opacity 0.5s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 15px;
+      display: block;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      background: #222;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      resize: none;
+    }
+
+    textarea {
+      min-height: 120px;
+    }
+
+    .small-textarea {
+      min-height: 60px;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      background-color: #0ff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #00c3ff;
+    }
+
+    h2, h1 {
+      text-align: center;
+      color: #0ff;
+      margin-bottom: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .confetti {
+      width: 100%;
+      text-align: center;
+      animation: drop 1s ease forwards;
+    }
+
+    @keyframes drop {
+      0% { opacity: 0; transform: translateY(-40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Screen -->
+  <div class="welcome-screen" id="welcomeScreen">
+    <h1>High Board Application</h1>
+    <p style="text-align: center; font-size: 18px; color: #ccc;">
+      This is your chance to shine and lead. Please read each question carefully and answer honestly.
+    </p>
+    <div style="text-align: center; margin-top: 30px;">
+      <button onclick="startForm()">I'm Ready</button>
+    </div>
+  </div>
+
+  <!-- Success Message -->
+  <div class="success-message hidden" id="successMessage">
+    <div class="confetti"></div>
+    <h1>Successfully Submitted 🎉</h1>
+    <p style="text-align: center; font-size: 18px; color: #ccc;">Thank you for applying! We’ll get back to you soon.</p>
+  </div>
+
+  <!-- Form -->
+<form id="multiStepForm" class="hidden" action="https://formspree.io/f/mrbkvakz" method="POST">
+
+  <!-- Step 1 -->
+    <div class="form-step active">
+      <h2>Step 1: Basic Info</h2>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="about">Tell us about you</label>
+      <textarea id="about" name="about" required data-words="100-250"></textarea>
+
+      <label for="track">Choose Your Track</label>
+      <select id="track" name="track" required>
+        <option value="">-- Select Track --</option>
+        <option value="Content Writing">Content Writing</option>
+        <option value="HR">HR</option>
+        <option value="Multiple Production">Multiple Production</option>
+        <option value="IT">IT</option>
+        <option value="Marketing">Marketing</option>
+        <option value="PR">PR</option>
+        <option value="OC">OC</option>
+        <option value="Research">Research</option>
+      </select>
+
+      <div class="buttons">
+        <span></span>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="form-step">
+      <h2>Step 2: General Questions</h2>
+      <label for="exp">Do you have any previous experience?</label>
+      <textarea id="exp" name="experience" required data-words="100-250"></textarea>
+
+      <label for="strengths">Your Strengths</label>
+      <textarea id="strengths" name="strengths" required data-words="100-250"></textarea>
+
+      <label for="weaknesses">Your Weaknesses</label>
+      <textarea id="weaknesses" name="weaknesses" required data-words="100-250"></textarea>
+
+      <div class="buttons">
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Track Specific -->
+    <div class="form-step">
+      <h2>Step 3: Track Specific</h2>
+      <div id="trackQuestions"></div>
+
+      <div class="buttons">
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="button" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="form-step">
+      <h2>Step 4: Final</h2>
+
+      <label for="why">Why do you want to join as a High Board?</label>
+      <textarea id="why" name="why" required data-words="100-250"></textarea>
+
+      <label for="ideas">What ideas would you bring to your track?</label>
+      <textarea id="ideas" name="ideas" required data-words="100-250"></textarea>
+
+      <label for="courses">Put any courses that you took in this track</label>
+      <textarea id="courses" name="courses" class="small-textarea"></textarea>
+
+      <label for="questions">Any Question?</label>
+      <textarea id="questions" name="questions" class="small-textarea"></textarea>
+
+      <div class="buttons">
+        <button type="button" onclick="prevStep()">Back</button>
+        <button type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    const steps = document.querySelectorAll(".form-step");
+    let currentStep = 0;
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+    }
+
+    function startForm() {
+      document.getElementById("welcomeScreen").classList.add("hidden");
+      document.getElementById("multiStepForm").classList.remove("hidden");
+      document.getElementById("multiStepForm").reset(); // <-- دا بيمسح البيانات
+
+    }
+
+    function countWords(text) {
+      return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+    }
+
+    function validateCurrentStep() {
+      const current = steps[currentStep].querySelectorAll("input, select, textarea");
+      for (let field of current) {
+        const wordLimits = field.dataset.words;
+        if (wordLimits) {
+          const [min, max] = wordLimits.split("-").map(Number);
+          const words = countWords(field.value);
+          if (words < min || words > max) {
+            alert(`Answer must be between ${min} and ${max} words.`);
+            return false;
+          }
+        } else if (!field.checkValidity()) {
+          field.reportValidity();
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function nextStep() {
+      if (!validateCurrentStep()) return;
+      if (currentStep === 1 && !document.getElementById("trackQuestions").hasChildNodes()) {
+        insertTrackQuestions();
+      }
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
+    function insertTrackQuestions() {
+      const track = document.getElementById("track").value;
+      const container = document.getElementById("trackQuestions");
+      container.innerHTML = "";
+      let q1 = "";
+      let q2 = "";
+
+      switch (track) {
+        case "Content Writing":
+          q1 = "Write a short article on the importance of writing in volunteer work.";
+          q2 = "What is your plan to improve the quality of written content in the team?";
+          break;
+        case "HR":
+          q1 = "How would you deal with an uncommitted member?";
+          q2 = "What's your plan to improve team engagement and loyalty?";
+          break;
+        case "Multiple Production":
+          q1 = "Describe a creative media idea you can implement for the team.";
+          q2 = "How would you improve the visual production this season?";
+          break;
+        case "IT":
+          q1 = "How can you improve the website or technical system?";
+          q2 = "What tools or tech will you use to make the work more efficient?";
+          break;
+        case "Marketing":
+          q1 = "Propose a creative campaign to promote the conference.";
+          q2 = "How will you expand the reach and engagement this year?";
+          break;
+        case "PR":
+          q1 = "How would you handle a media crisis involving the team?";
+          q2 = "What is your vision to improve the conference's public image?";
+          break;
+        case "OC":
+          q1 = "How would you manage a multi-event day under time pressure?";
+          q2 = "What’s your plan to ensure smooth and timely event organization?";
+          break;
+        case "Research":
+          q1 = "How would you ensure unbiased and well-verified research in a time-limited task?";
+          q2 = "Suggest a way to present complex data visually to non-expert delegates.";
+          break;
+        default:
+          container.innerHTML = '<p>Please select a valid track first.</p>';
+          return;
+      }
+
+      container.innerHTML = `
+        <label>${q1}</label>
+        <textarea name="track_q1" required data-words="100-250"></textarea>
+
+        <label>${q2}</label>
+        <textarea name="track_q2" required data-words="100-250"></textarea>
+      `;
+    }
+
+      document.getElementById("multiStepForm").addEventListener("submit", function(e) {
+  if (!validateCurrentStep()) {
+    e.preventDefault();
+    return;
+  }
+});
+  </script>
+</body>
+</html>

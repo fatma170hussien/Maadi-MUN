@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article - Russo-Ukrainian Conflict</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.8;
+      background: linear-gradient(to bottom right, #000000, #003366, #808080, #ffffff);
+      color: #fff;
+      overflow-x: hidden;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 50px 20px 100px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #FFD700;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .article-section {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .image-container {
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .image-container img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      transition: transform 0.4s ease, opacity 0.5s ease;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .image-container img.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
+    }
+
+    .image-caption {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      color: #FFD700;
+      font-weight: 600;
+    }
+
+    .text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #f0f0f0;
+      font-size: 1.1rem;
+    }
+
+    .author {
+      margin-top: 60px;
+      font-weight: bold;
+      text-align: right;
+      color: #FFD700;
+      font-size: 1.3rem;
+      transition: color 0.4s ease;
+      cursor: pointer;
+    }
+
+    .author:hover {
+      color: #00ccff;
+    }
+
+    @media(max-width: 768px) {
+      .article-section {
+        flex-direction: column;
+        text-align: justify;
+      }
+
+      .text {
+        width: 100%;
+      }
+
+      .image-container {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>The Russo-Ukrainian Conflict and the Response of Switzerland</h1>
+
+    <div class="article-section">
+      <div class="text">
+        <p>On 24th February, the Russian military entered the territory of Ukraine under the auspices of a special military operation, aimed at helping the Ukrainians “remove the corrupt government and denazify the country” (Al-Jazeera, 2022). The Russian government presented their case as acting in the interests of the Ukrainian people, especially those living in the Donbass region – a part of the country embroiled in separatist movements and conflict since 2014.</p>
+        <p>These acts have created a humanitarian crisis, with the UN Secretary-General Mr. Antonio Guterres urging, “in the name of humanity, to not start what may be the most devastating war since the start of the century” (UN News, 2022).</p>
+      </div>
+      <div class="image-container">
+        <img src="russia1.jpg" alt="Ukraine Conflict" class="fade-img">
+        <div class="image-caption">Russian Invasion Begins</div>
+      </div>
+    </div>
+
+    <div class="article-section">
+      <div class="image-container">
+        <img src="Russia2.jpg" alt="Switzerland Response" class="fade-img">
+        <div class="image-caption">Switzerland’s First Reaction</div>
+      </div>
+      <div class="text">
+        <p>On 28th February, the Swiss Federal Council adopted the packages of sanctions imposed by the EU. These actions align with the Federal Constitution, allowing measures to safeguard Switzerland’s interests and neutrality. The decision to fully adopt EU and US sanctions marks a new interpretation and a shift from previous neutrality.</p>
+        <p>Through these actions, Switzerland reaffirmed that Russia’s military attack violated international law. The unprecedented nature of the attack on a sovereign European country justified this departure from past approaches to conflict.</p>
+      </div>
+    </div>
+
+    <div class="article-section">
+      <div class="text">
+        <p>The sanctions include bans on military equipment imports, petroleum-related goods, dual-use items, and aerospace materials. Financial restrictions target Russian officials like Putin and Lavrov, freezing their assets and limiting banking operations. Switzerland also imposed travel bans, including prohibiting Russian aircraft from its airspace.</p>
+        <p>These measures signal Switzerland's solidarity with Ukraine and represent a historic shift in its stance of neutrality.</p>
+      </div>
+      <div class="image-container">
+        <img src="Russia3.jpg" alt="Swiss Sanctions" class="fade-img">
+        <div class="image-caption">Economic Sanctions in Action</div>
+      </div>
+    </div>
+
+    <div class="article-section">
+      <div class="image-container">
+        <img src="Russia 4.jpg" alt="Humanitarian Aid" class="fade-img">
+        <div class="image-caption">Swiss Humanitarian Support</div>
+      </div>
+      <div class="text">
+        <p>Since the beginning of the conflict, over 2 million people fled Ukraine. Poland has hosted the majority. Switzerland provided free public transport, waived telecom fees, and sent relief supplies worth millions. Protests in Geneva and Bern showed public support for Ukraine.</p>
+        <p>Switzerland’s response shows a powerful departure from its 500-year-long tradition of neutrality, taking a stand for peace, sovereignty, and humanitarian support.</p>
+      </div>
+    </div>
+
+    <div class="author">Written by: Fatma Hussien Abdelhafez</div>
+  </div>
+
+  <script>
+    // إظهار الصور عند الوصول ليها
+    const fadeImgs = document.querySelectorAll(".fade-img");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    fadeImgs.forEach(img => observer.observe(img));
+  </script>
+</body>
+</html>

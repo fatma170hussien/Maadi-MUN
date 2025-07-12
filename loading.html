@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading - MMUN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(-45deg, #000000, #002147, #ffffff);
+      background-size: 600% 600%;
+      animation: gradientBG 8s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .planet {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #1a1a1a, #000);
+      box-shadow: 0 0 30px gold;
+      animation: pulse 2s ease-in-out infinite;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .planet::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: rotate(0deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: rotate(0deg) translateX(-100%); }
+      50% { transform: rotate(0deg) translateX(100%); }
+      100% { transform: rotate(0deg) translateX(200%); }
+    }
+
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px dotted rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: spin 10s linear infinite;
+      transform-origin: center;
+    }
+
+    .orbit:nth-child(2) { width: 250px; height: 250px; margin: -125px; }
+    .orbit:nth-child(3) { width: 300px; height: 300px; margin: -150px; animation-duration: 12s; }
+    .orbit:nth-child(4) { width: 400px; height: 400px; margin: -200px; animation-duration: 16s; }
+
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0;
+      animation: logoIn 1.2s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes logoIn {
+      0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .typing-container {
+      margin-top: 40px;
+      font-size: 28px;
+      color: white;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid rgba(255,255,255,0.7);
+      width: 0;
+      animation: typing 1.5s steps(30, end) forwards, blink 0.7s infinite;
+      position: relative;
+      z-index: 3;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 460px; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: rgba(255,255,255,0.7); }
+    }
+
+    .typing-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.8), transparent);
+      animation: shimmerText 3s infinite;
+      z-index: -1;
+    }
+
+    @keyframes shimmerText {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 200%; }
+    }
+
+    .side-ring {
+      position: absolute;
+      border: 2px solid rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      animation: floatRing 20s linear infinite;
+    }
+
+    .side-ring:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: -150px;
+    }
+
+    .side-ring:nth-child(2) {
+      width: 400px;
+      height: 400px;
+      bottom: 10%;
+      right: -200px;
+      animation-duration: 25s;
+    }
+
+    @keyframes floatRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Side Rings -->
+  <div class="side-ring"></div>
+  <div class="side-ring"></div>
+
+  <!-- Planet and Orbits + Logo inside -->
+  <div class="planet">
+    <img class="logo" src="logo-removebg-preview.png" alt="MMUN Logo">
+    <div class="orbit"></div>
+    <div class="orbit"></div>
+    <div class="orbit"></div>
+  </div>
+
+  <!-- Typing Title -->
+  <div class="typing-container">Maadi Model United Nations</div>
+
+  <!-- ✅ التحويل التلقائي بعد 3 ثواني -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const nextPage = params.get("next") || "index.html"; // fallback للصفحة الرئيسية
+
+    setTimeout(() => {
+      window.location.href = nextPage;
+    }, 3000);
+  </script>
+</body>
+</html>
