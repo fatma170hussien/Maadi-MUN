@@ -256,6 +256,93 @@
   background-color: gold;
   color: black;
 }
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .navbar .nav-links a {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .stats {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .images img {
+    width: 90%;
+    height: auto;
+  }
+
+  .topic {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 15px;
+  }
+
+  .topic p {
+    text-align: center;
+  }
+
+  .gallery h2 {
+    font-size: 1.5rem;
+  }
+
+  .text h2 {
+    font-size: 2rem;
+  }
+
+  .text p {
+    font-size: 1rem;
+  }
+
+  .globe-container,
+  .text {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .globe-wrapper {
+    width: 250px;
+    height: 250px;
+  }
+
+  .maadi-mun-cards {
+    flex-direction: column !important;
+  }
+
+  .maadi-mun-card {
+    margin-bottom: 20px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  form input[type="email"] {
+    width: 90%;
+  }
+
+  form button {
+    width: 60%;
+    margin-top: 10px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -309,9 +396,9 @@
   <h2 id="typewriter"></h2>
   <div class="images">
     <div style="display: flex; gap: 20px;">
-      <img src="Image1.JPG" alt="" width="300" class="fade-image" style="animation-delay: 0s;">
-      <img src="Image 2.JPG" alt="Image 2" width="300" class="fade-image" style="animation-delay: 0.5s;">
-      <img src="Image 3.JPG" alt="Image 3" width="300" class="fade-image" style="animation-delay: 1s;">
+      <img src="Image1.jpg" alt="" width="300" class="fade-image" style="animation-delay: 0s;">
+      <img src="Image 2.jpg" alt="Image 2" width="300" class="fade-image" style="animation-delay: 0.5s;">
+      <img src="Image 3.jpg" alt="Image 3" width="300" class="fade-image" style="animation-delay: 1s;">
     </div>
   </div>
 </div>
@@ -872,6 +959,75 @@
     color: #333;
   }
 </style>
+<!-- High Board Hiring Section -->
+<section class="high-board-hiring">
+  <div class="hiring-container">
+    <h2>High Board Applications Are Now Open!</h2>
+    <p>Join us and shape the future of MMUN. Leadership, impact, and growth await you.</p>
+    <a href="apply.html" class="apply-button">Apply Now</a>
+  </div>
+</section>
+
+<style>
+  .high-board-hiring {
+    background: #e0e0e0;
+    color: #222;
+    padding: 60px 20px;
+    text-align: center;
+    animation: fadeUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hiring-container h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: #1e3c72;
+  }
+
+  .hiring-container p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+
+  .apply-button {
+    background: #1e3c72;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .apply-button:hover {
+    background: #00bfff;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .hiring-container h2 {
+      font-size: 1.7rem;
+    }
+
+    .hiring-container p {
+      font-size: 1rem;
+    }
+
+    .apply-button {
+      padding: 10px 25px;
+    }
+  }
+</style>
+
 
 <!-- Start of Get in Touch Section -->
 <div style="background-color: #0d0d0d; padding: 80px 20px; text-align: center; font-family: 'Segoe UI', sans-serif; color: #fff;">
@@ -986,12 +1142,12 @@
       }
     }
 
-    typeWriter(); // ابدأ الكتابة فورًا
+    typeWriter(); 
   });
 </script>
 <script>
   const counters = document.querySelectorAll('.count-number');
-  const speed = 100; // السرعة (كل ما قل الرقم، السرعة تزيد)
+  const speed = 100;
 
   const animateCounters = () => {
     counters.forEach(counter => {
@@ -1011,9 +1167,25 @@
     });
   };
 
-  // ننتظر لما الصفحة تفتح بالكامل
   window.addEventListener('load', animateCounters);
 </script>
+<script>
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    const currentPage = window.location.pathname.split("/").pop();
+    
+  
+    if (currentPage !== "index.html" && currentPage !== "") {
+      window.location.href = "index.html";
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.href = "#";
+      link.addEventListener('click', e => e.preventDefault());
+    });
+  }
+</script>
+
 
 </body>
 </html>
