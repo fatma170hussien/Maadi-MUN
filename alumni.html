@@ -2,6 +2,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Maadi MUN</title>
+  <link rel="stylesheet" href="style.css"> 
+
+  <style>
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-links a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .hero-text {
+        font-size: 18px;
+      }
+    }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Maadi MUN Events</title>
@@ -254,41 +275,88 @@
     <p data-aos="fade-up" data-aos-delay="300">Discover the journey of the incredible minds who shaped MMUN over the years.</p>
   </div>
 
-  <!-- Gallery Section -->
-  <div class="gallery">
-    <div class="photo-card" data-aos="fade-up" data-aos-delay="100">
-      <img src="His1.jpg" alt="Person 1">
-      <div class="photo-info">
-        <h3>Shahd tarek Mohamed</h3>
-        <p>Vice president in 2020, Pharm D.</p>
-      </div>
-    </div>
+  <style>
+  .photo-card:nth-child(4) {
+    display: none;
+  }
 
-    <div class="photo-card" data-aos="fade-up" data-aos-delay="200">
-      <img src="con4.jpg" alt="Person 2">
-      <div class="photo-info">
-        <h3>Person 2</h3>
-        <p>Organizer in 2020, led the logistics team with passion.</p>
-      </div>
-    </div>
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px;
+  }
 
-    <div class="photo-card" data-aos="fade-up" data-aos-delay="300">
-      <img src="con5.jpg" alt="Person 3">
-      <div class="photo-info">
-        <h3>Person 3</h3>
-        <p>Public Speaker in 2022, inspired hundreds of delegates.</p>
-      </div>
-    </div>
+  .gallery .photo-card {
+    width: 300px; /* كرت أكبر */
+    background: #fff;
+    padding: 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
 
-    <div class="photo-card" data-aos="fade-up" data-aos-delay="400">
-      <img src="con6.jpg" alt="Person 4">
-      <div class="photo-info">
-        <h3>Person 4</h3>
-        <p>Ambassador in 2023, built bridges across nations.</p>
-      </div>
+  .gallery .photo-card:hover {
+    transform: scale(1.03);
+  }
+
+  .gallery .photo-card img {
+    width: 100%; /* الصورة قد الكرت بالضبط */
+    height: auto;
+    display: block;
+  }
+
+  .photo-info {
+    padding: 15px;
+  }
+
+  .photo-info h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+  }
+
+  .photo-info p {
+    font-size: 0.95em;
+    color: #555;
+  }
+</style>
+
+<div class="gallery">
+  <div class="photo-card" data-aos="fade-up" data-aos-delay="200">
+    <img src="malak3.jpg" alt="Person 2">
+    <div class="photo-info">
+      <h3>Malak Esmail</h3>
+      <p>Founder in 2022, Robotics & Automation Engineering.</p>
     </div>
   </div>
 
+  <div class="photo-card" data-aos="fade-up" data-aos-delay="100">
+    <img src="His1.jpg" alt="Person 1">
+    <div class="photo-info">
+      <h3>Shahd tarek Mohamed</h3>
+      <p>Vice president in 2020, Pharm D.</p>
+    </div>
+  </div>
+
+  <div class="photo-card" data-aos="fade-up" data-aos-delay="300">
+    <img src="mahdy.jpg" alt="Person 3">
+    <div class="photo-info">
+      <h3>Mohamed E.Elmahdy</h3>
+      <p>CEO, Electronics & Communication Engineering.</p>
+    </div>
+  </div>
+
+  <div class="photo-card" data-aos="fade-up" data-aos-delay="400">
+    <img src="con6.jpg" alt="Person 4">
+    <div class="photo-info">
+      <h3>Person 4</h3>
+      <p>Ambassador in 2023, built bridges across nations.</p>
+    </div>
+  </div>
+</div>
 
 <!DOCTYPE html>
 <html lang="en">
