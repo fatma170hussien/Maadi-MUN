@@ -4,12 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Maadi MUN</title>
-  <link rel="stylesheet" href="style.css"> <!-- لو عندك ملف خارجي -->
-
+  <link rel="stylesheet" href="style.css"> 
   <style>
-    /* هنا ممكن تكتبي CSS العادي بتاع الصفحة */
 
-    /* وفي الآخر، أضيفي media query بالشكل ده: */
     @media (max-width: 768px) {
       .navbar {
         flex-direction: column;
@@ -1003,100 +1000,227 @@
       padding: 0;
       background: linear-gradient(to bottom right, #000000, #001f4d, #1e3c72);
       color: white;
+      min-height: 100vh;
     }
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 80px 20px;
     }
     h1 {
       text-align: center;
       font-size: 3rem;
       color: #00bfff;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      text-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+      animation: fadeIn 1s ease-out;
     }
+    
+    .faq-section {
+      perspective: 1000px;
+    }
+    
     .faq {
       background-color: rgba(255, 255, 255, 0.05);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       border-radius: 10px;
       overflow: hidden;
-      transition: all 0.4s ease;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-origin: top;
+      opacity: 0;
+      transform: translateY(20px) rotateX(10deg);
+      animation: fadeInUp 0.6s forwards;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
+    
+    .faq:nth-child(2) { animation-delay: 0.1s; }
+    .faq:nth-child(3) { animation-delay: 0.2s; }
+    .faq:nth-child(4) { animation-delay: 0.3s; }
+    .faq:nth-child(5) { animation-delay: 0.4s; }
+    .faq:nth-child(6) { animation-delay: 0.5s; }
+    .faq:nth-child(7) { animation-delay: 0.6s; }
+    
     .faq-question {
-      padding: 20px;
-      font-size: 1.2rem;
-      font-weight: bold;
+      padding: 22px 25px;
+      font-size: 1.25rem;
+      font-weight: 600;
       cursor: pointer;
       position: relative;
+      transition: all 0.3s ease;
+      background: linear-gradient(to right, rgba(0, 123, 255, 0.1), transparent);
     }
+    
+    .faq-question:hover {
+      background: linear-gradient(to right, rgba(0, 123, 255, 0.2), transparent);
+    }
+    
     .faq-question::after {
       content: '+';
       position: absolute;
-      right: 20px;
-      font-size: 1.5rem;
-      transition: transform 0.3s;
+      right: 25px;
+      font-size: 1.8rem;
+      font-weight: 300;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      color: #00bfff;
     }
+    
     .faq.open .faq-question::after {
-      transform: rotate(45deg);
+      transform: rotate(135deg);
+      color: #ff5555;
     }
+    
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease;
-      padding: 0 20px;
-      font-size: 1rem;
-      line-height: 1.6;
+      transition: max-height 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), padding 0.4s ease;
+      padding: 0 25px;
+      font-size: 1.05rem;
+      line-height: 1.7;
       color: #e0e0e0;
+      background-color: rgba(0, 0, 0, 0.2);
     }
+    
     .faq.open .faq-answer {
-      padding: 15px 20px 20px;
-      max-height: 300px;
+      max-height: 500px;
+      padding: 20px 25px;
+    }
+    
+    .faq.open {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px) rotateX(10deg);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+      }
+      
+      .faq-question {
+        padding: 18px 20px;
+        font-size: 1.1rem;
+      }
+      
+      .faq-answer {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>FAQs</h1>
- <div class="faq">
-      <div class="faq-question">How can I apply to join Maadi MUN?</div>
-      <div class="faq-answer">You can apply through our website by clicking the "Apply" button on the navigation bar and filling out the application form.</div>
+    
+    <div class="faq-section">
+      <div class="faq">
+        <div class="faq-question">How can I apply to join Maadi MUN?</div>
+        <div class="faq-answer">You can apply through our website by clicking the "Apply" button on the navigation bar and filling out the application form.</div>
+      </div>
+      
+      <div class="faq">
+        <div class="faq-question">Is it necessary to have experience in MUN to join?</div>
+        <div class="faq-answer">Not at all! We welcome beginners and provide training sessions to build your skills from scratch.</div>
+      </div>
+      
+      <div class="faq">
+        <div class="faq-question">Are the sessions held in-person or online?</div>
+        <div class="faq-answer">Yes, the sessions are online, but the conferences are offline.</div>
+      </div>
+      
+      <div class="faq">
+        <div class="faq-question">What age group is Maadi MUN for?</div>
+        <div class="faq-answer">Maadi MUN is primarily for high school students, typically aged between 14 to 18 years old.</div>
+      </div>
+      
+      <div class="faq">
+        <div class="faq-question">What are the committees available in the team</div>
+        <div class="faq-answer">Committees available in the MMUN team: Content Writing, Human Resources (HR), Public Relations (PR), Research, Marketing, Graphic Design / Editing, Information Technology (IT)</div>
+      </div>
+      
+      <div class="faq">
+        <div class="faq-question">What are the benefits of joining Maadi MUN?</div>
+        <div class="faq-answer">You'll improve your public speaking, research, negotiation, and leadership skills — plus you'll join a supportive and ambitious community!</div>
+      </div>
     </div>
-    <div class="faq">
-      <div class="faq-question">How can I apply to join Maadi MUN?</div>
-      <div class="faq-answer">You can apply through our website by clicking the "Apply" button on the navigation bar and filling out the application form.</div>
-    </div>
-
-    <div class="faq">
-      <div class="faq-question">Is it necessary to have experience in MUN to join?</div>
-      <div class="faq-answer">Not at all! We welcome beginners and provide training sessions to build your skills from scratch.</div>
-    </div>
-
-    <div class="faq">
-      <div class="faq-question">Are the sessions held in-person or online?</div>
-      <div class="faq-answer">Yes, the sessions are online, but the conferences are offline.</div>
-    </div>
-
-    <div class="faq">
-      <div class="faq-question">What age group is Maadi MUN for?</div>
-      <div class="faq-answer">Maadi MUN is primarily for high school students, typically aged between 14 to 18 years old.</div>
-    </div>
-
-    <div class="faq">
-      <div class="faq-question">What are the benefits of joining Maadi MUN?</div>
-      <div class="faq-answer">You’ll improve your public speaking, research, negotiation, and leadership skills — plus you’ll join a supportive and ambitious community!</div>
-    </div>
-
-
   </div>
 
   <script>
-    const faqs = document.querySelectorAll('.faq');
-    faqs.forEach(faq => {
-      faq.querySelector('.faq-question').addEventListener('click', () => {
-        faq.classList.toggle('open');
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqs = document.querySelectorAll('.faq');
+      
+      // Initialize animations
+      setTimeout(() => {
+        faqs.forEach(faq => {
+          faq.style.opacity = '1';
+          faq.style.transform = 'translateY(0) rotateX(0)';
+        });
+      }, 100);
+      
+      // Add click event for each FAQ
+      faqs.forEach(faq => {
+        const question = faq.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+          // Close all other FAQs
+          if (!faq.classList.contains('open')) {
+            faqs.forEach(otherFaq => {
+              if (otherFaq !== faq && otherFaq.classList.contains('open')) {
+                otherFaq.classList.remove('open');
+              }
+            });
+          }
+          
+          // Toggle current FAQ
+          faq.classList.toggle('open');
+          
+          // Add bounce effect
+          if (faq.classList.contains('open')) {
+            faq.style.transform = 'translateY(-5px)';
+            setTimeout(() => {
+              faq.style.transform = 'translateY(0)';
+            }, 300);
+          }
+        });
+      });
+      
+      // Add hover effects
+      faqs.forEach(faq => {
+        faq.addEventListener('mouseenter', () => {
+          if (!faq.classList.contains('open')) {
+            faq.style.transform = 'translateY(-3px)';
+          }
+        });
+        
+        faq.addEventListener('mouseleave', () => {
+          if (!faq.classList.contains('open')) {
+            faq.style.transform = 'translateY(0)';
+          }
+        });
       });
     });
   </script>
+</body>
+</html>
   
 </body>
 </html>
@@ -1211,17 +1335,16 @@
       if (index < text.length) {
         target.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 80); // سرعة الكتابة
+        setTimeout(typeWriter, 80); 
       }
     }
 
-    typeWriter(); // ابدأ الكتابة فورًا
+    typeWriter(); 
   });
 </script>
 <script>
   const counters = document.querySelectorAll('.count-number');
-  const speed = 100; // السرعة (كل ما قل الرقم، السرعة تزيد)
-
+  const speed = 100; 
   const animateCounters = () => {
     counters.forEach(counter => {
       const updateCount = () => {
@@ -1244,7 +1367,237 @@
   window.addEventListener('load', animateCounters);
 </script>
 
+<div class="chat-button" id="chatButton" onclick="toggleChat()">💬</div>
+
+<div class="chat-box" id="chatBox">
+  <header>MMUN Teams Chat 🤖</header>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-input">
+    <input type="text" id="userInput" placeholder="Ask about MMUN teams..." />
+    <button id="sendBtn" onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<style>
+  .chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #004080;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+  }
+
+  .chat-button.open {
+    transform: scale(1.2);
+    background-color: #ffc107;
+  }
+
+  .chat-box {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    max-height: 400px;
+    background-color: white;
+    border: 2px solid #004080;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .chat-box.open {
+    border-color: #ffc107;
+    box-shadow: 0 0 20px #ffc10788;
+  }
+
+  .chat-box header {
+    background-color: #004080;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .chat-body {
+    padding: 10px;
+    flex: 1;
+    overflow-y: auto;
+    max-height: 300px;
+    font-size: 14px;
+  }
+
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+
+  .chat-box input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .chat-box button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s ease;
+  }
+
+  .chat-box button.active {
+    background-color: #ffc107;
+    color: black;
+    transform: scale(1.1);
+  }
+
+  .message {
+    margin: 5px 0;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.4s forwards;
+  }
+
+  .user {
+    text-align: right;
+    color: #004080;
+  }
+
+  .bot {
+    text-align: left;
+    color: #333;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  function toggleChat() {
+    const chatBox = document.getElementById('chatBox');
+    const chatBtn = document.getElementById('chatButton');
+    const isOpen = chatBox.style.display === 'flex';
+
+    chatBox.style.display = isOpen ? 'none' : 'flex';
+    chatBox.classList.toggle("open", !isOpen);
+    chatBtn.classList.toggle("open", !isOpen);
+  }
+
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const message = input.value.trim();
+    if (message === "") return;
+
+    const chatBody = document.getElementById("chatBody");
+
+    const userMsg = document.createElement("div");
+    userMsg.className = "message user";
+    userMsg.textContent = message;
+    chatBody.appendChild(userMsg);
+
+    input.value = "";
+
+    // زر Send يتفاعل
+    const btn = document.getElementById("sendBtn");
+    btn.classList.add("active");
+    setTimeout(() => btn.classList.remove("active"), 300);
+
+    setTimeout(() => {
+      let reply = getTeamReply(message.toLowerCase());
+
+      const botMsg = document.createElement("div");
+      botMsg.className = "message bot";
+      botMsg.textContent = reply;
+      chatBody.appendChild(botMsg);
+
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 300);
+  }
+
+  function getTeamReply(msg) {
+    if (msg.includes("committees") || msg.includes("teams") || msg.includes("team")) {
+      return "MMUN teams include: Content Writing, Human Resources (HR), Public Relations (PR), Research, Marketing, Graphic Design/Editing, and IT.";
+    }
+      if (msg.includes("what is mmun") || msg.includes("mmun")) {
+    return "MMUN stands for Maadi Model United Nations. It's a simulation of UN conferences where students represent countries and debate global issues.";
+  }
+if (msg.includes("how can i join") || msg.includes("join team") || msg.includes("apply")) {
+    return "You can apply to a team through the official MMUN registration form when applications open.";
+  }
+
+  if (msg.includes("more than one team")) {
+    return "No, each member is accepted into one team only to ensure focused contribution.";
+  }
+
+  // تدريب
+  if (msg.includes("training") || msg.includes("prepare") || msg.includes("sessions")) {
+    return "Yes, each team conducts sessions to prepare members before the conference.";
+  }
+
+  // ميعاد المؤتمر
+  if (msg.includes("when is the event") || msg.includes("date") || msg.includes("next event")) {
+    return "The date of the upcoming event will be announced on our social media and website.";
+  }
+
+  // أسئلة غريبة
+  if (msg.includes("snacks") || msg.includes("food")) {
+    return "MMUN focuses on learning and leadership. Details about food or logistics are shared closer to the event.";
+  }
+
+  if (msg.includes("famous")) {
+    return "MMUN is about growth, not fame — but you will definitely gain great experience and skills!";
+  }
+
+  if (msg.includes("suit") || msg.includes("dress") || msg.includes("wear")) {
+    return "Appropriate attire is usually required for the conference day. You'll be notified with guidelines.";
+  }
+
+  if (msg.includes("paid") || msg.includes("salary") || msg.includes("money")) {
+    return "MMUN is a volunteer student-led organization. The value comes from experience and impact.";
+  }
+
+  if (msg.includes("policy") || msg.includes("policies") || msg.includes("rules") || msg.includes("privacy")) {
+    return "You can explore the topics through our articles. If you're interested in learning more, feel free to join us!"
+  }
+  
+
+
+    if (msg.includes("content")) return "The Content Writing team handles articles, scripts, and official MMUN text content.";
+    if (msg.includes("hr")) return "HR manages communication with applicants, interviews, and internal team well-being.";
+    if (msg.includes("pr")) return "The PR team handles outreach, partnerships, and public image.";
+    if (msg.includes("research")) return "The Research team supports content and committees with verified information.";
+    if (msg.includes("marketing")) return "Marketing focuses on promoting MMUN events and initiatives.";
+    if (msg.includes("graphic") || msg.includes("design")) return "Graphic Design & Editing handles visuals, posts, and videos.";
+    if (msg.includes("it")) return "The IT team manages the website, forms, and technical tools.";
+
+    return "Sorry, I can only help with MMUN teams and their roles.";
+  }
+</script>
 
 
 </body>
 </html>
+
+

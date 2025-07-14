@@ -4,57 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Article - Russo-Ukrainian Conflict</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       line-height: 1.8;
-      background: linear-gradient(to bottom right, #000000, #003366, #808080, #ffffff);
-      color: #fff;
+      background: #f8f9fa;
+      color: #333;
       overflow-x: hidden;
       font-size: 18px;
+      background-image: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
     }
 
     .container {
       max-width: 1200px;
-      margin: auto;
-      padding: 50px 20px 100px;
+      margin: 40px auto;
+      padding: 40px;
+      background-color: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 8px;
     }
 
     h1 {
+      font-family: 'Playfair Display', serif;
       font-size: 2.8rem;
-      color: #FFD700;
+      color: #1a237e;
       text-align: center;
       margin-bottom: 50px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #d32f2f;
+      position: relative;
+    }
+
+    h1:after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #1976d2;
     }
 
     .article-section {
       display: flex;
-      flex-direction: row;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 30px;
+      gap: 40px;
       margin-bottom: 60px;
+      align-items: center;
+    }
+
+    .article-section:nth-child(even) {
+      flex-direction: row-reverse;
     }
 
     .image-container {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
       text-align: center;
-      max-width: 400px;
     }
 
     .image-container img {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      transition: transform 0.4s ease, opacity 0.5s ease;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: all 0.4s ease;
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(30px);
+      object-fit: cover;
+      height: auto;
     }
 
     .image-container img.visible {
@@ -63,54 +89,71 @@
     }
 
     .image-container img:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     }
 
     .image-caption {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 1.1rem;
-      color: #FFD700;
-      font-weight: 600;
+      color: #d32f2f;
+      font-weight: 500;
+      font-style: italic;
     }
 
     .text {
-      flex: 1;
+      flex: 2;
       min-width: 300px;
     }
 
     p {
-      margin-bottom: 20px;
-      color: #f0f0f0;
+      margin-bottom: 25px;
+      color: #424242;
       font-size: 1.1rem;
+      text-align: justify;
+      padding-left: 20px;
+      border-left: 3px solid #1976d2;
     }
 
     .author {
       margin-top: 60px;
-      font-weight: bold;
+      font-weight: 500;
       text-align: right;
-      color: #FFD700;
-      font-size: 1.3rem;
-      transition: color 0.4s ease;
-      cursor: pointer;
-    }
-
-    .author:hover {
-      color: #00ccff;
+      color: #1a237e;
+      font-size: 1.2rem;
+      font-style: italic;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
     }
 
     @media(max-width: 768px) {
-      .article-section {
+      .article-section,
+      .article-section:nth-child(even) {
         flex-direction: column;
-        text-align: justify;
       }
-
-      .text {
-        width: 100%;
-      }
-
+      
       .image-container {
         max-width: 100%;
       }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .container {
+        padding: 25px;
+        margin: 20px auto;
+      }
+    }
+
+    /* Animation for images */
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-img.visible {
+      animation: floatIn 0.8s ease-out forwards;
     }
   </style>
 </head>
@@ -121,8 +164,8 @@
 
     <div class="article-section">
       <div class="text">
-        <p>On 24th February, the Russian military entered the territory of Ukraine under the auspices of a special military operation, aimed at helping the Ukrainians “remove the corrupt government and denazify the country” (Al-Jazeera, 2022). The Russian government presented their case as acting in the interests of the Ukrainian people, especially those living in the Donbass region – a part of the country embroiled in separatist movements and conflict since 2014.</p>
-        <p>These acts have created a humanitarian crisis, with the UN Secretary-General Mr. Antonio Guterres urging, “in the name of humanity, to not start what may be the most devastating war since the start of the century” (UN News, 2022).</p>
+        <p>On 24th February, the Russian military entered the territory of Ukraine under the auspices of a special military operation, aimed at helping the Ukrainians "remove the corrupt government and denazify the country" (Al-Jazeera, 2022). The Russian government presented their case as acting in the interests of the Ukrainian people, especially those living in the Donbass region – a part of the country embroiled in separatist movements and conflict since 2014.</p>
+        <p>These acts have created a humanitarian crisis, with the UN Secretary-General Mr. Antonio Guterres urging, "in the name of humanity, to not start what may be the most devastating war since the start of the century" (UN News, 2022).</p>
       </div>
       <div class="image-container">
         <img src="russia1.jpg" alt="Ukraine Conflict" class="fade-img">
@@ -133,11 +176,11 @@
     <div class="article-section">
       <div class="image-container">
         <img src="Russia2.jpg" alt="Switzerland Response" class="fade-img">
-        <div class="image-caption">Switzerland’s First Reaction</div>
+        <div class="image-caption">Switzerland's First Reaction</div>
       </div>
       <div class="text">
-        <p>On 28th February, the Swiss Federal Council adopted the packages of sanctions imposed by the EU. These actions align with the Federal Constitution, allowing measures to safeguard Switzerland’s interests and neutrality. The decision to fully adopt EU and US sanctions marks a new interpretation and a shift from previous neutrality.</p>
-        <p>Through these actions, Switzerland reaffirmed that Russia’s military attack violated international law. The unprecedented nature of the attack on a sovereign European country justified this departure from past approaches to conflict.</p>
+        <p>On 28th February, the Swiss Federal Council adopted the packages of sanctions imposed by the EU. These actions align with the Federal Constitution, allowing measures to safeguard Switzerland's interests and neutrality. The decision to fully adopt EU and US sanctions marks a new interpretation and a shift from previous neutrality.</p>
+        <p>Through these actions, Switzerland reaffirmed that Russia's military attack violated international law. The unprecedented nature of the attack on a sovereign European country justified this departure from past approaches to conflict.</p>
       </div>
     </div>
 
@@ -154,12 +197,12 @@
 
     <div class="article-section">
       <div class="image-container">
-        <img src="Russia 4.jpg" alt="Humanitarian Aid" class="fade-img">
+        <img src="Russia4.jpg" alt="Humanitarian Aid" class="fade-img">
         <div class="image-caption">Swiss Humanitarian Support</div>
       </div>
       <div class="text">
         <p>Since the beginning of the conflict, over 2 million people fled Ukraine. Poland has hosted the majority. Switzerland provided free public transport, waived telecom fees, and sent relief supplies worth millions. Protests in Geneva and Bern showed public support for Ukraine.</p>
-        <p>Switzerland’s response shows a powerful departure from its 500-year-long tradition of neutrality, taking a stand for peace, sovereignty, and humanitarian support.</p>
+        <p>Switzerland's response shows a powerful departure from its 500-year-long tradition of neutrality, taking a stand for peace, sovereignty, and humanitarian support.</p>
       </div>
     </div>
 
@@ -167,20 +210,21 @@
   </div>
 
   <script>
-    // إظهار الصور عند الوصول ليها
-    const fadeImgs = document.querySelectorAll(".fade-img");
-
+    const images = document.querySelectorAll('.fade-img');
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.3
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     });
 
-    fadeImgs.forEach(img => observer.observe(img));
+    images.forEach(img => observer.observe(img));
   </script>
 </body>
 </html>

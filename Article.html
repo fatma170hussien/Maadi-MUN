@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>STEM MUN Newspaper</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maadi MUN Newspaper</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-
   <style>
+    /* Global Styles */
     * {
       margin: 0;
       padding: 0;
@@ -18,25 +18,24 @@
       background-color: #f4f4f4;
       color: #222;
       text-align: center;
-      padding: 40px 20px;
+      padding-top: 90px;
     }
 
+    /* Navbar Styles */
     .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  z-index: 999;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 50px;
-  background: linear-gradient(to right, #001f3f, #003366);
-  color: white;
-  box-sizing: border-box;
-}
-
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: linear-gradient(to right, #001f3f, #003366);
+      color: white;
+    }
 
     .navbar .logo {
       display: flex;
@@ -55,14 +54,18 @@
       gap: 25px;
     }
 
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.15rem;
+      transition: color 0.3s;
+    }
 
- .nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.15rem; /* ⬅️ حجم الخط */
-  transition: color 0.3s;
-}
+    .nav-links a:hover {
+      color: #00bfff;
+    }
+
     .nav-links .apply-btn {
       border: 2px solid gold;
       padding: 6px 16px;
@@ -74,6 +77,13 @@
     .nav-links .apply-btn:hover {
       background: gold;
       color: black;
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
     /* Header */
@@ -109,11 +119,17 @@
       padding: 25px;
       border-radius: 15px;
       width: 300px;
+      height: 320px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
       opacity: 0;
       transform: translateY(30px);
       animation: slideUp 0.6s forwards;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
     .card:nth-child(2) {
@@ -194,220 +210,259 @@
       transform: scale(1.05);
       color: black;
     }
-    .card {
-  background-color: white;
-  padding: 25px;
-  border-radius: 15px;
-  width: 300px;
-  height: 320px; /* ✅ اجبار الكارت على نفس الطول */
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: slideUp 0.6s forwards;
 
-  /* ✅ علشان المحتوى يبقى متوسّط جوه الكارت */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+    /* Footer Section */
+    .footer {
+      background-color: #0d0d0d;
+      padding: 80px 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .footer h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #00f0ff, 0 0 20px #00f0ff;
+    }
+
+    .footer p {
+      font-size: 1.2em;
+      margin-bottom: 50px;
+      color: #ccc;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .social-icons a {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 15px #00f0ff;
+    }
+
+    .social-icons img {
+      width: 45px;
+    }
+
+    .subscribe-form {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .subscribe-form p {
+      color: #bbb;
+      margin-bottom: 15px;
+    }
+
+    .subscribe-form form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .subscribe-form input {
+      padding: 12px 20px;
+      border-radius: 25px;
+      border: none;
+      width: 260px;
+      max-width: 90%;
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    .subscribe-form button {
+      padding: 12px 25px;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(45deg, #00f0ff, #007bff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px #007bff;
+      transition: transform 0.3s ease;
+    }
+
+    .subscribe-form button:hover {
+      transform: scale(1.05);
+    }
+
+    .copyright {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h1 span {
+        font-size: 2rem;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      .footer h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar .logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: 1rem;
+      }
+
+      .subscribe-form form {
+        flex-direction: column;
+      }
+
+      .subscribe-form input,
+      .subscribe-form button {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-<div style="height: 90px;"></div>
+
   <!-- Navbar -->
   <div class="navbar">
     <div class="logo">
       <img src="logo.jpg" alt="Logo">
       Maadi Model United Nations
     </div>
-   <div class="nav-links">
-  <a href="loading.html?next=index.html">Home</a>
-  <a href="loading.html?next=event.html">Events</a>
-  <a href="loading.html?next=alumni.html">History</a>
-  <a href="loading.html?next=conference.html">Conference</a>
-  <a href="loading.html?next=management.html">High board</a>
-  <a href="loading.html?next=contact.html">Contact</a>
-  <a href="loading.html?next=Article.html">Articles</a>
-  <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
-</div>
+    <div class="nav-links">
+      <a href="loading.html?next=Index.html">Home</a>
+      <a href="loading.html?next=event.html">Events</a>
+      <a href="loading.html?next=alumni.html">History</a>
+      <a href="loading.html?next=conference.html">Conference</a>
+      <a href="loading.html?next=management.html">High board</a>
+      <a href="loading.html?next=contact.html">Contact</a>
+      <a href="loading.html?next=Article.html">Articles</a>
+      <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
+    </div>
   </div>
 
-  <!-- Heading -->
-  <h1>📰 <span>Read, and Stay tuned</span></h1>
-  <p class="sub-text">
-   The Maadi MUN Newspaper reflects our ongoing efforts to engage students with global issues through powerful articles, in-depth research, and creative writing. We've already published insightful pieces, and there's more to come!
-  </p>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Heading -->
+    <h1>📰 <span>Read, and Stay tuned</span></h1>
+    <p class="sub-text">
+      The Maadi MUN Newspaper reflects our ongoing efforts to engage students with global issues through powerful articles, in-depth research, and creative writing. We've already published insightful pieces, and there's more to come!
+    </p>
 
-<!-- Cards -->
-<div class="cards-container">
-  <!-- Russia-Ukraine War Card -->
-  <a href="Russia.html" style="text-decoration: none; color: inherit;">
-    <div class="card">
-      <div style="font-size: 2rem;">🌍</div>
-      <h3>Russia-Ukraine War</h3>
-      <p>The Russia-Ukraine War is an ongoing conflict that began in 2022, involving a full-scale invasion by Russia, raising global concerns about sovereignty, security, and international law.</p>
+    <!-- Cards -->
+    <div class="cards-container">
+      <!-- Russia-Ukraine War Card -->
+      <a href="Russia.html" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <div style="font-size: 2rem;">🌍</div>
+          <h3>Russia-Ukraine War</h3>
+          <p>The Russia-Ukraine War is an ongoing conflict that began in 2022, involving a full-scale invasion by Russia, raising global concerns about sovereignty, security, and international law.</p>
+        </div>
+      </a>
+
+      <!-- India and Pakistan Conflict Card -->
+      <a href="Kashmir.html" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <div style="font-size: 2rem;">🌍</div>
+          <h3>India and Pakistan conflict</h3>
+          <p>Started in 1947 after British India's partition.</p>
+        </div>
+      </a>
+
+      <!-- Israel and the Palestinians Card -->
+      <a href="Israel.html" style="text-decoration: none; color: inherit;">
+        <div class="card">
+          <div style="font-size: 2rem;">🌍</div>
+          <h3>Israel and the Palestinians</h3>
+          <p>The conflict centers on territory, statehood, and decades of political and humanitarian tensions in the Middle East.</p>
+        </div>
+      </a>
     </div>
-  </a>
 
-  <!-- India and Pakistan Conflict Card -->
-  <a href="Kashmir.html" style="text-decoration: none; color: inherit;">
-    <div class="card">
-      <div style="font-size: 2rem;">🌍</div>
-      <h3>India and Pakistan conflict</h3>
-      <p>Started in 1947 after British India's partition.</p>
+    <!-- Notify Section -->
+    <div class="notify-section">
+      <h2>Stay connected and be the first to hear from us whenever we launch something new.</h2>
+      <form action="https://formspree.io/f/mwpbjeyr" method="POST">
+        <input type="email" name="email" placeholder="Your email address" required />
+        <button type="submit">Notify Me</button>
+      </form>
     </div>
-  </a>
-
-  <!-- Israel and the Palestinians Card -->
-  <a href="Israel.html" style="text-decoration: none; color: inherit;">
-    <div class="card">
-      <div style="font-size: 2rem;">🌍</div>
-      <h3>Israel and the Palestinians</h3>
-      <p>The conflict centers on territory, statehood, and decades of political and humanitarian tensions in the Middle East.</p>
-    </div>
-  </a>
-</div>
-
-<!-- Notify -->
-<div class="notify-section">
-  <h2>Stay connected and be the first to hear from us whenever we launch something new.</h2>
-  <form action="https://formspree.io/f/mwpbjeyr" method="POST">
-    <input type="email" name="email" placeholder="Your email address" required />
-    <button type="submit">Notify Me</button>
-  </form>
-</div>
-<!-- End of Notify Section -->
-<section style="padding-bottom: 100px;"></section>
-
-
-<!-- Start of Get in Touch Section -->
-<div style="background-color: #0d0d0d; padding: 80px 20px; text-align: center; font-family: 'Segoe UI', sans-serif; color: #fff;">
-
-  <h1 style="
-    font-size: 3em;
-    margin-bottom: 20px;
-    text-shadow: 0 0 8px #00f0ff, 0 0 20px #00f0ff;
-  ">
-    Get in Touch
-  </h1>
-
-  <p style="
-    font-size: 1.2em;
-    margin-bottom: 50px;
-    color: #ccc;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  ">
-    Ready to join <strong style="color:#00f0ff;">Maadi Model United Nations</strong>? Connect with us through social media and stay updated!
-  </p>
-
-  <!-- Social Media Icons with Hover Effect -->
-  <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 50px;">
-    <a href="https://www.facebook.com/share/1Akm3ATLJe/" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" style="width: 45px;">
-    </a>
-    <a href="https://www.instagram.com/maadistemmun?igsh=cno1bnEwN3hzeGZx" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="width: 45px;">
-    </a>
-    <a href="https://www.linkedin.com/company/maadimun/" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 45px;">
-    </a>
-    <a href="fhsyn2131@gmail.com" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail" style="width: 45px;">
-    </a>
-    <a href="https://chat.whatsapp.com/Kpir7SnulQXD3AO7wniaJN" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 45px;">
-    </a>
   </div>
 
-  
+  <!-- Footer Section -->
+  <div class="footer">
+    <h1>Get in Touch</h1>
+    <p>
+      Ready to join <strong style="color:#00f0ff;">Maadi Model United Nations</strong>? Connect with us through social media and stay updated!
+    </p>
 
+    <div class="social-icons">
+      <a href="https://www.facebook.com/share/1Akm3ATLJe/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/maadistemmun?igsh=cno1bnEwN3hzeGZx" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      </a>
+      <a href="https://www.linkedin.com/company/maadimun/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+      </a>
+      <a href="mailto:fhsyn2131@gmail.com">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+      </a>
+      <a href="https://chat.whatsapp.com/Kpir7SnulQXD3AO7wniaJN" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+      </a>
+    </div>
 
+    <div class="subscribe-form">
+      <p>Subscribe to get exclusive MMUN updates, events & opportunities!</p>
+      <form action="https://formspree.io/f/mwpbjeyr" method="POST">
+        <input type="email" name="email" required placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+        <input type="hidden" name="_redirect" value="https://example.com/thank-you.html">
+      </form>
+    </div>
 
-
-
-<div style="margin-bottom: 50px; text-align: center;">
-  <p style="color: #bbb; margin-bottom: 15px;">
-    Subscribe to get exclusive MMUN updates, events & opportunities!
-  </p>
-
-  <form 
-    action="https://formspree.io/f/mwpbjeyr" 
-    method="POST" 
-    style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;"
-  >
-    <input 
-      type="email" 
-      name="email" 
-      required 
-      placeholder="Your email address"
-      style="
-        padding: 12px 20px;
-        border-radius: 25px;
-        border: none;
-        width: 260px;
-        max-width: 90%;
-        box-shadow: 0 0 10px #00f0ff;
-      "
-    >
-
-    <button
-      type="submit"
-      style="
-        padding: 12px 25px;
-        border-radius: 25px;
-        border: none;
-        background: linear-gradient(45deg, #00f0ff, #007bff);
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 0 10px #00f0ff, 0 0 20px #007bff;
-        transition: transform 0.3s ease;
-      "
-      onmouseover="this.style.transform='scale(1.05)'"
-      onmouseout="this.style.transform='scale(1)'"
-    >
-      Subscribe
-    </button>
-
-    <!-- redirect لو عايزة -->
-    <input type="hidden" name="_redirect" value="https://example.com/thank-you.html" />
-  </form>
-</div>
-
-
-
-  
-
-  <div style="color: #666; font-size: 0.9em;">
-    &copy; 2025 <span style="color: #00f0ff;">Maadi Model United Nations</span>. All rights reserved.
+    <div class="copyright">
+      &copy; 2025 <span style="color: #00f0ff;">Maadi Model United Nations</span>. All rights reserved.
+    </div>
   </div>
-</div>
-<!-- End of Get in Touch Section -->
 
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
 </body>
 </html>

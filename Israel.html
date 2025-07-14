@@ -3,54 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>India-Pakistan Conflict Article</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>Israel-Palestine Conflict Article</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;500&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Raleway', sans-serif;
       line-height: 1.8;
-      background: linear-gradient(to bottom right, #000000, #003366, #808080, #ffffff);
-      color: #fff;
+      background: #f5f5f5;
+      color: #333;
       overflow-x: hidden;
       font-size: 18px;
+      background-image: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
     }
 
     .container {
       max-width: 1200px;
-      margin: auto;
-      padding: 50px 20px 100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: white;
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
     }
 
     h1 {
-      font-size: 2.8rem;
-      color: #FFD700;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #2c3e50;
       text-align: center;
-      margin-bottom: 50px;
+      margin: 40px 0;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e74c3c;
+      position: relative;
+    }
+
+    h1:after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #3498db;
     }
 
     .article-section {
       display: flex;
-      flex-direction: row;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 30px;
+      gap: 40px;
       margin-bottom: 60px;
+      align-items: flex-start;
+    }
+
+    .article-section:nth-child(even) {
+      flex-direction: row-reverse;
     }
 
     .article-section img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      transition: transform 0.4s ease, opacity 0.5s ease;
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: all 0.5s ease;
+      object-fit: cover;
+      height: auto;
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(30px);
     }
 
     .article-section img.visible {
@@ -59,260 +86,158 @@
     }
 
     .article-section img:hover {
-      transform: scale(1.05);
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     }
 
     .text {
-      flex: 1;
+      flex: 2;
       min-width: 300px;
+      padding: 20px;
     }
 
     p {
-      margin-bottom: 20px;
-      color: #f0f0f0;
+      margin-bottom: 25px;
+      color: #555;
       font-size: 1.1rem;
+      text-align: justify;
+      position: relative;
+      padding-left: 20px;
+      border-left: 3px solid #e74c3c;
     }
 
     .author {
       margin-top: 60px;
-      font-weight: bold;
+      font-weight: 600;
       text-align: right;
-      color: #FFD700;
-      font-size: 1.3rem;
-      transition: color 0.4s ease;
-      cursor: pointer;
-    }
-
-    .author:hover {
-      color: #00ccff;
+      color: #2c3e50;
+      font-size: 1.2rem;
+      font-style: italic;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
     }
 
     .caption {
       text-align: center;
       margin-top: 10px;
-      color: #ddd;
-      font-size: 0.95rem;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+      font-style: italic;
     }
 
     @media(max-width: 768px) {
-      .article-section {
+      .article-section, 
+      .article-section:nth-child(even) {
         flex-direction: column;
-        text-align: justify;
       }
-
-      .text {
-        width: 100%;
-      }
-
+      
       .article-section img {
         max-width: 100%;
       }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Floating image effect */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .floating-img {
+      animation: float 6s ease-in-out infinite;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Israel and the Palestinians: History of the conflict explained
-</h1>
+    <h1>Israel and the Palestinians: History of the conflict explained</h1>
 
     <div class="article-section">
       <div class="text">
-        <p>There have been a series of wars between Israel and Arab nations. Uprisings - called intifadas - against Israeli occupation, and reprisals and crackdowns by Israel have also taken place.
-
-The consequences of the historic dispute over issues including land, borders and rights are still being felt, and include the latest war between Israel and Hamas in Gaza.
-
-What was Israel before 1948 and how was it created?
-Britain took control of the area known as Palestine in World War One, following the defeat of the Ottoman Empire, which had ruled that part of the Middle East.
-
-An Arab majority and a Jewish minority lived there, as well as other ethnic groups.
-
-Tensions between the Jewish and Arab populations deepened when the UK agreed in principle to the establishment of a "national home" in Palestine for Jewish people - a pledge known as the Balfour Declaration.
-
-Jews had historical links to the land, but Palestinian Arabs also had a claim dating back centuries and opposed the move. The British said the rights of Palestinian Arabs already living there had to be protected.
-Between the 1920s and 1940s the number of Jews arriving grew, with many fleeing persecution in Europe. The murder of six million Jews during the Holocaust gave added urgency to demands for a safe haven.
-
-The Jewish population reached 630,000, just over 30% of the population, by 1947.
-
-In 1947, against a backdrop of growing violence between Jews and Arabs - and against British rule - the United Nations (UN) voted for Palestine to be split into separate Jewish and Arab states. Jerusalem would become an international city.
-
-No Arab nations supported this. They argued the plan gave the Jews more of the land, even though their population was smaller.
-
-Britain abstained. It decided to withdraw and to hand the problem to the UN at the end of 14 May 1948.
-
-Jewish leaders in Palestine declared an independent state known as Israel hours before British rule ended. Israel was recognised by the UN the following year.
-
-What was the 1948 Arab-Israeli war?
-The day after Israel declared independence, it was attacked and surrounded by the armies of five Arab nations.
-
-The conflict came to be known in Israel as its war of independence.
-</p>
-        <p>By the time the fighting ended with an armistice in 1949, Israel controlled most of the territory.
-
-Agreements left Egypt occupying the Gaza Strip, Jordan occupying the West Bank and East Jerusalem, and Israel occupying West Jerusalem.
-
-About 750,000 Palestinians fled, or were forced from, their homes on land which became Israel and ended up as refugees.
-
-The event is known in Arabic as the Nakba (Catastrophe). 
-In the years that followed, hundreds of thousands of Jews left, or were expelled from, Muslim majority countries across the Middle East and North Africa, with many going to Israel.
-
-What was the 1967 Middle East war?
-What is known as the Six-Day War changed boundaries in the Middle East and had major consequences for Palestinians.
-
-The war saw Israel fight Egypt, Syria and Jordan.
-
-It started when Israel, fearing an attack by Egypt and Syria, launched a strike on Egypt's air force.
-
-By the time the fighting ended, Israel had captured the Sinai Peninsula and Gaza from Egypt, most of the Golan Heights from Syria, and East Jerusalem and the West Bank from Jordan.
-
-About a million Palestinians in the West Bank, Gaza and East Jerusalem came under Israel's control.
-
-
-        </p>
+        <p>There have been a series of wars between Israel and Arab nations. Uprisings - called intifadas - against Israeli occupation, and reprisals and crackdowns by Israel have also taken place.</p>
+        
+        <p>The consequences of the historic dispute over issues including land, borders and rights are still being felt, and include the latest war between Israel and Hamas in Gaza.</p>
+        
+        <p>What was Israel before 1948 and how was it created? Britain took control of the area known as Palestine in World War One, following the defeat of the Ottoman Empire, which had ruled that part of the Middle East.</p>
+        
+        <p>An Arab majority and a Jewish minority lived there, as well as other ethnic groups. Tensions between the Jewish and Arab populations deepened when the UK agreed in principle to the establishment of a "national home" in Palestine for Jewish people - a pledge known as the Balfour Declaration.</p>
+      </div>
       <div>
-        <img src="Israel1.webp" alt="Kashmir Attack" class="fade-img">
-        <div class="caption"></div>
+        <img src="Israel1.webp" alt="Historical conflict" class="floating-img">
+        <div class="caption">Haganah fighter prepares for independence</div>
       </div>
     </div>
 
     <div class="article-section">
       <div>
-        <img src="Israel2.webp" alt="Partition Map" class="fade-img">
-        <div class="caption">Haganah fighter prepares for independence.
-</div>
+        <img src="Israel2.webp" alt="Partition Map" class="floating-img">
+        <div class="caption">Israeli commanders enter East Jerusalem</div>
       </div>
       <div class="text">
-        <p>Israel's occupation of these areas has lasted until this day.
-
-Israel signed a peace treaty with Egypt in 1979 and returned the Sinai.
-
-It annexed East Jerusalem and the Golan Heights, making them part of Israel, although this has not been recognised by most of the international community.
-
-What is the status of the West Bank now?
-The West Bank - land between Israel and the River Jordan - is home to an estimated three million Palestinians.
-
-Along with East Jerusalem and Gaza, it is part of what are widely known as the Occupied Palestinian Territories.
-
-The Palestinians have always opposed Israel's presence in these areas and want them to be part of a future independent state, something backed by the vast majority of the international community.
-
-Israel still has overall control of the West Bank, but since the 1990s, a Palestinian government - known as the Palestinian Authority - has run most of its town and cities. There are about 150 Israeli settlements, housing about 700,000 Jews, in the West Bank and East Jerusalem.
-
-Palestinians want all Israeli settlements to be removed and they are considered illegal under international law.
-
-However, Israel's government disputes this. It says the biggest settlements at the very least are permanent and that all settlements are rooted in its historical rights.
-
-It does not recognise the right of the Palestinians to have their own state and argues that the West Bank is part of the Israeli homeland.
-
-The Israeli government announced plans to expand settlements after coming to power in 2022. It says the creation of a Palestinian state would be a threat to Israeli security.
-
-In July 2024, the top court of the UN, the International Court of Justice (ICJ), said that Israel's continued presence in the Occupied Palestinian Territories is illegal. It said that Israel should withdraw all settlers and that it was in breach of international agreements on racism and apartheid.</p>
-        <p>What is the dispute over Jerusalem?
-Israel and the Palestinians both claim Jerusalem as their capital.
-
-Israel, which already controlled West Jerusalem, occupied East Jerusalem in the 1967 war and later declared the entire city its permanent capital. It says Jerusalem cannot be divided.
-
-The Palestinians claim East Jerusalem as the capital of a future Palestinian state.
-
-Most of the population of East Jerusalem is Palestinian, only a small minority of whom have chosen to become Israeli citizens.</p>
+        <p>Jews had historical links to the land, but Palestinian Arabs also had a claim dating back centuries and opposed the move. The British said the rights of Palestinian Arabs already living there had to be protected.</p>
+        
+        <p>Between the 1920s and 1940s the number of Jews arriving grew, with many fleeing persecution in Europe. The murder of six million Jews during the Holocaust gave added urgency to demands for a safe haven.</p>
+        
+        <p>The Jewish population reached 630,000, just over 30% of the population, by 1947. In 1947, against a backdrop of growing violence between Jews and Arabs - and against British rule - the United Nations (UN) voted for Palestine to be split into separate Jewish and Arab states. Jerusalem would become an international city.</p>
+        
+        <p>No Arab nations supported this. They argued the plan gave the Jews more of the land, even though their population was smaller. Britain abstained. It decided to withdraw and to hand the problem to the UN at the end of 14 May 1948.</p>
       </div>
     </div>
 
     <div class="article-section">
       <div class="text">
-        <p>Holy sites in Jerusalem are at the centre of the Palestinian-Israeli conflict. The most sacred site - known to Muslims as Al Aqsa Mosque compound, or Haram al-Sharif (Noble Sanctuary), and to Jews as Temple Mount - lies in East Jerusalem.
-
-The UN and most international opinion consider East Jerusalem to be Palestinian land occupied by Israel.
-
-What has happened in the Gaza Strip?
-The Gaza Strip is a stretch of land surrounded by Israel, Egypt and the Mediterranean Sea. It is 41km (25 miles) long and 10km wide.
-
-Home to about 2.3 million people, it is one of the most densely populated places on Earth.
-
-iStock A map of Gaza showing the location of Gaza City and Khan Younis. It also shows the three crossing points: Rafah in the south on the Egyptian border, plus two Israeli-controlled crossings: Erez in the north and the Kerem Shalom in the south-west.iStock
-Even before the latest war between Israel and Hamas, Gaza had one of the highest unemployment rates in the world. Many people were living below the poverty line and depending on food aid to survive.
-
-Gaza's boundaries were drawn up as a result of the 1948 Middle East war, when it was occupied by Egypt.
-
-Egypt was driven out of Gaza in the 1967 war and the Strip was occupied by Israel, which built settlements and placed Gaza's Palestinian population under military rule.
-
-In 2005, Israel unilaterally withdrew its troops and settlers from Gaza, though it retained control of its shared border, airspace and shoreline, giving it effective control of the movement of people and goods.
-
-The UN still regards Gaza as Israeli-occupied territory because of the level of control Israel has.
-
-Hamas won Palestinian elections in 2006, and ejected its rivals from the territory after intense fighting the following year.
-
-Israel and Egypt imposed a blockade in response, with Israel controlling most of what was allowed into the territory.
-
-In the years that followed, Hamas and Israel fought several major conflicts - including those in 2008-09, 2012 and 2014. A major conflict between the two sides in May 2021 ended in a ceasefire after 11 days.
-
-Every round of fighting has seen people killed on both sides, the vast majority of them Palestinians in Gaza.
-
-On 7 October 2023, Hamas fighters launched an assault from Gaza, killing about 1,200 people in Israel and taking more than 250 hostages.</p>
-        <p>In May 2024, 143 out of 193 members of the United Nations' General Assembly voted in favour of a Palestinian bid for full UN membership, something that is only open to states.
-
-Known as the State of Palestine at the UN, it has an official status of "Permanent Observer State", which gives it a seat but not a vote.
-
-Some European countries, along with the US, do not recognise a Palestinian state and say they will only do so as part of a long-term political solution to the conflict in the Middle East.
-
-In the UK, MPs voted in favour of recognition in 2014, but the government has not done so. In 2021, the then Conservative government said: "The UK will recognise a Palestinian state at a time of our choosing, and when it best serves the objective of peace."
-
-Israel says it has a historical right to the West Bank and opposes an independent Palestinian state, saying it would pose an unacceptable threat.
-
-What about Palestinian refugees?
-There are about 5.9 million Palestinians registered by the UN as refugees.
-
-They are descendants of the Palestinians who fled or were forced from their homes on land which became Israel in the 1948-49 Middle East war.
-
-Most live in Jordan, the Gaza Strip, the West Bank, Syria and Lebanon.
-
-Palestinians insist on the right of refugees to return but Israel has refused this. It criticises the UN's Palestinian refugee agency, Unrwa, for allowing refugee status to be inherited by successive generations.</p>
+        <p>Jewish leaders in Palestine declared an independent state known as Israel hours before British rule ended. Israel was recognised by the UN the following year.</p>
+        
+        <p>What was the 1948 Arab-Israeli war? The day after Israel declared independence, it was attacked and surrounded by the armies of five Arab nations. The conflict came to be known in Israel as its war of independence.</p>
+        
+        <p>By the time the fighting ended with an armistice in 1949, Israel controlled most of the territory. Agreements left Egypt occupying the Gaza Strip, Jordan occupying the West Bank and East Jerusalem, and Israel occupying West Jerusalem.</p>
+        
+        <p>About 750,000 Palestinians fled, or were forced from, their homes on land which became Israel and ended up as refugees. The event is known in Arabic as the Nakba (Catastrophe). In the years that followed, hundreds of thousands of Jews left, or were expelled from, Muslim majority countries across the Middle East and North Africa, with many going to Israel.</p>
       </div>
       <div>
-        <img src="Israel3.webp" alt="Kargil War" class="fade-img">
-        <div class="caption">Israeli commanders enter East Jerusalem.
-</div>
+        <img src="Israel3.webp" alt="Kargil War" class="floating-img">
+        <div class="caption">Palestinian refugees during Nakba</div>
       </div>
     </div>
 
     <div class="article-section">
       <div>
-        <img src="Israel4.webp" alt="Recent Tensions" class="fade-img">
-        <div class="caption">Palestinian woman and child sit amid rubble, looking fearful.</div>
+        <img src="Israel4.webp" alt="Recent Tensions" class="floating-img">
+        <div class="caption">Palestinian woman and child sit amid rubble</div>
       </div>
       <div class="text">
-        <p>The "two-state solution" is an internationally backed formula for peace between Israel and the Palestinians.
-
-It proposes an independent Palestinian state in the West Bank and Gaza, with East Jerusalem as its capital. It would exist alongside Israel.
-
-Israel rejects a two-state solution. It says any final settlement must be the result of negotiations with the Palestinians, and statehood should not be a precondition.
-
-The Palestinian Authority backs a two-state solution but Hamas does not because it is opposed to the existence of Israel.
-
-Hamas says that it could accept an interim Palestinian state based on 1967 de facto borders, without officially recognising Israel, if refugees were given the right to return.
-
-Earlier efforts to settle the conflict saw Israel and Palestinian leaders sign a deal called the Oslo Peace Accords, in 1993. This was intended to provide a framework for peace talks. However, talks eventually collapsed with each side blaming the other.</p>
-        <p>The Israeli-Palestinian conflict is a decades-long struggle over land, identity, and statehood. Rooted in the 1948 creation of Israel and displacement of Palestinians, it has fueled wars, uprisings, and humanitarian crises. Despite international calls for a two-state solution, tensions persist, with both sides suffering heavy losses and enduring hardship.
- </p>
-              </div>
+        <p>What was the 1967 Middle East war? What is known as the Six-Day War changed boundaries in the Middle East and had major consequences for Palestinians. The war saw Israel fight Egypt, Syria and Jordan.</p>
+        
+        <p>It started when Israel, fearing an attack by Egypt and Syria, launched a strike on Egypt's air force. By the time the fighting ended, Israel had captured the Sinai Peninsula and Gaza from Egypt, most of the Golan Heights from Syria, and East Jerusalem and the West Bank from Jordan.</p>
+        
+        <p>About a million Palestinians in the West Bank, Gaza and East Jerusalem came under Israel's control. Israel's occupation of these areas has lasted until this day. Israel signed a peace treaty with Egypt in 1979 and returned the Sinai.</p>
+      </div>
     </div>
 
     <div class="author">Written by: Fatma Hussien Abdelhafez</div>
   </div>
 
   <script>
-    const fadeImgs = document.querySelectorAll(".fade-img");
-
+    const images = document.querySelectorAll('img');
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.3
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
     });
 
-    fadeImgs.forEach(img => observer.observe(img));
+    images.forEach(img => observer.observe(img));
   </script>
 </body>
 </html>

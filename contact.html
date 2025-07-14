@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Maadi MUN</title>
+  <link rel="stylesheet" href="style.css"> <!-- لو عندك ملف خارجي -->
+
+  <style>
+    /* هنا ممكن تكتبي CSS العادي بتاع الصفحة */
+
+    /* وفي الآخر، أضيفي media query بالشكل ده: */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-links a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .hero-text {
+        font-size: 18px;
+      }
+    }
+  </style>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us - Maadi MUN</title>
@@ -143,23 +168,24 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <div class="logo">
-      <img src="logo.jpg" alt="Logo">
-      Maadi Model United Nations
-    </div>
-   <div class="nav-links">
-  <a href="loading.html?next=index.html">Home</a>
-  <a href="loading.html?next=event.html">Events</a>
-  <a href="loading.html?next=alumni.html">History</a>
-  <a href="loading.html?next=conference.html">Conference</a>
-  <a href="loading.html?next=management.html">High board</a>
-  <a href="loading.html?next=contact.html">Contact</a>
-  <a href="loading.html?next=Article.html">Articles</a>
-  <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
-</div>
+ <!-- Navbar -->
+<div class="navbar">
+  <div class="logo">
+    <img src="logo.jpg" alt="Logo">
+    Maadi Model United Nations
   </div>
+  
+  <div class="nav-links">
+    <a href="loading.html?next=Index.html">Home</a>
+    <a href="loading.html?next=event.html">Events</a>
+    <a href="loading.html?next=alumni.html">History</a>
+    <a href="loading.html?next=conference.html">Conference</a>
+    <a href="loading.html?next=management.html">High board</a>
+    <a href="loading.html?next=contact.html">Contact</a>
+    <a href="loading.html?next=Article.html">Articles</a>
+    <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
+  </div>
+</div>
 
   <!-- Contact Section -->
   <div class="contact-section">
@@ -169,17 +195,8 @@
 
 
 
-
-
-
   <!-- End of Notify Section -->
 <section style="padding-bottom: 100px;"></section>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us - Maadi MUN</title>
@@ -324,11 +341,32 @@
       box-shadow: 0 0 15px rgba(0, 119, 255, 0.7);
       background-color: #6894ec;
     }
+    <head>
+  ...
+  <style>
+    /* أكواد CSS العادية فوق */
+
+    /* وفي الآخر */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-links a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .hero-text {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
-<body>
 
-
+  </style>
+</head>
 
   <section class="container">
     <div class="box">
@@ -399,10 +437,7 @@
       observer.observe(box);
     });
   </script>
-</body>
-</html>
-
-<!-- End of Notify Section -->
+  <!-- End of Notify Section -->
 <section style="padding-bottom: 100px;"></section>  
 
 
@@ -503,15 +538,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-  
-
   <div style="color: #666; font-size: 0.9em;">
     &copy; 2025 <span style="color: #00f0ff;">Maadi Model United Nations</span>. All rights reserved.
   </div>
@@ -528,6 +554,10 @@
       document.body.style.display = "block";
     }, 2000);
   });
+
+</body>
+</html>
+
 
 
 </body>
