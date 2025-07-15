@@ -1,53 +1,35 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maadi MUN</title>
-  <link rel="stylesheet" href="style.css"> 
-  <style>
-
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .nav-links a {
-        display: block;
-        margin: 10px 0;
-      }
-
-      .hero-text {
-        font-size: 18px;
-      }
-    }
-  </style>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Maadi MUN</title>
-
+  <link rel="stylesheet" href="style.css">
+  
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <style>
-    /* RESET & BASE */
+    /* RESET & BASE STYLES */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-  body {
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(to bottom right, #000000, #1e3c72, #ffffff);
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-  display: block;
-}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom right, #000000, #1e3c72, #ffffff);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      display: block;
+    }
 
-    /* LOADER */
+    /* LOADER STYLES */
     #loader {
       position: fixed;
       top: 0;
@@ -71,7 +53,7 @@
       50% { transform: scale(1.1); opacity: 1; }
     }
 
-    /* NAVBAR */
+    /* NAVBAR STYLES */
     .navbar {
       position: sticky;
       top: 0;
@@ -102,8 +84,6 @@
       margin-right: 10px;
     }
 
-
-    
     .navbar .nav-links {
       display: flex;
       gap: 25px;
@@ -120,6 +100,22 @@
       color: #00bfff;
     }
 
+    .apply-btn {
+      border: 2px solid gold;
+      border-radius: 50px;
+      padding: 6px 18px;
+      color: gold;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .apply-btn:hover {
+      background-color: gold;
+      color: black;
+    }
+
+    /* HEADER STYLES */
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
@@ -133,6 +129,7 @@
       color: #f0f0f0;
     }
 
+    /* STATS SECTION */
     .stats {
       display: flex;
       justify-content: center;
@@ -165,19 +162,19 @@
       color: #e0e0e0;
     }
 
+    /* GALLERY SECTION */
     .gallery {
       margin-top: 50px;
     }
 
     .gallery h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #00bfff;
-  min-height: 40px; 
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #00bfff;
+      min-height: 40px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
 
     .images {
       display: flex;
@@ -200,6 +197,7 @@
       color: #f0f0f0;
     }
 
+    /* ABOUT US SECTION */
     .topic {
       margin-top: 60px;
       background-color: rgba(0, 0, 0, 0.3);
@@ -232,339 +230,8 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
 
-    .social {
-      margin-top: 50px;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      display: inline-block;
-    }
-
-    .social h2 {
-      font-size: 1.8rem;
-      color: #00bfff;
-      margin-bottom: 15px;
-    }
-
-    .social a {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: bold;
-      margin: 0 10px;
-      transition: color 0.3s;
-    }
-
-    .social a:hover {
-      color: #00bfff;
-    }
-
-    footer {
-      margin-top: 60px;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-    .apply-btn {
-  border: 2px solid gold;
-  border-radius: 50px;
-  padding: 6px 18px;
-  color: gold;
-  font-weight: bold;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.apply-btn:hover {
-  background-color: gold;
-  color: black;
-}
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-  }
-
-  .navbar .nav-links {
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 10px;
-    width: 100%;
-  }
-
-  .navbar .nav-links a {
-    font-size: 1rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  .stats {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .images img {
-    width: 90%;
-    height: auto;
-  }
-
-  .topic {
-    flex-direction: column;
-    text-align: center;
-    padding: 30px 15px;
-  }
-
-  .topic p {
-    text-align: center;
-  }
-
-  .gallery h2 {
-    font-size: 1.5rem;
-  }
-
-  .text h2 {
-    font-size: 2rem;
-  }
-
-  .text p {
-    font-size: 1rem;
-  }
-
-  .globe-container,
-  .text {
-    transform: none !important;
-    opacity: 1 !important;
-  }
-
-  .globe-wrapper {
-    width: 250px;
-    height: 250px;
-  }
-
-  .maadi-mun-cards {
-    flex-direction: column !important;
-  }
-
-  .maadi-mun-card {
-    margin-bottom: 20px;
-  }
-
-  form {
-    flex-direction: column;
-  }
-
-  form input[type="email"] {
-    width: 90%;
-  }
-
-  form button {
-    width: 60%;
-    margin-top: 10px;
-  }
-}
-
-
-  </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="mobile.css">
-</head>
-<body>
-
-  <script>
-  if (!localStorage.getItem("hasVisited")) {
-    localStorage.setItem("hasVisited", "true");
-    window.location.href = "loading.html?next=index.html";
-  }
-</script>
-
-
-  <!-- Navbar -->
-  <div class="navbar">
-    <div class="logo">
-      <img src="logo.jpg" alt="Logo">
-      Maadi Model United Nations
-    </div>
-    <div class="nav-links">
-  <a href="loading.html?next=index.html">Home</a>
-  <a href="loading.html?next=event.html">Events</a>
-  <a href="loading.html?next=alumni.html">History</a>
-  <a href="loading.html?next=conference.html">Conference</a>
-  <a href="loading.html?next=management.html">High board</a>
-  <a href="loading.html?next=contact.html">Contact</a>
-  <a href="loading.html?next=Article.html">Articles</a>
-  <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
-</div>
-  </div>
-  
-  <h1>Maadi Model United Nations</h1>
-  <p>We are a dynamic team committed to diplomacy, education, and leadership through real-life simulations of the United Nations. Welcome to our world of policy and impact.</p>
-
- <div class="stats">
-  <div class="stat">
-    <h2 class="count-number" data-target="8">0</h2>
-    <p>Tracks</p>
-  </div>
-  <div class="stat">
-    <h2 class="count-number" data-target="3">0</h2>
-    <p>Conferences</p>
-  </div>
-  <div class="stat">
-    <h2 class="count-number" data-target="445">0</h2>
-    <p>Members</p>
-  </div>
-  <div class="stat">
-    <h2 class="count-number" data-target="300">0</h2>
-    <p>Sessions</p>
-  </div>
-</div>
-
-
- <!-- Gallery -->
-<div class="gallery">
-  <h2 id="typewriter"></h2>
-  <div class="images">
-    <div style="display: flex; gap: 20px;">
-      <img src="Image1.jpg" alt="" width="300" class="fade-image" style="animation-delay: 0s;">
-      <img src="Image 2.jpg" alt="Image 2" width="300" class="fade-image" style="animation-delay: 0.5s;">
-      <img src="Image 3.jpg" alt="Image 3" width="300" class="fade-image" style="animation-delay: 1s;">
-    </div>
-  </div>
-</div>
-
-<style>
-  .fade-image {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s forwards;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border-radius: 12px;
-  }
-
-  .fade-image:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 25px #00f0ff, 0 0 40px #00f0ff;
-  }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
-
-
-<!-- Topic (About Us) -->
-<div class="topic glow-effect" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center; padding: 60px 20px;">
-  <div class="about-text" style="flex: 1; min-width: 280px; opacity: 0; animation: fadeInUp 1s forwards; animation-delay: 0.3s; position: relative; overflow: hidden;">
-    <h2>About Us</h2>
-    <p>
-      The Maadi Model United Nations (MUN) Team is a dynamic and ambitious student organization dedicated to simulating the work of the United Nations. Based in the heart of Maadi, Cairo, our team brings together passionate students from diverse backgrounds who share a strong interest in global affairs, diplomacy, public speaking, and problem-solving.<br><br>
-      At its core, the Maadi MUN Team aims to educate and empower youth by providing them with a platform to explore complex international issues in a structured and intellectually stimulating environment. Through regular training sessions, mock debates, and participation in local and international MUN conferences, our members develop essential skills such as critical thinking, negotiation, leadership, and effective communication.<br><br>
-    </p>
-    <div class="shine"></div>
-  </div>
-
-  <div style="flex: 1; min-width: 380px; opacity: 0; animation: fadeInUp 1s forwards; animation-delay: 1s;">
-    <img src="About us image.jpg" alt="About Us Image" class="zoom-on-hover" style="width: 100%; border-radius: 10px;">
-  </div>
-</div>
-
-<style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .glow-effect {
-    animation: glowOnce 2s ease-in-out;
-  }
-
-  @keyframes glowOnce {
-    0% {
-      box-shadow: 0 0 0px #00f0ff;
-    }
-    50% {
-      box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
-    }
-    100% {
-      box-shadow: 0 0 0px #00f0ff;
-    }
-  }
-
-  .shine {
-    position: absolute;
-    top: 0;
-    left: -60%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
-    animation: shineAnim 6s ease-in-out infinite;
-  }
-
-  @keyframes shineAnim {
-    0% {
-      left: -60%;
-    }
-    50% {
-      left: 120%;
-    }
-    100% {
-      left: 120%;
-    }
-  }
-
-  .zoom-on-hover {
-    transition: transform 0.4s ease;
-  }
-
-  .zoom-on-hover:hover {
-    transform: scale(1.05) translateY(-5px);
-  }
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UN Member States | MMUN</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5faff;
-    }
-
-    section#member-states {
+    /* MEMBER STATES SECTION */
+    #member-states {
       background: linear-gradient(to bottom, #f5faff, #c6d8f0);
       padding: 80px 0;
     }
@@ -664,7 +331,7 @@
       height: 400px;
       border-radius: 50%;
       background: transparent;
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* فقط ظل بدون خلفية */
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
       transition: transform 0.3s ease;
       cursor: pointer;
     }
@@ -680,98 +347,9 @@
       display: block;
       border-radius: 50%;
     }
-  </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="mobile.css">
-</head>
-<body>
 
-<!-- Member States Section -->
-<section id="member-states">
-  <div class="container">
-
-    <!-- Text Content -->
-    <div class="text" id="text-block">
-      <h2>
-        United Nations<br><span>Member States</span>
-      </h2>
-      <p>
-        With <strong>193 countries</strong> working together, the United Nations promotes peace, security, and sustainable development around the globe.
-      </p>
-
-      <div class="count"><span>+193</span> Countries</div>
-
-      <div class="flags">
-        <a href="https://en.wikipedia.org/wiki/United_States" title="USA"><img src="https://flagcdn.com/w40/us.png" alt="USA" class="flag" /></a>
-        <a href="https://en.wikipedia.org/wiki/Russia" title="Russia"><img src="https://flagcdn.com/w40/ru.png" alt="Russia" class="flag" /></a>
-        <a href="https://en.wikipedia.org/wiki/China" title="China"><img src="https://flagcdn.com/w40/cn.png" alt="China" class="flag" /></a>
-        <a href="https://en.wikipedia.org/wiki/France" title="France"><img src="https://flagcdn.com/w40/fr.png" alt="France" class="flag" /></a>
-        <a href="https://en.wikipedia.org/wiki/United_Kingdom" title="UK"><img src="https://flagcdn.com/w40/gb.png" alt="UK" class="flag" /></a>
-      </div>
-    </div>
-
-    <!-- Globe Image -->
-    <div class="globe-container" id="globe-block">
-      <div class="globe-wrapper">
-        <img 
-          src="Earth.png" 
-          alt="Earth" 
-          class="earth-image"
-        />
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Animation on scroll -->
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate");
-      }
-    });
-  }, {
-    threshold: 0.4
-  });
-
-  const textBlock = document.getElementById("text-block");
-  const globeBlock = document.getElementById("globe-block");
-
-  observer.observe(textBlock);
-  observer.observe(globeBlock);
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vision & Mission | Maadi MUN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to bottom right, #000000, #001f4d, #1e3c72);
-      color: #f0f0f0;
-    }
-
-    .container {
+    /* VISION & MISSION SECTION */
+    .vision-container {
       max-width: 900px;
       margin: 0 auto;
       padding: 60px 20px;
@@ -807,13 +385,6 @@
       font-size: 1.8rem;
     }
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 25px;
-      color: #e0e0e0;
-    }
-
     .quote {
       background-color: rgba(255, 255, 255, 0.08);
       padding: 20px;
@@ -837,16 +408,379 @@
       animation: shine 6s ease-in-out infinite;
     }
 
-    @keyframes shine {
-      0% { left: -60%; }
-      50% { left: 120%; }
-      100% { left: 120%; }
+    /* MISSION CARDS SECTION */
+    .maadi-mun-mission {
+      padding: 60px 20px;
+      background: #f5f5f5;
     }
 
+    .maadi-mun-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .maadi-mun-title {
+      font-size: 2.5rem;
+      color: #00bfff;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+
+    .maadi-mun-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .maadi-mun-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px 20px;
+      flex: 1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .maadi-mun-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 191, 255, 0.2);
+    }
+
+    .maadi-mun-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .maadi-mun-card-title {
+      font-size: 1.4rem;
+      color: #00bfff;
+      margin-bottom: 10px;
+    }
+
+    .maadi-mun-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* FAQ SECTION */
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    .faq-title {
+      text-align: center;
+      font-size: 3rem;
+      color: #00bfff;
+      margin-bottom: 50px;
+      text-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .faq-section {
+      perspective: 1000px;
+    }
+
+    .faq {
+      background-color: rgba(255, 255, 255, 0.05);
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-origin: top;
+      opacity: 0;
+      transform: translateY(20px) rotateX(10deg);
+      animation: fadeInUp 0.6s forwards;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .faq-question {
+      padding: 22px 25px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      background: linear-gradient(to right, rgba(0, 123, 255, 0.1), transparent);
+    }
+
+    .faq-question:hover {
+      background: linear-gradient(to right, rgba(0, 123, 255, 0.2), transparent);
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 25px;
+      font-size: 1.8rem;
+      font-weight: 300;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      color: #00bfff;
+    }
+
+    .faq.open .faq-question::after {
+      transform: rotate(135deg);
+      color: #ff5555;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), padding 0.4s ease;
+      padding: 0 25px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #e0e0e0;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .faq.open .faq-answer {
+      max-height: 500px;
+      padding: 20px 25px;
+    }
+
+    .faq.open {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background-color: #0d0d0d;
+      padding: 80px 20px;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+    }
+
+    .contact-title {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #00f0ff, 0 0 20px #00f0ff;
+    }
+
+    .contact-description {
+      font-size: 1.2em;
+      margin-bottom: 50px;
+      color: #ccc;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .social-icon {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 15px #00f0ff;
+    }
+
+    .social-icon img {
+      width: 45px;
+    }
+
+    .newsletter {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .newsletter p {
+      color: #bbb;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .newsletter-input {
+      padding: 12px 20px;
+      border-radius: 25px;
+      border: none;
+      width: 260px;
+      max-width: 90%;
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    .newsletter-btn {
+      padding: 12px 25px;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(45deg, #00f0ff, #007bff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px #007bff;
+      transition: transform 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .footer {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    /* CHAT BOT STYLES */
+    .chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #004080;
+      color: white;
+      font-size: 30px;
+      text-align: center;
+      line-height: 60px;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .chat-button.open {
+      transform: scale(1.2);
+      background-color: #ffc107;
+    }
+
+    .chat-box {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      max-height: 400px;
+      background-color: white;
+      border: 2px solid #004080;
+      border-radius: 10px;
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .chat-box.open {
+      border-color: #ffc107;
+      box-shadow: 0 0 20px #ffc10788;
+    }
+
+    .chat-box header {
+      background-color: #004080;
+      color: white;
+      padding: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .chat-body {
+      padding: 10px;
+      flex: 1;
+      overflow-y: auto;
+      max-height: 300px;
+      font-size: 14px;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    .chat-box input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .chat-box button {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .chat-box button.active {
+      background-color: #ffc107;
+      color: black;
+      transform: scale(1.1);
+    }
+
+    .message {
+      margin: 5px 0;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 0.4s forwards;
+    }
+
+    .user {
+      text-align: right;
+      color: #004080;
+    }
+
+    .bot {
+      text-align: left;
+      color: #333;
+    }
+
+    /* IMAGE ANIMATIONS */
+    .fade-image {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 12px;
+    }
+
+    .fade-image:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px #00f0ff, 0 0 40px #00f0ff;
+    }
+
+    .zoom-on-hover {
+      transition: transform 0.4s ease;
+    }
+
+    .zoom-on-hover:hover {
+      transform: scale(1.05) translateY(-5px);
+    }
+
+    /* ANIMATIONS */
     @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -854,26 +788,218 @@
       }
     }
 
-    @media (max-width: 600px) {
-      .title {
+    @keyframes shine {
+      0% { left: -60%; }
+      50% { left: 120%; }
+      100% { left: 120%; }
+    }
+
+    @keyframes glowOnce {
+      0% { box-shadow: 0 0 0px #00f0ff; }
+      50% { box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff; }
+      100% { box-shadow: 0 0 0px #00f0ff; }
+    }
+
+    /* RESPONSIVE STYLES */
+    @media (min-width: 768px) {
+      .maadi-mun-cards {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      .navbar .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      .navbar .nav-links a {
+        font-size: 1rem;
+      }
+
+      h1 {
         font-size: 2rem;
       }
 
-      .title i {
+      .stats {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .images img {
+        width: 90%;
+        height: auto;
+      }
+
+      .topic {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 15px;
+      }
+
+      .topic p {
+        text-align: center;
+      }
+
+      .gallery h2 {
         font-size: 1.5rem;
       }
 
-      p, .quote {
+      .text h2 {
+        font-size: 2rem;
+      }
+
+      .text p {
+        font-size: 1rem;
+      }
+
+      .globe-container,
+      .text {
+        transform: none !important;
+        opacity: 1 !important;
+      }
+
+      .globe-wrapper {
+        width: 250px;
+        height: 250px;
+      }
+
+      .faq-title {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+      }
+      
+      .faq-question {
+        padding: 18px 20px;
+        font-size: 1.1rem;
+      }
+      
+      .faq-answer {
         font-size: 1rem;
       }
     }
   </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="mobile.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="container">
+
+  <script>
+    if (!localStorage.getItem("hasVisited")) {
+      localStorage.setItem("hasVisited", "true");
+      window.location.href = "loading.html?next=index.html";
+    }
+  </script>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo">
+      Maadi Model United Nations
+    </div>
+    <div class="nav-links">
+      <a href="loading.html?next=index.html">Home</a>
+      <a href="loading.html?next=event.html">Events</a>
+      <a href="loading.html?next=alumni.html">History</a>
+      <a href="loading.html?next=conference.html">Conference</a>
+      <a href="loading.html?next=management.html">High board</a>
+      <a href="loading.html?next=contact.html">Contact</a>
+      <a href="loading.html?next=Article.html">Articles</a>
+      <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
+    </div>
+  </div>
+  
+  <h1>Maadi Model United Nations</h1>
+  <p>We are a dynamic team committed to diplomacy, education, and leadership through real-life simulations of the United Nations. Welcome to our world of policy and impact.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <h2 class="count-number" data-target="8">0</h2>
+      <p>Tracks</p>
+    </div>
+    <div class="stat">
+      <h2 class="count-number" data-target="3">0</h2>
+      <p>Conferences</p>
+    </div>
+    <div class="stat">
+      <h2 class="count-number" data-target="445">0</h2>
+      <p>Members</p>
+    </div>
+    <div class="stat">
+      <h2 class="count-number" data-target="300">0</h2>
+      <p>Sessions</p>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <h2 id="typewriter"></h2>
+    <div class="images">
+      <div style="display: flex; gap: 20px;">
+        <img src="Image1.jpg" alt="" width="300" class="fade-image" style="animation-delay: 0s;">
+        <img src="Image 2.jpg" alt="Image 2" width="300" class="fade-image" style="animation-delay: 0.5s;">
+        <img src="Image 3.jpg" alt="Image 3" width="300" class="fade-image" style="animation-delay: 1s;">
+      </div>
+    </div>
+  </div>
+
+  <!-- About Us Section -->
+  <div class="topic glow-effect" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center; padding: 60px 20px;">
+    <div class="about-text" style="flex: 1; min-width: 280px; opacity: 0; animation: fadeInUp 1s forwards; animation-delay: 0.3s; position: relative; overflow: hidden;">
+      <h2>About Us</h2>
+      <p>
+        The Maadi Model United Nations (MUN) Team is a dynamic and ambitious student organization dedicated to simulating the work of the United Nations. Based in the heart of Maadi, Cairo, our team brings together passionate students from diverse backgrounds who share a strong interest in global affairs, diplomacy, public speaking, and problem-solving.<br><br>
+        At its core, the Maadi MUN Team aims to educate and empower youth by providing them with a platform to explore complex international issues in a structured and intellectually stimulating environment. Through regular training sessions, mock debates, and participation in local and international MUN conferences, our members develop essential skills such as critical thinking, negotiation, leadership, and effective communication.<br><br>
+      </p>
+      <div class="shine"></div>
+    </div>
+
+    <div style="flex: 1; min-width: 380px; opacity: 0; animation: fadeInUp 1s forwards; animation-delay: 1s;">
+      <img src="About us image.jpg" alt="About Us Image" class="zoom-on-hover" style="width: 100%; border-radius: 10px;">
+    </div>
+  </div>
+
+  <!-- Member States Section -->
+  <section id="member-states">
+    <div class="container">
+      <!-- Text Content -->
+      <div class="text" id="text-block">
+        <h2>
+          United Nations<br><span>Member States</span>
+        </h2>
+        <p>
+          With <strong>193 countries</strong> working together, the United Nations promotes peace, security, and sustainable development around the globe.
+        </p>
+
+        <div class="count"><span>+193</span> Countries</div>
+
+        <div class="flags">
+          <a href="https://en.wikipedia.org/wiki/United_States" title="USA"><img src="https://flagcdn.com/w40/us.png" alt="USA" class="flag" /></a>
+          <a href="https://en.wikipedia.org/wiki/Russia" title="Russia"><img src="https://flagcdn.com/w40/ru.png" alt="Russia" class="flag" /></a>
+          <a href="https://en.wikipedia.org/wiki/China" title="China"><img src="https://flagcdn.com/w40/cn.png" alt="China" class="flag" /></a>
+          <a href="https://en.wikipedia.org/wiki/France" title="France"><img src="https://flagcdn.com/w40/fr.png" alt="France" class="flag" /></a>
+          <a href="https://en.wikipedia.org/wiki/United_Kingdom" title="UK"><img src="https://flagcdn.com/w40/gb.png" alt="UK" class="flag" /></a>
+        </div>
+      </div>
+
+      <!-- Globe Image -->
+      <div class="globe-container" id="globe-block">
+        <div class="globe-wrapper">
+          <img src="Earth.png" alt="Earth" class="earth-image" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision & Mission Section -->
+  <div class="vision-container">
     <div class="section-box">
       <div class="title">
         <i class="fas fa-globe-africa"></i> Vision & Mission
@@ -896,248 +1022,40 @@
       </p>
     </div>
   </div>
-</body>
-</html>
 
-<!-- Our Mission Section -->
-<section class="maadi-mun-mission">
-  <div class="maadi-mun-container">
-    <h2 class="maadi-mun-title">Our Mission</h2>
-    <div class="maadi-mun-cards">
-      <div class="maadi-mun-card">
-        <div class="maadi-mun-icon">🕊️</div>
-        <h3 class="maadi-mun-card-title">Global Dialogue</h3>
-        <p class="maadi-mun-text">
-          Encourage respectful discussion of international issues, helping students engage in diplomacy and understand different worldviews.
-        </p>
-      </div>
-      <div class="maadi-mun-card">
-        <div class="maadi-mun-icon">🧠</div>
-        <h3 class="maadi-mun-card-title">Critical Thinking</h3>
-        <p class="maadi-mun-text">
-          Equip youth with problem-solving and negotiation skills to approach complex global challenges with logic, empathy, and creativity.
-        </p>
-      </div>
-      <div class="maadi-mun-card">
-        <div class="maadi-mun-icon">🌍</div>
-        <h3 class="maadi-mun-card-title">Global Citizenship</h3>
-        <p class="maadi-mun-text">
-          Inspire students to take active roles in their communities and the world, promoting peace, equality, and sustainability.
-        </p>
+  <!-- Our Mission Section -->
+  <section class="maadi-mun-mission">
+    <div class="maadi-mun-container">
+      <h2 class="maadi-mun-title">Our Mission</h2>
+      <div class="maadi-mun-cards">
+        <div class="maadi-mun-card">
+          <div class="maadi-mun-icon">🕊️</div>
+          <h3 class="maadi-mun-card-title">Global Dialogue</h3>
+          <p class="maadi-mun-text">
+            Encourage respectful discussion of international issues, helping students engage in diplomacy and understand different worldviews.
+          </p>
+        </div>
+        <div class="maadi-mun-card">
+          <div class="maadi-mun-icon">🧠</div>
+          <h3 class="maadi-mun-card-title">Critical Thinking</h3>
+          <p class="maadi-mun-text">
+            Equip youth with problem-solving and negotiation skills to approach complex global challenges with logic, empathy, and creativity.
+          </p>
+        </div>
+        <div class="maadi-mun-card">
+          <div class="maadi-mun-icon">🌍</div>
+          <h3 class="maadi-mun-card-title">Global Citizenship</h3>
+          <p class="maadi-mun-text">
+            Inspire students to take active roles in their communities and the world, promoting peace, equality, and sustainability.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Styles (Safe & Scoped) -->
-<style>
-  .maadi-mun-mission {
-    padding: 60px 20px;
-    background: #f5f5f5; 
-
-  .maadi-mun-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .maadi-mun-title {
-    font-size: 2.5rem;
-    color: #00bfff; 
-    margin-bottom: 40px;
-    font-weight: bold;
-  }
-
-  .maadi-mun-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  @media (min-width: 768px) {
-    .maadi-mun-cards {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-
-  .maadi-mun-card {
-    background: white;
-    border-radius: 16px;
-    padding: 30px 20px;
-    flex: 1;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .maadi-mun-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 191, 255, 0.2);
-  }
-
-  .maadi-mun-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-  }
-
-  .maadi-mun-card-title {
-    font-size: 1.4rem;
-    color: #00bfff;
-    margin-bottom: 10px;
-  }
-
-  .maadi-mun-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #333;
-  }
-</style>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ | Maadi MUN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom right, #000000, #001f4d, #1e3c72);
-      color: white;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 20px;
-    }
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      color: #00bfff;
-      margin-bottom: 50px;
-      text-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
-      animation: fadeIn 1s ease-out;
-    }
-    
-    .faq-section {
-      perspective: 1000px;
-    }
-    
-    .faq {
-      background-color: rgba(255, 255, 255, 0.05);
-      margin-bottom: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transform-origin: top;
-      opacity: 0;
-      transform: translateY(20px) rotateX(10deg);
-      animation: fadeInUp 0.6s forwards;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .faq:nth-child(2) { animation-delay: 0.1s; }
-    .faq:nth-child(3) { animation-delay: 0.2s; }
-    .faq:nth-child(4) { animation-delay: 0.3s; }
-    .faq:nth-child(5) { animation-delay: 0.4s; }
-    .faq:nth-child(6) { animation-delay: 0.5s; }
-    .faq:nth-child(7) { animation-delay: 0.6s; }
-    
-    .faq-question {
-      padding: 22px 25px;
-      font-size: 1.25rem;
-      font-weight: 600;
-      cursor: pointer;
-      position: relative;
-      transition: all 0.3s ease;
-      background: linear-gradient(to right, rgba(0, 123, 255, 0.1), transparent);
-    }
-    
-    .faq-question:hover {
-      background: linear-gradient(to right, rgba(0, 123, 255, 0.2), transparent);
-    }
-    
-    .faq-question::after {
-      content: '+';
-      position: absolute;
-      right: 25px;
-      font-size: 1.8rem;
-      font-weight: 300;
-      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      color: #00bfff;
-    }
-    
-    .faq.open .faq-question::after {
-      transform: rotate(135deg);
-      color: #ff5555;
-    }
-    
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), padding 0.4s ease;
-      padding: 0 25px;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: #e0e0e0;
-      background-color: rgba(0, 0, 0, 0.2);
-    }
-    
-    .faq.open .faq-answer {
-      max-height: 500px;
-      padding: 20px 25px;
-    }
-    
-    .faq.open {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      background-color: rgba(255, 255, 255, 0.08);
-    }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    @keyframes fadeInUp {
-      from { 
-        opacity: 0;
-        transform: translateY(20px) rotateX(10deg);
-      }
-      to { 
-        opacity: 1;
-        transform: translateY(0) rotateX(0);
-      }
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2.2rem;
-        margin-bottom: 30px;
-      }
-      
-      .faq-question {
-        padding: 18px 20px;
-        font-size: 1.1rem;
-      }
-      
-      .faq-answer {
-        font-size: 1rem;
-      }
-    }
-  </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="mobile.css">
-</head>
-<body>
-  <div class="container">
-    <h1>FAQs</h1>
+  <!-- FAQ Section -->
+  <div class="faq-container">
+    <h1 class="faq-title">FAQs</h1>
     
     <div class="faq-section">
       <div class="faq">
@@ -1172,7 +1090,123 @@
     </div>
   </div>
 
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <h1 class="contact-title">Get in Touch</h1>
+    <p class="contact-description">
+      Ready to join <strong style="color:#00f0ff;">Maadi Model United Nations</strong>? Connect with us through social media and stay updated!
+    </p>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+      <a href="https://www.facebook.com/share/1Akm3ATLJe/" class="social-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/maadistemmun?igsh=cno1bnEwN3hzeGZx" class="social-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      </a>
+      <a href="https://www.linkedin.com/company/maadimun/" class="social-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+      </a>
+      <a href="fhsyn2131@gmail.com" class="social-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+      </a>
+      <a href="https://chat.whatsapp.com/Kpir7SnulQXD3AO7wniaJN" class="social-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+      </a>
+    </div>
+
+    <!-- Newsletter Form -->
+    <div class="newsletter">
+      <p>
+        Subscribe to get exclusive MMUN updates, events & opportunities!
+      </p>
+
+      <form action="https://formspree.io/f/mwpbjeyr" method="POST" class="newsletter-form">
+        <input type="email" name="email" required placeholder="Your email address" class="newsletter-input">
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+        <input type="hidden" name="_redirect" value="https://example.com/thank-you.html" />
+      </form>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 <span style="color: #00f0ff;">Maadi Model United Nations</span>. All rights reserved.
+    </div>
+  </div>
+
+  <!-- Chat Bot -->
+  <div class="chat-button" id="chatButton" onclick="toggleChat()">💬</div>
+  <div class="chat-box" id="chatBox">
+    <header>MMUN Teams Chat 🤖</header>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Ask about MMUN teams..." />
+      <button id="sendBtn" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
   <script>
+    // Typewriter Effect
+    document.addEventListener("DOMContentLoaded", () => {
+      const target = document.getElementById("typewriter");
+      if (!target) return;
+
+      const text = "Our Team in Action";
+      let index = 0;
+
+      function typeWriter() {
+        if (index < text.length) {
+          target.innerHTML += text.charAt(index);
+          index++;
+          setTimeout(typeWriter, 80); 
+        }
+      }
+
+      typeWriter(); 
+    });
+
+    // Counter Animation
+    const counters = document.querySelectorAll('.count-number');
+    const speed = 100; 
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText;
+          const increment = Math.ceil(target / speed);
+
+          if (count < target) {
+            counter.innerText = count + increment;
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText = target.toLocaleString();
+          }
+        };
+        updateCount();
+      });
+    };
+    window.addEventListener('load', animateCounters);
+
+    // Member States Animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        }
+      });
+    }, {
+      threshold: 0.4
+    });
+
+    const textBlock = document.getElementById("text-block");
+    const globeBlock = document.getElementById("globe-block");
+    if (textBlock && globeBlock) {
+      observer.observe(textBlock);
+      observer.observe(globeBlock);
+    }
+
+    // FAQ Functionality
     document.addEventListener('DOMContentLoaded', () => {
       const faqs = document.querySelectorAll('.faq');
       
@@ -1226,386 +1260,93 @@
         });
       });
     });
+
+    // Chat Bot Functionality
+    function toggleChat() {
+      const chatBox = document.getElementById('chatBox');
+      const chatBtn = document.getElementById('chatButton');
+      const isOpen = chatBox.style.display === 'flex';
+
+      chatBox.style.display = isOpen ? 'none' : 'flex';
+      chatBox.classList.toggle("open", !isOpen);
+      chatBtn.classList.toggle("open", !isOpen);
+    }
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (message === "") return;
+
+      const chatBody = document.getElementById("chatBody");
+
+      const userMsg = document.createElement("div");
+      userMsg.className = "message user";
+      userMsg.textContent = message;
+      chatBody.appendChild(userMsg);
+
+      input.value = "";
+
+      // Send button animation
+      const btn = document.getElementById("sendBtn");
+      btn.classList.add("active");
+      setTimeout(() => btn.classList.remove("active"), 300);
+
+      setTimeout(() => {
+        let reply = getTeamReply(message.toLowerCase());
+
+        const botMsg = document.createElement("div");
+        botMsg.className = "message bot";
+        botMsg.textContent = reply;
+        chatBody.appendChild(botMsg);
+
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 300);
+    }
+
+    function getTeamReply(msg) {
+      if (msg.includes("committees") || msg.includes("teams") || msg.includes("team")) {
+        return "MMUN teams include: Content Writing, Human Resources (HR), Public Relations (PR), Research, Marketing, Graphic Design/Editing, and IT.";
+      }
+      if (msg.includes("what is mmun") || msg.includes("mmun")) {
+        return "MMUN stands for Maadi Model United Nations. It's a simulation of UN conferences where students represent countries and debate global issues.";
+      }
+      if (msg.includes("how can i join") || msg.includes("join team") || msg.includes("apply")) {
+        return "You can apply to a team through the official MMUN registration form when applications open.";
+      }
+      if (msg.includes("more than one team")) {
+        return "No, each member is accepted into one team only to ensure focused contribution.";
+      }
+      if (msg.includes("training") || msg.includes("prepare") || msg.includes("sessions")) {
+        return "Yes, each team conducts sessions to prepare members before the conference.";
+      }
+      if (msg.includes("when is the event") || msg.includes("date") || msg.includes("next event")) {
+        return "The date of the upcoming event will be announced on our social media and website.";
+      }
+      if (msg.includes("snacks") || msg.includes("food")) {
+        return "MMUN focuses on learning and leadership. Details about food or logistics are shared closer to the event.";
+      }
+      if (msg.includes("famous")) {
+        return "MMUN is about growth, not fame — but you will definitely gain great experience and skills!";
+      }
+      if (msg.includes("suit") || msg.includes("dress") || msg.includes("wear")) {
+        return "Appropriate attire is usually required for the conference day. You'll be notified with guidelines.";
+      }
+      if (msg.includes("paid") || msg.includes("salary") || msg.includes("money")) {
+        return "MMUN is a volunteer student-led organization. The value comes from experience and impact.";
+      }
+      if (msg.includes("policy") || msg.includes("policies") || msg.includes("rules") || msg.includes("privacy")) {
+        return "You can explore the topics through our articles. If you're interested in learning more, feel free to join us!"
+      }
+      if (msg.includes("content")) return "The Content Writing team handles articles, scripts, and official MMUN text content.";
+      if (msg.includes("hr")) return "HR manages communication with applicants, interviews, and internal team well-being.";
+      if (msg.includes("pr")) return "The PR team handles outreach, partnerships, and public image.";
+      if (msg.includes("research")) return "The Research team supports content and committees with verified information.";
+      if (msg.includes("marketing")) return "Marketing focuses on promoting MMUN events and initiatives.";
+      if (msg.includes("graphic") || msg.includes("design")) return "Graphic Design & Editing handles visuals, posts, and videos.";
+      if (msg.includes("it")) return "The IT team manages the website, forms, and technical tools.";
+
+      return "Sorry, I can only help with MMUN teams and their roles.";
+    }
   </script>
 </body>
 </html>
-  
-</body>
-</html>
-
-
-<!-- Start of Get in Touch Section -->
-<div style="background-color: #0d0d0d; padding: 80px 20px; text-align: center; font-family: 'Segoe UI', sans-serif; color: #fff;">
-
-  <h1 style="
-    font-size: 3em;
-    margin-bottom: 20px;
-    text-shadow: 0 0 8px #00f0ff, 0 0 20px #00f0ff;
-  ">
-    Get in Touch
-  </h1>
-
-  <p style="
-    font-size: 1.2em;
-    margin-bottom: 50px;
-    color: #ccc;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  ">
-    Ready to join <strong style="color:#00f0ff;">Maadi Model United Nations</strong>? Connect with us through social media and stay updated!
-  </p>
-
-  <!-- Social Media Icons with Hover Effect -->
-  <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 50px;">
-    <a href="https://www.facebook.com/share/1Akm3ATLJe/" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" style="width: 45px;">
-    </a>
-    <a href="https://www.instagram.com/maadistemmun?igsh=cno1bnEwN3hzeGZx" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="width: 45px;">
-    </a>
-    <a href="https://www.linkedin.com/company/maadimun/" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 45px;">
-    </a>
-    <a href="fhsyn2131@gmail.com" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail" style="width: 45px;">
-    </a>
-    <a href="https://chat.whatsapp.com/Kpir7SnulQXD3AO7wniaJN" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.2)'; this.style.boxShadow='0 0 15px #00f0ff';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 45px;">
-    </a>
-  </div>
-<div style="margin-bottom: 50px; text-align: center;">
-  <p style="color: #bbb; margin-bottom: 15px;">
-    Subscribe to get exclusive MMUN updates, events & opportunities!
-  </p>
-
-  <form 
-    action="https://formspree.io/f/mwpbjeyr" 
-    method="POST" 
-    style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;"
-  >
-    <input 
-      type="email" 
-      name="email" 
-      required 
-      placeholder="Your email address"
-      style="
-        padding: 12px 20px;
-        border-radius: 25px;
-        border: none;
-        width: 260px;
-        max-width: 90%;
-        box-shadow: 0 0 10px #00f0ff;
-      "
-    >
-
-    <button
-      type="submit"
-      style="
-        padding: 12px 25px;
-        border-radius: 25px;
-        border: none;
-        background: linear-gradient(45deg, #00f0ff, #007bff);
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 0 10px #00f0ff, 0 0 20px #007bff;
-        transition: transform 0.3s ease;
-      "
-      onmouseover="this.style.transform='scale(1.05)'"
-      onmouseout="this.style.transform='scale(1)'"
-    >
-      Subscribe
-    </button>
-
-    <!-- redirect لو عايزة -->
-    <input type="hidden" name="_redirect" value="https://example.com/thank-you.html" />
-  </form>
-</div>
-
-
-  <div style="color: #666; font-size: 0.9em;">
-    &copy; 2025 <span style="color: #00f0ff;">Maadi Model United Nations</span>. All rights reserved.
-  </div>
-</div>
-<!-- End of Get in Touch Section -->
-
-<!-- Scripts -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const target = document.getElementById("typewriter");
-    if (!target) return;
-
-    const text = "Our Team in Action";
-    let index = 0;
-
-    function typeWriter() {
-      if (index < text.length) {
-        target.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 80); 
-      }
-    }
-
-    typeWriter(); 
-  });
-</script>
-<script>
-  const counters = document.querySelectorAll('.count-number');
-  const speed = 100; 
-  const animateCounters = () => {
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = Math.ceil(target / speed);
-
-        if (count < target) {
-          counter.innerText = count + increment;
-          setTimeout(updateCount, 20);
-        } else {
-          counter.innerText = target.toLocaleString(); // يفصل 1000 -> 1,000
-        }
-      };
-      updateCount();
-    });
-  };
-
-
-  window.addEventListener('load', animateCounters);
-</script>
-
-<div class="chat-button" id="chatButton" onclick="toggleChat()">💬</div>
-
-<div class="chat-box" id="chatBox">
-  <header>MMUN Teams Chat 🤖</header>
-  <div class="chat-body" id="chatBody"></div>
-  <div class="chat-input">
-    <input type="text" id="userInput" placeholder="Ask about MMUN teams..." />
-    <button id="sendBtn" onclick="sendMessage()">Send</button>
-  </div>
-</div>
-
-<style>
-  .chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #004080;
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    line-height: 60px;
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-  }
-
-  .chat-button.open {
-    transform: scale(1.2);
-    background-color: #ffc107;
-  }
-
-  .chat-box {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 320px;
-    max-height: 400px;
-    background-color: white;
-    border: 2px solid #004080;
-    border-radius: 10px;
-    display: none;
-    flex-direction: column;
-    z-index: 999;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-  }
-
-  .chat-box.open {
-    border-color: #ffc107;
-    box-shadow: 0 0 20px #ffc10788;
-  }
-
-  .chat-box header {
-    background-color: #004080;
-    color: white;
-    padding: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    font-weight: bold;
-    font-size: 16px;
-  }
-
-  .chat-body {
-    padding: 10px;
-    flex: 1;
-    overflow-y: auto;
-    max-height: 300px;
-    font-size: 14px;
-  }
-
-  .chat-input {
-    display: flex;
-    border-top: 1px solid #ccc;
-  }
-
-  .chat-box input {
-    flex: 1;
-    border: none;
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .chat-box button {
-    background-color: #004080;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s ease;
-  }
-
-  .chat-box button.active {
-    background-color: #ffc107;
-    color: black;
-    transform: scale(1.1);
-  }
-
-  .message {
-    margin: 5px 0;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeIn 0.4s forwards;
-  }
-
-  .user {
-    text-align: right;
-    color: #004080;
-  }
-
-  .bot {
-    text-align: left;
-    color: #333;
-  }
-
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
-
-<script>
-  function toggleChat() {
-    const chatBox = document.getElementById('chatBox');
-    const chatBtn = document.getElementById('chatButton');
-    const isOpen = chatBox.style.display === 'flex';
-
-    chatBox.style.display = isOpen ? 'none' : 'flex';
-    chatBox.classList.toggle("open", !isOpen);
-    chatBtn.classList.toggle("open", !isOpen);
-  }
-
-  function sendMessage() {
-    const input = document.getElementById("userInput");
-    const message = input.value.trim();
-    if (message === "") return;
-
-    const chatBody = document.getElementById("chatBody");
-
-    const userMsg = document.createElement("div");
-    userMsg.className = "message user";
-    userMsg.textContent = message;
-    chatBody.appendChild(userMsg);
-
-    input.value = "";
-
-    // زر Send يتفاعل
-    const btn = document.getElementById("sendBtn");
-    btn.classList.add("active");
-    setTimeout(() => btn.classList.remove("active"), 300);
-
-    setTimeout(() => {
-      let reply = getTeamReply(message.toLowerCase());
-
-      const botMsg = document.createElement("div");
-      botMsg.className = "message bot";
-      botMsg.textContent = reply;
-      chatBody.appendChild(botMsg);
-
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }, 300);
-  }
-
-  function getTeamReply(msg) {
-    if (msg.includes("committees") || msg.includes("teams") || msg.includes("team")) {
-      return "MMUN teams include: Content Writing, Human Resources (HR), Public Relations (PR), Research, Marketing, Graphic Design/Editing, and IT.";
-    }
-      if (msg.includes("what is mmun") || msg.includes("mmun")) {
-    return "MMUN stands for Maadi Model United Nations. It's a simulation of UN conferences where students represent countries and debate global issues.";
-  }
-if (msg.includes("how can i join") || msg.includes("join team") || msg.includes("apply")) {
-    return "You can apply to a team through the official MMUN registration form when applications open.";
-  }
-
-  if (msg.includes("more than one team")) {
-    return "No, each member is accepted into one team only to ensure focused contribution.";
-  }
-
-  // تدريب
-  if (msg.includes("training") || msg.includes("prepare") || msg.includes("sessions")) {
-    return "Yes, each team conducts sessions to prepare members before the conference.";
-  }
-
-  // ميعاد المؤتمر
-  if (msg.includes("when is the event") || msg.includes("date") || msg.includes("next event")) {
-    return "The date of the upcoming event will be announced on our social media and website.";
-  }
-
-  // أسئلة غريبة
-  if (msg.includes("snacks") || msg.includes("food")) {
-    return "MMUN focuses on learning and leadership. Details about food or logistics are shared closer to the event.";
-  }
-
-  if (msg.includes("famous")) {
-    return "MMUN is about growth, not fame — but you will definitely gain great experience and skills!";
-  }
-
-  if (msg.includes("suit") || msg.includes("dress") || msg.includes("wear")) {
-    return "Appropriate attire is usually required for the conference day. You'll be notified with guidelines.";
-  }
-
-  if (msg.includes("paid") || msg.includes("salary") || msg.includes("money")) {
-    return "MMUN is a volunteer student-led organization. The value comes from experience and impact.";
-  }
-
-  if (msg.includes("policy") || msg.includes("policies") || msg.includes("rules") || msg.includes("privacy")) {
-    return "You can explore the topics through our articles. If you're interested in learning more, feel free to join us!"
-  }
-  
-
-
-    if (msg.includes("content")) return "The Content Writing team handles articles, scripts, and official MMUN text content.";
-    if (msg.includes("hr")) return "HR manages communication with applicants, interviews, and internal team well-being.";
-    if (msg.includes("pr")) return "The PR team handles outreach, partnerships, and public image.";
-    if (msg.includes("research")) return "The Research team supports content and committees with verified information.";
-    if (msg.includes("marketing")) return "Marketing focuses on promoting MMUN events and initiatives.";
-    if (msg.includes("graphic") || msg.includes("design")) return "Graphic Design & Editing handles visuals, posts, and videos.";
-    if (msg.includes("it")) return "The IT team manages the website, forms, and technical tools.";
-
-    return "Sorry, I can only help with MMUN teams and their roles.";
-  }
-</script>
-
-
-</body>
-</html>
-
-
