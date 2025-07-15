@@ -139,7 +139,8 @@
     }
     
   </style>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="mobile.css">
 </head>
 <body>
 
@@ -273,13 +274,11 @@
     for (let i = 0; i < nodeCount; i++) {
       const nodeA = nodes[i];
 
-      // رسم الدائرة
       ctx.beginPath();
       ctx.arc(nodeA.x, nodeA.y, 2.5, 0, Math.PI * 2);
       ctx.fillStyle = "#ffffff";
       ctx.fill();
 
-      // رسم الخطوط بين النقاط القريبة
       for (let j = i + 1; j < nodeCount; j++) {
         const nodeB = nodes[j];
         const dx = nodeA.x - nodeB.x;
@@ -335,7 +334,7 @@
 
     function resize() {
       width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight / 2; // عشان نص الشاشة
+      height = canvas.height = window.innerHeight / 2;
     }
 
     function createNodes() {
