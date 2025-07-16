@@ -17,6 +17,7 @@
 }
 
 @media (max-width: 768px) {
+  /*  */
   .navbar {
     background-color: #001f4d;
     display: flex !important;
