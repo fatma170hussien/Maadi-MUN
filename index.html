@@ -378,7 +378,7 @@
   }
 </script>
 
-
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
   <!-- Navbar -->
   <div class="navbar">
     <div class="logo">
@@ -1603,7 +1603,12 @@ if (msg.includes("how can i join") || msg.includes("join team") || msg.includes(
     return "Sorry, I can only help with MMUN teams and their roles.";
   }
 </script>
-
+<script>
+  function toggleMenu() {
+    const navbar = document.querySelector('.nav-links');
+    navbar.classList.toggle('active');
+  }
+</script>
 
 </body>
 </html>
