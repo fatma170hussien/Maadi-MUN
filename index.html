@@ -833,67 +833,91 @@
     line-height: 1.6;
     color: #333;
   }
-    /* إضافات جديدة فقط - بدون حذف أي كود موجود */
-
-/* تحسينات لللاب توب */
-@media (min-width: 769px) {
   .navbar {
-    padding: 20px 40px; /* زيادة السمك أكثر */
-    min-height: 80px; /* ارتفاع أكبر */
-  }
-  
-  .logo-img {
-    height: 45px; /* حجم أكبر للشعار */
-  }
-  
-  .logo-text {
-    font-size: 1.5rem; /* نص أكبر */
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 25px; /* مسافة بين الروابط */
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: linear-gradient(to right, #000000, #001f4d);
+  position: relative;
 }
 
-/* تحسينات إضافية للهامبرجر */
-@media (max-width: 768px) {
-  .menu-toggle {
-    order: 2; /* يظهر بعد الشعار */
-    margin-left: auto; /* يدفعه لأقصى اليمين */
-    z-index: 100; /* فوق كل العناصر */
-  }
-  
-  .logo-container {
-    order: 1; /* يظهر أولاً */
-    flex-grow: 0; /* لا يتمدد */
-  }
-  
-  .logo-container::after {
-    margin-left: 10px; 
-  }
-  
-  .nav-links {
-    top: 0;
-    padding-top: 90px; 
-  }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-/* تأثيرات حركية إضافية */
+.logo img {
+  height: 35px;
+}
+
+.logo span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+
 .menu-toggle {
-  transition: transform 0.3s ease;
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
 }
 
-.menu-toggle:hover {
-  transform: scale(1.1);
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .nav-links a {
-  transition: color 0.3s ease;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
   color: #00bfff;
+}
+
+.apply-btn {
+  border: 2px solid gold;
+  border-radius: 50px;
+  padding: 5px 15px;
+  color: gold;
+  font-weight: bold;
+}
+
+/* للجوال */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    background: #001f4d;
+    flex-direction: column;
+    width: auto;
+    min-width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: none;
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-links a {
+    padding: 8px 0;
+    width: 100%;
+  }
 }
   </style>
 </head>
@@ -903,13 +927,13 @@
 
 
 <!-- Navbar -->
-   <div class="navbar">
-  <div class="logo-container">
-    <img src="logo.jpg" alt="Maadi MUN" class="logo-img">
-    <span class="logo-text">Maadi Model United Nations</span>
+ <div class="navbar">
+  <div class="logo">
+    <img src="logo.jpg" alt="Logo">
+    <span>Maadi Model United Nations</span>
   </div>
+  
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <div class="nav-links">
   </div>
   <div class="nav-links">
     <a href="loading.html?next=index.html">Home</a>
@@ -1250,6 +1274,10 @@
 </div>
 
 <script>
+  function toggleMenu() {
+  const navLinks = document.querySelector('.nav-links');
+  navLinks.classList.toggle('active');
+}
   if (!localStorage.getItem("hasVisited")) {
     localStorage.setItem("hasVisited", "true");
     window.location.href = "loading.html?next=index.html";
