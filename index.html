@@ -32,7 +32,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 30px;
+      padding: 25px 30px;
       background: linear-gradient(to right, #000000, #001f4d, rgba(255, 255, 255, 0.05));
       font-size: 1.2rem;
       font-weight: 600;
@@ -193,7 +193,7 @@
   
   .navbar {
     position: relative;
-    padding: 15px 20px;
+    padding: 25px 30px;
   }
   
   .logo {
@@ -843,49 +843,7 @@
     line-height: 1.6;
     color: #333;
   }
-   @media (max-width: 768px) {
-  /* تحديثات القائمة المنسدلة */
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: 0;
-    width: 50%; /* عرض نصف الشاشة */
-    height: calc(100vh - 70px); /* ارتفاع كامل مع استثناء الجزء العلوي */
-    background: linear-gradient(145deg, #001f4d, #000000);
-    padding: 20px 0;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-    transform: translateX(100%); /* إخفاء خارج الشاشة */
-    transition: transform 0.3s ease-out;
-    z-index: 1000;
-    overflow-y: auto;
-  }
-
-  .nav-links.active {
-    transform: translateX(0); /* إظهار القائمة */
-  }
-
-  .nav-links a {
-    padding: 15px 25px;
-    font-size: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    display: block;
-    transition: background 0.2s;
-  }
-
-  .nav-links a:hover {
-    background: rgba(0, 191, 255, 0.2);
-  }
-
-  /* تحسينات الهامبرجر */
-  .menu-toggle {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 28px;
-    z-index: 1001;
-  }
-}
+  
   </style>
 </head>
 
