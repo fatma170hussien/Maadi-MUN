@@ -843,38 +843,47 @@
     line-height: 1.6;
     color: #333;
   }
-    @media (max-width: 768px) {
-  /* تعديلات القائمة المنسدلة */
+   @media (max-width: 768px) {
+  /* تحديثات القائمة المنسدلة */
   .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 20px; /* تغيير من left:0 إلى right:20px */
-    width: 60%; /* عرض 60% من الشاشة بدلاً من 100% */
-    background: linear-gradient(to bottom, #000000, #001f4d);
-    padding: 10px 0;
-    margin-top: 0;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 50%; /* عرض نصف الشاشة */
+    height: calc(100vh - 70px); /* ارتفاع كامل مع استثناء الجزء العلوي */
+    background: linear-gradient(145deg, #001f4d, #000000);
+    padding: 20px 0;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    transform: translateX(100%); /* إخفاء خارج الشاشة */
+    transition: transform 0.3s ease-out;
     z-index: 1000;
-    flex-direction: column;
-    border-radius: 10px; /* إضافة زوايا مستديرة */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* إضافة ظل */
-    max-height: 70vh; /* ارتفاع أقصى */
-    overflow-y: auto; /* إمكانية التمرير إذا طالت القائمة */
+    overflow-y: auto;
   }
 
   .nav-links.active {
-    display: flex;
+    transform: translateX(0); /* إظهار القائمة */
   }
 
   .nav-links a {
-    padding: 12px 20px;
-    font-size: 0.95rem;
-    color: white;
-    text-align: right; /* محاذاة النص لليمين */
+    padding: 15px 25px;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: block;
+    transition: background 0.2s;
   }
 
   .nav-links a:hover {
     background: rgba(0, 191, 255, 0.2);
+  }
+
+  /* تحسينات الهامبرجر */
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    z-index: 1001;
   }
 }
   </style>
