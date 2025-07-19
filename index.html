@@ -184,43 +184,38 @@
 
     /* Responsive */
  @media (max-width: 768px) {
-  .menu-toggle {
-    display: block !important; 
-    position: absolute;
-    right: 20px;
-    top: 15px;
-  }
-  
   .navbar {
+    flex-direction: column;
+    align-items: flex-start;
     position: relative;
     padding: 15px 20px;
   }
   
-  .logo {
-    width: calc(100% - 50px); 
+  .menu-toggle {
+    display: block !important;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    margin: 0 !important; /* لإلغاء أي هوامش موجودة */
   }
+  
+  .logo {
+    width: calc(100% - 50px);
+  }
+  
+  /* باقي القواعد الحالية تبقى كما هي */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  
+  /* ... */
 }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        padding: 10px 0;
-        border-radius: 10px;
-        margin-top: 10px;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 10px 20px;
-        font-size: 1rem;
-        width: 100%;
-        text-align: left;
-      }
 
       h1 {
         font-size: 2rem;
@@ -843,7 +838,6 @@
     line-height: 1.6;
     color: #333;
   }
-  
   </style>
 </head>
 
@@ -1415,4 +1409,4 @@ if (msg.includes("how can i join") || msg.includes("join team") || msg.includes(
   }
 </script>
 </body>
-</html>
+</html> 
