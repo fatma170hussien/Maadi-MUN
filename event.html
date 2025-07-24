@@ -90,12 +90,15 @@
       font-size: 1.8rem;
       cursor: pointer;
       color: white;
+      background: transparent;
+      border: none;
+      outline: none;
     }
 
-    /* Mobile Menu */
+    /* Mobile Menu - تم تعديله ليكون ثابتًا في الأعلى */
     .mobile-menu {
       position: fixed;
-      top: 80px;
+      top: 80px; /* نفس ارتفاع الشريط الرئيسي */
       left: 0;
       right: 0;
       background: linear-gradient(to bottom, #000, #001f4d);
@@ -105,6 +108,13 @@
       flex-direction: column;
       gap: 15px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu.show {
+      display: flex;
+      transform: translateY(0);
     }
 
     .mobile-menu a {
@@ -123,10 +133,6 @@
       display: inline-block;
       text-align: center;
       margin-top: 10px;
-    }
-
-    .mobile-menu.show {
-      display: flex;
     }
 
     /* Hero Section */
@@ -589,6 +595,11 @@
         width: 100%;
         max-width: 400px;
       }
+      
+      /* تعديلات للقائمة المتنقلة لتكون ثابتة */
+      .mobile-menu {
+        top: 70px; /* يتناسب مع ارتفاع الشريط الرئيسي على الهاتف */
+      }
     }
 
     @media (max-width: 480px) {
@@ -616,7 +627,7 @@
   <div class="navbar" data-aos="fade-down">
     <div class="logo">
       <img src="logo.jpg" alt="Logo">
-      Maadi Model United Nations
+      Maadi MUN
     </div>
     <div class="nav-links">
       <a href="loading.html?next=index.html">Home</a>
@@ -628,11 +639,11 @@
       <a href="loading.html?next=Article.html">Articles</a>
       <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
     </div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
   </div>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
+  <!-- Mobile Menu - تم تعديله ليكون ثابتًا في الأعلى -->
+  <div class="mobile-menu" id="mobileMenu">
     <a href="loading.html?next=index.html">Home</a>
     <a href="loading.html?next=event.html">Events</a>
     <a href="loading.html?next=alumni.html">History</a>
@@ -643,7 +654,6 @@
     <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
   </div>
 
-  <!-- باقي محتوى الصفحة يبقى كما هو بدون تغيير -->
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="chemistry-network">
@@ -845,20 +855,32 @@
       showSlide(currentSlide);
     }
 
-    // Mobile Menu Toggle
+    // Mobile Menu Toggle - تم تعديله ليكون أكثر سلاسة
     function toggleMenu() {
-      const mobileMenu = document.querySelector('.mobile-menu');
+      const mobileMenu = document.getElementById('mobileMenu');
       mobileMenu.classList.toggle('show');
+      
+      // إيقاف التمرير عند فتح القائمة
+      document.body.style.overflow = mobileMenu.classList.contains('show') ? 'hidden' : '';
     }
 
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
-      const mobileMenu = document.querySelector('.mobile-menu');
+      const mobileMenu = document.getElementById('mobileMenu');
       const menuToggle = document.querySelector('.menu-toggle');
       
       if (!e.target.closest('.navbar') && mobileMenu.classList.contains('show')) {
         mobileMenu.classList.remove('show');
+        document.body.style.overflow = ''; // إعادة تمكين التمرير
       }
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('show');
+        document.body.style.overflow = ''; // إعادة تمكين التمرير
+      });
     });
 
     // Initialize
