@@ -85,6 +85,50 @@
       color: black;
     }
 
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to bottom, #000, #001f4d);
+      z-index: 999;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    .mobile-menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .mobile-menu a:hover {
+      color: #00bfff;
+    }
+
+    .mobile-menu .apply-btn {
+      display: inline-block;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .mobile-menu.show {
+      display: flex;
+    }
+
     /* Hero Section */
     .hero-section {
       position: relative;
@@ -491,15 +535,38 @@
 
     /* Responsive Styles */
     @media (max-width: 768px) {
+      body {
+        padding-top: 70px;
+      }
+
       .navbar {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
+        padding: 15px 20px !important;
+        flex-direction: row !important;
+      }
+
+      .logo {
+        font-size: 1.2rem !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60%;
+      }
+
+      .logo img {
+        height: 25px !important;
       }
 
       .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block !important;
+      }
+
+      .apply-btn {
+        padding: 5px 12px !important;
+        font-size: 0.9rem !important;
       }
 
       .hero-section h1 {
@@ -542,8 +609,6 @@
       }
     }
   </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="mobile.css">
 </head>
 <body>
 
@@ -563,8 +628,22 @@
       <a href="loading.html?next=Article.html">Articles</a>
       <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
     </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   </div>
 
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="loading.html?next=index.html">Home</a>
+    <a href="loading.html?next=event.html">Events</a>
+    <a href="loading.html?next=alumni.html">History</a>
+    <a href="loading.html?next=conference.html">Conference</a>
+    <a href="loading.html?next=management.html">High board</a>
+    <a href="loading.html?next=contact.html">Contact</a>
+    <a href="loading.html?next=Article.html">Articles</a>
+    <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
+  </div>
+
+  <!-- باقي محتوى الصفحة يبقى كما هو بدون تغيير -->
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="chemistry-network">
@@ -765,6 +844,22 @@
       currentSlide = (currentSlide + 1) % slides.length;
       showSlide(currentSlide);
     }
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+      const mobileMenu = document.querySelector('.mobile-menu');
+      mobileMenu.classList.toggle('show');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const mobileMenu = document.querySelector('.mobile-menu');
+      const menuToggle = document.querySelector('.menu-toggle');
+      
+      if (!e.target.closest('.navbar') && mobileMenu.classList.contains('show')) {
+        mobileMenu.classList.remove('show');
+      }
+    });
 
     // Initialize
     resize();
