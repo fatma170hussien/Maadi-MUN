@@ -129,7 +129,7 @@
 
     @keyframes typing {
       from { width: 0 }
-      to { width: 100%; }
+      to { width: 460px; }
     }
 
     @keyframes blink {
@@ -182,7 +182,7 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* ✅ Media Query for small screens */
+    /* ✅ Media Query للموبايل */
     @media (max-width: 480px) {
       .planet {
         width: 150px;
@@ -195,16 +195,17 @@
       }
 
       .typing-container {
-        font-size: 18px;
-        letter-spacing: 1px;
-        white-space: normal;
-        border-right: none;
-        animation: none;
+        font-size: 16px;
         width: 100%;
+        letter-spacing: 1px;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid rgba(255,255,255,0.7);
+        animation: typing 2s steps(25, end) forwards, blink 0.7s infinite;
       }
 
       .typing-container::after {
-        display: none;
+        display: block;
       }
 
       .orbit:nth-child(2),
@@ -232,11 +233,9 @@
   <!-- Typing Title -->
   <div class="typing-container">Maadi Model United Nations</div>
 
-  <!-- التحويل التلقائي بعد 3 ثواني -->
   <script>
     const params = new URLSearchParams(window.location.search);
-    const nextPage = params.get("next") || "index.html"; // fallback للصفحة الرئيسية
-
+    const nextPage = params.get("next") || "index.html";
     setTimeout(() => {
       window.location.href = nextPage;
     }, 3000);
