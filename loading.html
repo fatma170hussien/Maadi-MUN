@@ -1,8 +1,9 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Loading - MMUN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
 
   <style>
@@ -24,6 +25,8 @@
       overflow: hidden;
       font-family: 'Poppins', sans-serif;
       position: relative;
+      padding: 20px;
+      text-align: center;
     }
 
     @keyframes gradientBG {
@@ -126,7 +129,7 @@
 
     @keyframes typing {
       from { width: 0 }
-      to { width: 460px; }
+      to { width: 100%; }
     }
 
     @keyframes blink {
@@ -178,9 +181,40 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    /* ✅ Media Query for small screens */
+    @media (max-width: 480px) {
+      .planet {
+        width: 150px;
+        height: 150px;
+      }
+
+      .logo {
+        width: 130px;
+        height: 130px;
+      }
+
+      .typing-container {
+        font-size: 18px;
+        letter-spacing: 1px;
+        white-space: normal;
+        border-right: none;
+        animation: none;
+        width: 100%;
+      }
+
+      .typing-container::after {
+        display: none;
+      }
+
+      .orbit:nth-child(2),
+      .orbit:nth-child(3),
+      .orbit:nth-child(4),
+      .side-ring {
+        display: none;
+      }
+    }
   </style>
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="mobile.css">
 </head>
 <body>
   <!-- Side Rings -->
@@ -198,7 +232,7 @@
   <!-- Typing Title -->
   <div class="typing-container">Maadi Model United Nations</div>
 
-  <!-- ✅ التحويل التلقائي بعد 3 ثواني -->
+  <!-- التحويل التلقائي بعد 3 ثواني -->
   <script>
     const params = new URLSearchParams(window.location.search);
     const nextPage = params.get("next") || "index.html"; // fallback للصفحة الرئيسية
