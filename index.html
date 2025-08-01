@@ -112,7 +112,7 @@
     margin-right: auto; /* لدفع الهامبرجر للجانب الأيمن */
   }
 }
-  /* Navbar Styles */
+/* Navbar Styles */
 .navbar {
   position: fixed;
   top: 0;
@@ -121,11 +121,37 @@
   width: 100%;
   z-index: 1000;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* هذا السطر مهم لتوزيع العناصر */
   align-items: center;
   padding: 15px 20px;
   background: linear-gradient(to right, #000000, #001f4d, rgba(255, 255, 255, 0.05));
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1001;
+    margin-left: auto; /* هذا السطر يدفع الهامبرجر لليمين */
+  }
+  
+  .logo {
+    margin-right: 0; /* إزالة أي margin إضافي */
+  }
 }
 
 .navbar .logo {
@@ -1683,4 +1709,4 @@ if (msg.includes("how can i join") || msg.includes("join team") || msg.includes(
     });
   </script>
 </body>
-</html>
+</html>ر
