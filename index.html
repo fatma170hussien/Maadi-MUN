@@ -112,6 +112,26 @@
     margin-right: auto; /* لدفع الهامبرجر للجانب الأيمن */
   }
 }
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom right, #000000, #1e3c72, #ffffff);
+  color: white;
+  text-align: center;
+  padding: 20px 15px; /* تعديل هنا - تقليل المسافات الجانبية */
+}
+
 /* Navbar Styles */
 .navbar {
   position: fixed;
@@ -121,37 +141,11 @@
   width: 100%;
   z-index: 1000;
   display: flex;
-  justify-content: space-between; /* هذا السطر مهم لتوزيع العناصر */
+  justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
   background: linear-gradient(to right, #000000, #001f4d, rgba(255, 255, 255, 0.05));
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 12px 15px;
-  }
-  
-  .nav-links {
-    display: none;
-  }
-  
-  .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 24px;
-    position: relative;
-    z-index: 1001;
-    margin-left: auto; /* هذا السطر يدفع الهامبرجر لليمين */
-  }
-  
-  .logo {
-    margin-right: 0; /* إزالة أي margin إضافي */
-  }
 }
 
 .navbar .logo {
@@ -162,6 +156,7 @@
   color: white;
   text-decoration: none;
   z-index: 1001;
+  margin-right: 0; /* تعديل هنا - إزالة margin-right */
 }
 
 .navbar .logo img {
@@ -169,10 +164,148 @@
   margin-right: 10px;
 }
 
-/* Mobile Menu Styles */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00bfff;
+}
+
+.apply-btn {
+  border: 2px solid gold;
+  border-radius: 50px;
+  padding: 5px 15px;
+  color: gold;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+  background-color: gold;
+  color: black;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  z-index: 1001;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  margin-left: auto; /* تعديل هنا - دفع الهامبرجر لليمين */
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2), 
+.hamburger span:nth-child(3) {
+  top: 10px;
+}
+
+.hamburger span:nth-child(4) {
+  top: 20px;
+}
+
+.hamburger.active span:nth-child(1) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
+}
+
+.hamburger.active span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.hamburger.active span:nth-child(4) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 31, 77, 0.98);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+  display: flex;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin: 15px 0;
+  padding: 10px 25px;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.mobile-menu a:hover {
+  color: #00bfff;
+}
+
+.mobile-menu .apply-btn {
+  margin-top: 30px;
+  font-size: 1.3rem;
+  padding: 12px 30px;
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
+  body {
+    padding: 15px 10px; /* تعديل هنا - تقليل المسافات الجانبية */
+  }
+  
   .navbar {
-    padding: 12px 15px;
+    padding: 12px 15px; /* تعديل هنا - تقليل المسافات الداخلية */
   }
   
   .nav-links {
@@ -180,29 +313,29 @@
   }
   
   .hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 24px;
-    position: relative;
-    z-index: 1001;
+    display: block;
   }
   
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 31, 77, 0.98);
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    transition: all 0.5s ease;
+  body.menu-open {
+    overflow: hidden;
   }
+
+  /* تعديلات إضافية للمسافات في الموبايل */
+  .hero {
+    padding: 100px 10px 40px; /* تقليل المسافات الجانبية */
+  }
+
+  .stats {
+    gap: 15px; /* تقليل المسافة بين العناصر */
+    padding: 0 5px; /* إضافة padding جانبي */
+  }
+
+  .stat {
+    min-width: calc(50% - 20px); /* جعل العناصر تأخذ نصف العرض */
+    padding: 15px 10px; /* تقليل المسافات الداخلية */
+    margin: 5px;
+  }
+}
   
   .mobile-menu.active {
     display: flex;
@@ -364,48 +497,108 @@
   }
 
   /* Hero Section */
-  .hero {
-    height: auto;
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 100px 20px 40px;
-    background: linear-gradient(135deg, #000428, #004e92);
-    color: white;
-    margin-top: 100px; 
-  }
-  
-  .menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: white;
-  }
+ .hero {
+  height: auto;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 100px 20px 40px;
+  background: linear-gradient(135deg, #000428, #004e92);
+  color: white;
+  margin-top: 60px;
+}
 
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #00bfff;
-  }
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #00bfff;
+}
 
-  p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 20px;
-    color: #f0f0f0;
-  }
+p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  color: #f0f0f0;
+}
 
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-  }
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
 
+.stat {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px 30px;
+  border-radius: 12px;
+  min-width: 150px;
+  transition: transform 0.3s ease;
+}
+
+.stat:hover {
+  transform: scale(1.05);
+}
+
+.stat h2 {
+  font-size: 2rem;
+  color: #00bfff;
+}
+
+.stat p {
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+/* باقي الـ CSS كما هو بدون تعديل */
+.gallery {
+  margin-top: 50px;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #00bfff;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.images img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.fade-image {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 12px;
+}
+
+.fade-image:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #00f0ff, 0 0 40px #00f0ff;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   .stat {
     background: rgba(255, 255, 255, 0.1);
     padding: 20px 30px;
@@ -445,21 +638,7 @@
     gap: 20px;
   }
 
-  .images img {
-    width: 250px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  }
-
-  .fade-image {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s forwards;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border-radius: 12px;
-  }
+ 
 
   .fade-image:hover {
     transform: scale(1.08);
