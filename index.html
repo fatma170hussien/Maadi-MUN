@@ -91,61 +91,127 @@
   }
 
   /* Navbar Styles with Hamburger */
-  .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 80px; /* ارتفاع النافبار */
-  z-index: 1000;
-  background: linear-gradient(to right, #000000, #001f4d, rgba(255, 255, 255, 0.05));
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+
+.hamburger {
+  display: none; /* مخفي على الشاشات الكبيرة */
+  cursor: pointer;
+  z-index: 1001;
 }
-body {
-  padding-top: 80px; /* يجب أن يساوي ارتفاع النافبار */
-}
+
 @media (max-width: 768px) {
-  .navbar {
-    height: 60px;
+  .nav-links {
+    display: none; /* إخفاء روابط الشاشة الكبيرة */
   }
   
-  body {
-    padding-top: 60px;
-  }
-  
-  h1.main-title {
-    font-size: 2rem;
-    margin-top: 20px;
-  }
-}
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 30px;
-    background: linear-gradient(to right, #000000, #001f4d, rgba(255, 255, 255, 0.05));
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+  .hamburger {
+    display: block; /* إظهار الهامبرجر */
   }
   
   .navbar .logo {
+    margin-right: auto; /* لدفع الهامبرجر للجانب الأيمن */
+  }
+}
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between; /* هذا السطر مهم لتوزيع العناصر */
+  align-items: center;
+  padding: 15px 20px;
+  background: linear-gradient(to right, #000000, #001f4d, rgba(255, 255, 255, 0.05));
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .hamburger {
     display: flex;
-    align-items: center;
-    font-size: 1.4rem;
-    font-weight: 800;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    z-index: 1001;
+    margin-left: auto; /* هذا السطر يدفع الهامبرجر لليمين */
+  }
+  
+  .logo {
+    margin-right: 0; /* إزالة أي margin إضافي */
+  }
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+  z-index: 1001;
+}
+
+.navbar .logo img {
+  height: 30px;
+  margin-right: 10px;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    position: relative;
     z-index: 1001;
   }
-
-  .navbar .logo img {
-    height: 30px;
-    margin-right: 10px;
+  
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 31, 77, 0.98);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.5s ease;
   }
-
+  
+  .mobile-menu.active {
+    display: flex;
+  }
+  
+  body.menu-open {
+    overflow: hidden;
+  }
+}
   .nav-links {
     display: flex;
     gap: 20px;
@@ -604,7 +670,6 @@ body {
     transform: rotate(135deg);
     color: #ff5555;
   }
-  
   .faq-answer {
     max-height: 0;
     overflow: hidden;
@@ -615,24 +680,20 @@ body {
     color: #e0e0e0;
     background-color: rgba(0, 0, 0, 0.2);
   }
-  
-  .faq.open .faq-answer {
+    .faq.open .faq-answer {
     max-height: 500px;
     padding: 20px 25px;
   }
-  
   .faq.open {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     background-color: rgba(255, 255, 255, 0.08);
   }
-  
   /* Animations */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  
   @keyframes fadeInUp {
     from { 
       opacity: 0;
@@ -1033,44 +1094,44 @@ body {
 <body>
 
   <!-- Navbar with Hamburger -->
-  <div class="navbar" data-aos="fade-down">
-    <div class="logo">
-      <img src="logo.jpg" alt="Logo">
-      <span>Maadi MUN</span>
-    </div>
-    
-    <!-- Desktop Navigation -->
-    <div class="nav-links">
-      <a href="loading.html?next=index.html">Home</a>
-      <a href="loading.html?next=event.html">Events</a>
-      <a href="loading.html?next=alumni.html">History</a>
-      <a href="loading.html?next=conference.html">Conference</a>
-      <a href="loading.html?next=management.html">High board</a>
-      <a href="loading.html?next=contact.html">Contact</a>
-      <a href="loading.html?next=Article.html">Articles</a>
-      <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
-    </div>
-    
-    <!-- Mobile Hamburger Menu -->
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="loading.html?next=index.html">Home</a>
-      <a href="loading.html?next=event.html">Events</a>
-      <a href="loading.html?next=alumni.html">History</a>
-      <a href="loading.html?next=conference.html">Conference</a>
-      <a href="loading.html?next=management.html">High board</a>
-      <a href="loading.html?next=contact.html">Contact</a>
-      <a href="loading.html?next=Article.html">Articles</a>
-      <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
-    </div>
+<nav class="navbar" data-aos="fade-down">
+  <div class="logo">
+    <img src="logo.jpg" alt="Logo">
+    <span>Maadi MUN</span>
+  </div> 
+  
+  <!-- Desktop Navigation -->
+  <div class="nav-links">
+    <a href="loading.html?next=index.html">Home</a>
+    <a href="loading.html?next=event.html">Events</a>
+    <a href="loading.html?next=alumni.html">History</a>
+    <a href="loading.html?next=conference.html">Conference</a>
+    <a href="loading.html?next=management.html">High board</a>
+    <a href="loading.html?next=contact.html">Contact</a>
+    <a href="loading.html?next=Article.html">Articles</a>
+    <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
   </div>
+  
+  <!-- Mobile Hamburger Menu -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="loading.html?next=index.html">Home</a>
+  <a href="loading.html?next=event.html">Events</a>
+  <a href="loading.html?next=alumni.html">History</a>
+  <a href="loading.html?next=conference.html">Conference</a>
+  <a href="loading.html?next=management.html">High board</a>
+  <a href="loading.html?next=contact.html">Contact</a>
+  <a href="loading.html?next=Article.html">Articles</a>
+  <a href="loading.html?next=apply.html" class="apply-btn">Apply</a>
+</div>
 
  
 <div class="hero">
@@ -1157,8 +1218,7 @@ body {
         <a href="https://en.wikipedia.org/wiki/United_Kingdom" title="UK"><img src="https://flagcdn.com/w40/gb.png" alt="UK" class="flag" /></a>
       </div>
     </div>
-
-    <!-- Globe Image -->
+  <!-- Globe Image -->
     <div class="globe-container" id="globe-block">
       <div class="globe-wrapper">
         <img 
@@ -1173,12 +1233,10 @@ body {
 </section>
 
 <!-- Animation on scroll -->
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vision & Mission | Maadi MUN</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="mobile.css">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -1546,10 +1604,7 @@ body {
     userMsg.className = "message user";
     userMsg.textContent = message;
     chatBody.appendChild(userMsg);
-
     input.value = "";
-
-    // زر Send يتفاعل
     const btn = document.getElementById("sendBtn");
     btn.classList.add("active");
     setTimeout(() => btn.classList.remove("active"), 300);
@@ -1655,4 +1710,3 @@ if (msg.includes("how can i join") || msg.includes("join team") || msg.includes(
   </script>
 </body>
 </html>
-ر
