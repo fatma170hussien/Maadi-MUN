@@ -1419,6 +1419,44 @@
   <!-- AOS Script -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
+    // Initialize AOS animation library
+    AOS.init({ duration: 1000, once: true });
+
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      
+      // Toggle hamburger to X
+      if (this.classList.contains('active')) {
+        this.querySelectorAll('.line').forEach((line, index) => {
+          if (index === 0) line.style.transform = 'translateY(8px) rotate(45deg)';
+          if (index === 1) line.style.opacity = '0';
+          if (index === 2) line.style.transform = 'translateY(-8px) rotate(-45deg)';
+        });
+      } else {
+        this.querySelectorAll('.line').forEach(line => {
+          line.style.transform = '';
+          line.style.opacity = '';
+        });
+      }
+    });
+    
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        hamburger.querySelectorAll('.line').forEach(line => {
+          line.style.transform = '';
+          line.style.opacity = '';
+        });
+      });
+    });
+
     
      if (!localStorage.getItem("hasVisited")) {
     localStorage.setItem("hasVisited", "true");
@@ -1640,27 +1678,7 @@ if (msg.includes("how can i join") || msg.includes("join team") || msg.includes(
       once: true,
       offset: 20
     });
-    
-    // Mobile Menu Toggle - Updated
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const body = document.body;
-    
-    hamburger.addEventListener('click', function() {
-      this.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-      body.classList.toggle('menu-open');
-    });
-    
-    // Close mobile menu when clicking a link
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        body.classList.remove('menu-open');
-      });
-    });
-
+   
     // Fix for any potential gap between navbar and hero section
     window.addEventListener('load', function() {
       const navbarHeight = document.querySelector('.navbar').offsetHeight;
