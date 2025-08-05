@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  UPLOADCARE_PUBLIC_KEY = 'e553cdf8ec55e7335651'; // Your public key
+</script>
+<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+
   <meta charset="UTF-8">
   <title>Maadi MUN</title>
   <link rel="stylesheet" href="style.css"> 
@@ -189,14 +194,13 @@
     <!-- Step 2 -->
     <div class="form-step">
       <h2>Step 2: General Questions</h2>
-      <label for="exp">Do you have any previous experience?</label>
+      <label for="exp">Tell us about your self</label>
       <textarea id="exp" name="experience" required data-words="100-250"></textarea>
 
-      <label for="strengths">Your Strengths</label>
+      <label for="strengths">Do you have any previous experience?
+(You can mention experiences related to leadership, politics, or team-based projects — anything that shaped you.)</label>
       <textarea id="strengths" name="strengths" required data-words="100-250"></textarea>
 
-      <label for="weaknesses">Your Weaknesses</label>
-      <textarea id="weaknesses" name="weaknesses" required data-words="100-250"></textarea>
 
       <div class="buttons">
         <button type="button" onclick="prevStep()">Back</button>
@@ -219,16 +223,16 @@
     <div class="form-step">
       <h2>Step 4: Final</h2>
 
-      <label for="why">Why do you want to join as a High Board?</label>
+      <label for="why">Why do you think Maadi MUN is the right place for you to grow as a High Board member?</label>
       <textarea id="why" name="why" required data-words="100-250"></textarea>
 
       <label for="ideas">What ideas would you bring to your track?</label>
       <textarea id="ideas" name="ideas" required data-words="100-250"></textarea>
 
-      <label for="courses">Put any courses that you took in this track</label>
+      <label for="courses">Put any courses, teams, and programs that you took in this track</label>
       <textarea id="courses" name="courses" class="small-textarea"></textarea>
 
-      <label for="questions">Any Question?</label>
+      <label for="questions">Any Question(Feel free to share any thoughts or concerns!)?</label>
       <textarea id="questions" name="questions" class="small-textarea"></textarea>
 
       <div class="buttons">
@@ -252,6 +256,7 @@
       document.getElementById("welcomeScreen").classList.add("hidden");
       document.getElementById("multiStepForm").classList.remove("hidden");
       document.getElementById("multiStepForm").reset(); // <-- دا بيمسح البيانات
+showStep(currentStep);
 
     }
 
@@ -296,59 +301,126 @@
       }
     }
 
-    function insertTrackQuestions() {
-      const track = document.getElementById("track").value;
-      const container = document.getElementById("trackQuestions");
-      container.innerHTML = "";
-      let q1 = "";
-      let q2 = "";
+  function insertTrackQuestions() {
+  const track = document.getElementById("track").value;
+  const container = document.getElementById("trackQuestions");
+  container.innerHTML = "";
 
-      switch (track) {
-        case "Content Writing":
-          q1 = "Write a short article on the importance of writing in volunteer work.";
-          q2 = "What is your plan to improve the quality of written content in the team?";
-          break;
-        case "HR":
-          q1 = "How would you deal with an uncommitted member?";
-          q2 = "What's your plan to improve team engagement and loyalty?";
-          break;
-        case "Multiple Production":
-          q1 = "Describe a creative media idea you can implement for the team.";
-          q2 = "How would you improve the visual production this season?";
-          break;
-        case "IT":
-          q1 = "How can you improve the website or technical system?";
-          q2 = "What tools or tech will you use to make the work more efficient?";
-          break;
-        case "Marketing":
-          q1 = "Propose a creative campaign to promote the conference.";
-          q2 = "How will you expand the reach and engagement this year?";
-          break;
-        case "PR":
-          q1 = "How would you handle a media crisis involving the team?";
-          q2 = "What is your vision to improve the conference's public image?";
-          break;
-        case "OC":
-          q1 = "How would you manage a multi-event day under time pressure?";
-          q2 = "What’s your plan to ensure smooth and timely event organization?";
-          break;
-        case "Research":
-          q1 = "How would you ensure unbiased and well-verified research in a time-limited task?";
-          q2 = "Suggest a way to present complex data visually to non-expert delegates.";
-          break;
-        default:
-          container.innerHTML = '<p>Please select a valid track first.</p>';
-          return;
-      }
+  let q1 = "";
+  let q2 = "";
 
-      container.innerHTML = `
-        <label>${q1}</label>
-        <textarea name="track_q1" required data-words="100-250"></textarea>
+  if (track === "Multiple Production") {
+    container.innerHTML = `
+      <label for="subTrack">Select Sub-Track</label>
+      <select id="subTrack" name="subTrack" required onchange="updateMPQuestions()">
+        <option value="">-- Select --</option>
+        <option value="Graphic Design">Graphic Design</option>
+        <option value="Video Editing">Video Editing</option>
+      </select>
+      <div id="mpSubQuestions"></div>
+    `;
+    return;
+  }
 
-        <label>${q2}</label>
-        <textarea name="track_q2" required data-words="100-250"></textarea>
-      `;
-    }
+  switch (track) {
+    case "Content Writing":
+      q1 = "Write a short article about how political writing can influence society.";
+      q2 = "What is your plan to lead the Content Writing track and develop the team? (Think about how you would organize tasks, support members, and improve content quality.)";
+      break;
+    case "HR":
+      q1 = "How would you deal with an uncommitted member?";
+      q2 = "What's your plan to improve team engagement and loyalty?";
+      break;
+    case "IT":
+      q1 = "What tools or tech will you use to make the work more efficient?";
+      q2 = "What is your plan to lead the IT Committee and enhance its efficiency?(Consider things like task distribution, workflow improvement, and team development.)";
+      break;
+    case "Marketing":
+      q1 = "Propose a creative campaign to promote the conference.";
+      q2 = "What is your plan to lead the Marketing track this year, and how will you expand the conference’s reach and engagement?(You can include your ideas for campaigns, team coordination, and how you'd build a consistent brand presence.)";
+      break;
+    case "PR":
+      q1 = "How would you handle a media crisis involving the team?";
+      q2 = "What is your vision and plan to lead the PR track and enhance the public image of the conference?";
+      break;
+    case "OC":
+      q1 = "How would you manage a multi-event day under time pressure?";
+      q2 = "What’s your plan to lead the OC track and ensure smooth, timely event execution with your team?";
+      break;
+    case "Research":
+      q1 = "How would you ensure unbiased and well-verified research in a time-limited task?";
+      q2 = "Suggest a way to present complex data visually to non-expert delegates.";
+      break;
+    default:
+      container.innerHTML = '<p>Please select a valid track first.</p>';
+      return;
+  }
+
+  container.innerHTML = `
+    <label>${q1}</label>
+    <textarea name="track_q1" required data-words="100-250"></textarea>
+
+    <label>${q2}</label>
+    <textarea name="track_q2" required data-words="100-250"></textarea>
+  `;
+}
+
+function updateMPQuestions() {
+  const sub = document.getElementById("subTrack").value;
+  const container = document.getElementById("mpSubQuestions");
+
+  let q1 = "";
+  let q2 = "";
+  let uploadField = "";
+
+  if (sub === "Graphic Design") {
+    q1 = "What design tools do you master, and how would you use them to elevate the visual identity of Maadi MUN?";
+    q2 = "What’s your plan for the media track, and how do you see yourself helping the team?";
+
+   uploadField = `
+      <label>Upload a sample of your design work</label>
+      <input 
+        type="hidden" 
+        role="uploadcare-uploader" 
+        name="design_sample" 
+        data-clearable 
+        data-images-only 
+        data-tabs="file camera url" 
+        required />
+    `;
+
+
+  } else if (sub === "Video Editing") {
+    q1 = "Walk us through your creative workflow when turning raw footage into a highlight video, and suggest a unique video idea that could promote the conference in an engaging and impactful way.";
+    q2 = "What’s your plan for the media track, and how do you see yourself helping the team?";
+
+    uploadField = `
+      <label>Upload a sample of your video editing work</label>
+      <input 
+        type="hidden" 
+        role="uploadcare-uploader" 
+        name="video_sample" 
+        data-clearable 
+        data-tabs="file url camera" 
+        data-multiple="false" 
+        data-images-only="false"
+        required />
+    `;
+  } else {
+    container.innerHTML = "";
+    return;
+  }
+
+  container.innerHTML = `
+    <label>${q1}</label>
+    <textarea name="track_q1" required data-words="100-250"></textarea>
+
+    <label>${q2}</label>
+    <textarea name="track_q2" required data-words="100-250"></textarea>
+
+    ${uploadField}
+  `;
+}
 
       document.getElementById("multiStepForm").addEventListener("submit", function(e) {
   if (!validateCurrentStep()) {
@@ -356,6 +428,7 @@
     return;
   }
 });
+
   </script>
 </body>
 </html>
