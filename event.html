@@ -10,11 +10,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-       html, body {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
-  }
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+    
     /* Global Styles */
     * {
       margin: 0;
@@ -30,7 +31,7 @@
       overflow-x: hidden;
     }
 
-    /* Navbar Styles - تم التعديل هنا ليكون مثل الكود الثاني */
+    /* Navbar Styles */
     .navbar {
       position: fixed;
       top: 0;
@@ -93,7 +94,7 @@
       color: black;
     }
 
-    /* Hamburger Menu - تم التعديل هنا ليكون مثل الكود الثاني */
+    /* Hamburger Menu */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -148,7 +149,7 @@
       left: 50%;
     }
 
-    /* Mobile Menu - تم التعديل هنا ليكون مثل الكود الثاني */
+    /* Mobile Menu */
     .mobile-menu {
       display: none;
       position: fixed;
@@ -192,33 +193,6 @@
       padding: 12px 30px;
     }
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 15px 20px !important;
-      }
-      
-      .nav-links {
-        display: none;
-      }
-      
-      .hamburger {
-        display: block;
-      }
-      
-      body.menu-open {
-        overflow: hidden;
-      }
-      
-      .navbar .logo {
-        font-size: 1.2rem !important;
-      }
-      
-      .navbar .logo img {
-        height: 25px !important;
-      }
-    }
-
     /* Hero Section */
     .hero-section {
       position: relative;
@@ -232,7 +206,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 80px; /* Added to account for fixed navbar */
+      padding-top: 80px;
     }
 
     .hero-section h5 {
@@ -281,9 +255,10 @@
       z-index: 2;
     }
 
-    /* Event Container Styles */
+    /* Event Container Styles - تم التعديل هنا بشكل كبير */
     .event-container {
       display: flex;
+      flex-direction: column;
       max-width: 1200px;
       margin: 60px auto;
       background: white;
@@ -306,8 +281,16 @@
     }
 
     .event-text, .event-slider {
-      flex: 1;
       padding: 40px;
+    }
+
+    .event-text {
+      order: 2;
+    }
+
+    .event-slider {
+      order: 1;
+      background: #f0f8ff;
     }
 
     .event-text h2 {
@@ -334,14 +317,19 @@
       font-size: 1rem;
       color: #333;
       line-height: 1.6;
+      margin-bottom: 15px;
     }
 
     .slider-wrapper {
       position: relative;
+      border-radius: 15px;
+      overflow: hidden;
     }
 
     .slider-wrapper img {
       width: 100%;
+      height: 350px;
+      object-fit: cover;
       border-radius: 15px;
       display: none;
       transition: transform 0.4s ease;
@@ -624,12 +612,38 @@
       font-size: 0.9em;
     }
 
-    /* Responsive Styles */
+    /* Mobile Styles - تم التعديل هنا بشكل كبير */
+    @media (min-width: 769px) {
+      .event-container {
+        flex-direction: row;
+      }
+      
+      .event-text, .event-slider {
+        flex: 1;
+      }
+    }
+
     @media (max-width: 768px) {
       body {
         padding-top: 0;
       }
 
+      .navbar {
+        padding: 15px 20px !important;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      body.menu-open {
+        overflow: hidden;
+      }
+      
       .navbar .logo {
         font-size: 1.2rem !important;
         white-space: nowrap;
@@ -637,11 +651,11 @@
         text-overflow: ellipsis;
         max-width: 60%;
       }
-
+      
       .navbar .logo img {
         height: 25px !important;
       }
-
+      
       .apply-btn {
         padding: 5px 12px !important;
         font-size: 0.9rem !important;
@@ -652,11 +666,25 @@
       }
 
       .event-container {
-        flex-direction: column;
+        margin: 40px 20px;
+      }
+
+      .event-text, .event-slider {
+        padding: 20px;
+      }
+
+      .event-text h2::before {
+        top: -25px;
+        font-size: 0.8rem;
+      }
+
+      .slider-wrapper img {
+        height: 250px;
       }
 
       .arrow {
         font-size: 1.5rem;
+        padding: 8px 12px;
       }
 
       .glow-title {
@@ -666,6 +694,11 @@
       .photo-box {
         width: 100%;
         max-width: 400px;
+        height: 250px;
+      }
+
+      .images-row {
+        gap: 30px;
       }
     }
 
@@ -676,21 +709,34 @@
 
       .hero-section p {
         font-size: 1rem;
+        padding: 0 15px;
       }
 
-      .event-text, .event-slider {
-        padding: 20px;
+      .event-text h2 {
+        font-size: 1.6rem;
+      }
+
+      .slider-wrapper img {
+        height: 200px;
       }
 
       .footer h1 {
         font-size: 2rem;
+      }
+      
+      .social-icons {
+        gap: 15px;
+      }
+      
+      .social-icons img {
+        width: 35px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar - تم التعديل هنا ليكون مثل الكود الثاني -->
+  <!-- Navbar -->
   <div class="navbar" data-aos="fade-down">
     <div class="logo">
       <img src="logo.jpg" alt="Logo">
@@ -743,8 +789,18 @@
     </p>
   </section>
 
-  <!-- Event Section -->
+  <!-- Event Section - تم التعديل هنا لتحسين العرض على الموبايل -->
   <div class="event-container" id="eventBox">
+    <div class="event-slider">
+      <div class="slider-wrapper">
+        <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+        <img src="Outing 1.jpg" class="active">
+        <img src="Outing 2.jpg">
+        <img src="Outing 3.jpg">
+        <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+      </div>
+    </div>
+    
     <div class="event-text">
       <h2>MUN Community</h2>
       <p>
@@ -755,16 +811,6 @@
         This memorable experience highlighted the incredible talents within our community.
         We extend our deepest appreciation to all those who showcased their abilities, enriching the outing with energy, creativity, and a shared sense of purpose—bringing our theme of mental well-being to life throughout the season.
       </p>
-    </div>
-
-    <div class="event-slider">
-      <div class="slider-wrapper">
-        <button class="arrow left" onclick="prevSlide()">&#10094;</button>
-        <img src="Outing 1.jpg" class="active">
-        <img src="Outing 2.jpg">
-        <img src="Outing 3.jpg">
-        <button class="arrow right" onclick="nextSlide()">&#10095;</button>
-      </div>
     </div>
   </div>
 
@@ -931,7 +977,7 @@
       showSlide(currentSlide);
     }
 
-    // Mobile Menu Toggle - تم التعديل هنا ليكون مثل الكود الثاني
+    // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     const body = document.body;
