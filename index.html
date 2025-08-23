@@ -888,44 +888,231 @@
     transform: scale(1.15);
   }
 
-  .globe-container {
-    flex: 1;
-    min-width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transform: translateX(100px);
-    transition: all 1.2s ease-out;
-  }
+   #member-states {
+      background: linear-gradient(to bottom, #f5faff, #c6d8f0);
+      padding: 80px 0;
+      overflow: hidden;
+    }
 
-  .globe-container.animate {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
 
-  .globe-wrapper {
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: transparent;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); 
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
+    .text {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 1s ease-out;
+    }
 
-  .globe-wrapper:hover {
-    transform: scale(1.05);
-  }
+    .text.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
 
-  .earth-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 50%;
-  }
+    .text h2 {
+      font-size: 3rem;
+      color: #1e2b47;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
 
+    .text span {
+      color: #3763b6;
+    }
+
+    .text p {
+      font-size: 1.2rem;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .text .count {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 30px 0 10px;
+      color: #000;
+      text-align: center;
+    }
+
+    .text .count span {
+      color: #3763b6;
+    }
+
+    .flags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .flag {
+      width: 55px;
+      height: 36px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .flag:hover {
+      transform: scale(1.15);
+    }
+
+    /* تحسينات الكرة الأرضية للجوال */
+    .globe-container {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateX(100px);
+      transition: all 1.2s ease-out;
+      padding: 20px;
+    }
+
+    .globe-container.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .globe-wrapper {
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      border-radius: 50%;
+      background: transparent;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    /* نسبة العرض إلى الارتفاع للكرة الأرضية */
+    .globe-wrapper::before {
+      content: "";
+      display: block;
+      padding-top: 100%; /* يجعلها دائرة مثالية */
+    }
+
+    .earth-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 
+        0 0 25px rgba(55, 99, 182, 0.5),
+        0 0 50px rgba(55, 99, 182, 0.3),
+        inset 0 0 50px rgba(0, 0, 0, 0.2);
+      animation: rotateGlobe 30s infinite linear;
+      transition: all 0.5s ease;
+    }
+
+    .globe-wrapper:hover .earth-image {
+      animation: rotateGlobe 10s infinite linear;
+      box-shadow: 
+        0 0 35px rgba(55, 99, 182, 0.7),
+        0 0 70px rgba(55, 99, 182, 0.4),
+        inset 0 0 60px rgba(0, 0, 0, 0.3);
+    }
+
+    /* تأثير الإضاءة حول الكرة */
+    .globe-wrapper::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      background: transparent;
+      box-shadow: 0 0 30px rgba(55, 99, 182, 0.3);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: -1;
+    }
+
+    .globe-wrapper:hover::after {
+      opacity: 1;
+    }
+
+    @keyframes rotateGlobe {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* تحسينات للجوال */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .text h2 {
+        font-size: 2.2rem;
+      }
+      
+      .text p {
+        font-size: 1rem;
+      }
+      
+      .text .count {
+        font-size: 2rem;
+      }
+      
+      .globe-container {
+        order: -1; /* جعل الكرة الأرضية تظهر أولاً على الموبايل */
+        margin-bottom: 30px;
+        width: 100%;
+      }
+      
+      .globe-wrapper {
+        max-width: 280px; /* حجم أصغر للجوال */
+      }
+      
+      .earth-image {
+        animation: rotateGlobe 40s infinite linear; /* أبطأ على الجوال */
+      }
+      
+      .flags {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .text h2 {
+        font-size: 1.8rem;
+      }
+      
+      .text .count {
+        font-size: 1.8rem;
+      }
+      
+      .globe-wrapper {
+        max-width: 220px;
+      }
+      
+      .flag {
+        width: 45px;
+        height: 30px;
+      }
+    }
   body {
     margin: 0;
     padding: 0;
@@ -1220,11 +1407,11 @@
         <a href="https://en.wikipedia.org/wiki/United_Kingdom" title="UK"><img src="https://flagcdn.com/w40/gb.png" alt="UK" class="flag" /></a>
       </div>
     </div>
-  <!-- Globe Image -->
+    <!-- Globe Image -->
     <div class="globe-container" id="globe-block">
       <div class="globe-wrapper">
         <img 
-          src="Earth.png" 
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Earth_Western_Hemisphere_transparent_background.png/600px-Earth_Western_Hemisphere_transparent_background.png" 
           alt="Earth" 
           class="earth-image"
         />
@@ -1462,6 +1649,24 @@
   <!-- AOS Script -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
+     // Animation on scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    const textBlock = document.getElementById("text-block");
+    const globeBlock = document.getElementById("globe-block");
+
+    if (textBlock) observer.observe(textBlock);
+    if (globeBlock) observer.observe(globeBlock);
+  });
     // Initialize AOS animation library
     AOS.init({ duration: 1000, once: true });
 
