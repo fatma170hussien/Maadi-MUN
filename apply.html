@@ -1,435 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-  UPLOADCARE_PUBLIC_KEY = 'e553cdf8ec55e7335651'; // Your public key
-</script>
-<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
-
-  <meta charset="UTF-8">
-  <title>Maadi MUN</title>
-  <link rel="stylesheet" href="style.css"> 
-
-  <style>
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .nav-links a {
-        display: block;
-        margin: 10px 0;
-      }
-
-      .hero-text {
-        font-size: 18px;
-      }
-    }
-  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>High Board Application</title>
   <style>
-    
     body {
       margin: 0;
-      padding: 40px 10px;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: linear-gradient(to right, #000, #1a1a40);
       font-family: 'Segoe UI', sans-serif;
       color: white;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
-    .welcome-screen, form, .success-message {
-      max-width: 800px;
-      margin: auto;
-      background-color: #111;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #0ff;
-      transition: transform 0.4s ease, opacity 0.5s ease;
+    .message {
+      text-align: center;
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    h1 {
+      color: #0ff;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
       opacity: 0;
-      transform: translateY(40px);
-      animation: fadeIn 1s ease forwards;
+      animation: glowIn 2s ease forwards 0.3s;
     }
 
-    .form-step {
-      display: none;
+    p {
+      font-size: 18px;
+      color: #ccc;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: auto;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards 1s;
     }
 
-    .form-step.active {
-      display: block;
-      animation: fadeIn 0.5s ease-in-out;
+    /* Animations */
+    @keyframes fadeUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    label {
-      font-weight: bold;
-      margin-top: 15px;
-      display: block;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      background: #222;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      resize: none;
-    }
-
-    textarea {
-      min-height: 120px;
-    }
-
-    .small-textarea {
-      min-height: 60px;
-    }
-
-    .buttons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    button {
-      background-color: #0ff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      background-color: #00c3ff;
-    }
-
-    h2, h1 {
-      text-align: center;
-      color: #0ff;
-      margin-bottom: 20px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .confetti {
-      width: 100%;
-      text-align: center;
-      animation: drop 1s ease forwards;
-    }
-
-    @keyframes drop {
-      0% { opacity: 0; transform: translateY(-40px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes glowIn {
+      0% { opacity: 0; text-shadow: none; }
+      100% { opacity: 1; text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
     }
   </style>
 </head>
 <body>
-  <!-- Welcome Screen -->
-  <div class="welcome-screen" id="welcomeScreen">
-    <h1>High Board Application</h1>
-    <p style="text-align: center; font-size: 18px; color: #ccc;">
-      This is your chance to shine and lead. Please read each question carefully and answer honestly.
+  <div class="message">
+    <h1>Applications Closed</h1>
+    <p>
+      Thank you for your interest in joining Maadi MUN High Board.<br>
+      Applications are now closed, and our team is currently reviewing and making decisions.<br>
+      Stay tuned for updates.
     </p>
-    <div style="text-align: center; margin-top: 30px;">
-      <button onclick="startForm()">I'm Ready</button>
-    </div>
   </div>
-
-  <!-- Success Message -->
-  <div class="success-message hidden" id="successMessage">
-    <div class="confetti"></div>
-    <h1>Successfully Submitted 🎉</h1>
-    <p style="text-align: center; font-size: 18px; color: #ccc;">Thank you for applying! We’ll get back to you soon.</p>
-  </div>
-
-  <!-- Form -->
-<form id="multiStepForm" class="hidden" action="https://formspree.io/f/mrbkvakz" method="POST">
-
-  <!-- Step 1 -->
-    <div class="form-step active">
-      <h2>Step 1: Basic Info</h2>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="dob">Date of Birth</label>
-      <input type="date" id="dob" name="dob" required>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-      <label for="school">School / University</label>
-<input type="text" id="school" name="school" required>
-
-
-      <label for="track">Choose Your Track</label>
-      <select id="track" name="track" required>
-        <option value="">-- Select Track --</option>
-        <option value="Content Writing">Content Writing</option>
-        <option value="HR">HR (Human resources)</option>
-        <option value="Multiple Production">Multimedia production</option>
-        <option value="IT">IT (Information Technology)</option>
-        <option value="Marketing">Marketing</option>
-        <option value="PR">PR (public relations)</option>
-        <option value="OC">OC (logistics)</option>
-        <option value="Research">Research</option>
-      </select>
-
-      <div class="buttons">
-        <span></span>
-        <button type="button" onclick="nextStep()">Next</button>
-      </div>
-    </div>
-
-    <!-- Step 2 -->
-    <div class="form-step">
-      <h2>Step 2: General Questions</h2>
-      <label for="exp">Tell us about yourself</label>
-      <textarea id="exp" name="experience" required data-words="100-250"></textarea>
-
-      <label for="strengths">Do you have any previous experience?
-(You can mention experiences related to leadership, politics, or team-based projects — anything that shaped you.)</label>
-      <textarea id="strengths" name="strengths" required data-words="100-250"></textarea>
-
-
-      <div class="buttons">
-        <button type="button" onclick="prevStep()">Back</button>
-        <button type="button" onclick="nextStep()">Next</button>
-      </div>
-    </div>
-
-    <!-- Step 3: Track Specific -->
-    <div class="form-step">
-      <h2>Step 3: Track Specific</h2>
-      <div id="trackQuestions"></div>
-
-      <div class="buttons">
-        <button type="button" onclick="prevStep()">Back</button>
-        <button type="button" onclick="nextStep()">Next</button>
-      </div>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="form-step">
-      <h2>Step 4: Final</h2>
-
-      <label for="why">Why do you think Maadi MUN is the right place for you to grow as a High Board member?</label>
-      <textarea id="why" name="why" required data-words="100-250"></textarea>
-
-      <label for="ideas">What ideas would you bring to your track?</label>
-      <textarea id="ideas" name="ideas" required data-words="100-250"></textarea>
-
-      <label for="courses">Put any courses, teams, and programs that you took in this track</label>
-      <textarea id="courses" name="courses" class="small-textarea"></textarea>
-
-      <label for="questions">Any Question(Feel free to share any thoughts or concerns!)?</label>
-      <textarea id="questions" name="questions" class="small-textarea"></textarea>
-
-      <div class="buttons">
-        <button type="button" onclick="prevStep()">Back</button>
-        <button type="submit">Submit</button>
-      </div>
-    </div>
-  </form>
-
-  <script>
-    const steps = document.querySelectorAll(".form-step");
-    let currentStep = 0;
-
-    function showStep(index) {
-      steps.forEach((step, i) => {
-        step.classList.toggle("active", i === index);
-      });
-    }
-
-    function startForm() {
-      document.getElementById("welcomeScreen").classList.add("hidden");
-      document.getElementById("multiStepForm").classList.remove("hidden");
-      document.getElementById("multiStepForm").reset(); // <-- دا بيمسح البيانات
-showStep(currentStep);
-
-    }
-
-    function countWords(text) {
-      return text.trim().split(/\s+/).filter(w => w.length > 0).length;
-    }
-
-    function validateCurrentStep() {
-      const current = steps[currentStep].querySelectorAll("input, select, textarea");
-      for (let field of current) {
-        const wordLimits = field.dataset.words;
-        if (wordLimits) {
-          const [min, max] = wordLimits.split("-").map(Number);
-          const words = countWords(field.value);
-          if (words < min || words > max) {
-            alert(`Answer must be between ${min} and ${max} words.`);
-            return false;
-          }
-        } else if (!field.checkValidity()) {
-          field.reportValidity();
-          return false;
-        }
-      }
-      return true;
-    }
-
-    function nextStep() {
-      if (!validateCurrentStep()) return;
-      if (currentStep === 1 && !document.getElementById("trackQuestions").hasChildNodes()) {
-        insertTrackQuestions();
-      }
-      if (currentStep < steps.length - 1) {
-        currentStep++;
-        showStep(currentStep);
-      }
-    }
-
-    function prevStep() {
-      if (currentStep > 0) {
-        currentStep--;
-        showStep(currentStep);
-      }
-    }
-
-  function insertTrackQuestions() {
-  const track = document.getElementById("track").value;
-  const container = document.getElementById("trackQuestions");
-  container.innerHTML = "";
-
-  let q1 = "";
-  let q2 = "";
-
-  if (track === "Multiple Production") {
-    container.innerHTML = `
-      <label for="subTrack">Select Sub-Track</label>
-      <select id="subTrack" name="subTrack" required onchange="updateMPQuestions()">
-        <option value="">-- Select --</option>
-        <option value="Graphic Design">Graphic Design</option>
-        <option value="Video Editing">Video Editing</option>
-      </select>
-      <div id="mpSubQuestions"></div>
-    `;
-    return;
-  }
-
-  switch (track) {
-    case "Content Writing":
-      q1 = "Write a short article about how political writing can influence society.";
-      q2 = "What is your plan to lead the Content Writing track and develop the team? (Think about how you would organize tasks, support members, and improve content quality.)";
-      break;
-    case "HR":
-      q1 = "How would you deal with an uncommitted member?";
-      q2 = "What's your plan to improve team engagement and loyalty?";
-      break;
-    case "IT":
-      q1 = "What tools or tech will you use to make the work more efficient?";
-      q2 = "What is your plan to lead the IT Committee and enhance its efficiency?(Consider things like task distribution, workflow improvement, and team development.)";
-      break;
-    case "Marketing":
-      q1 = "Propose a creative campaign to promote the conference.";
-      q2 = "What is your plan to lead the Marketing track this year, and how will you expand the conference’s reach and engagement?(You can include your ideas for campaigns, team coordination, and how you'd build a consistent brand presence.)";
-      break;
-    case "PR":
-      q1 = "How would you handle a media crisis involving the team?";
-      q2 = "What is your vision and plan to lead the PR track and enhance the public image of the conference?";
-      break;
-    case "OC":
-      q1 = "How would you manage a multi-event day under time pressure?";
-      q2 = "What’s your plan to lead the OC track and ensure smooth, timely event execution with your team?";
-      break;
-    case "Research":
-      q1 = "How would you ensure unbiased and well-verified research in a time-limited task?";
-      q2 = "If you were assigned a topic outside your area of expertise or interest, how would you ensure the information you present is accurate, unbiased, and engaging?";
-      break;
-    default:
-      container.innerHTML = '<p>Please select a valid track first.</p>';
-      return;
-  }
-
-  container.innerHTML = `
-    <label>${q1}</label>
-    <textarea name="track_q1" required data-words="100-250"></textarea>
-
-    <label>${q2}</label>
-    <textarea name="track_q2" required data-words="100-250"></textarea>
-  `;
-}
-
-function updateMPQuestions() {
-  const sub = document.getElementById("subTrack").value;
-  const container = document.getElementById("mpSubQuestions");
-
-  let q1 = "";
-  let q2 = "";
-  let uploadField = "";
-
-  if (sub === "Graphic Design") {
-    q1 = "What design tools do you master, and how would you use them to elevate the visual identity of Maadi MUN?";
-    q2 = "What’s your plan for the media track, and how do you see yourself helping the team?";
-
-   uploadField = `
-      <label>Upload a sample of your design work</label>
-      <input 
-        type="hidden" 
-        role="uploadcare-uploader" 
-        name="design_sample" 
-        data-clearable 
-        data-images-only 
-        data-tabs="file camera url" 
-        required />
-    `;
-
-
-  } else if (sub === "Video Editing") {
-    q1 = "Walk us through your creative workflow when turning raw footage into a highlight video, and suggest a unique video idea that could promote the conference in an engaging and impactful way.";
-    q2 = "What’s your plan for the media track, and how do you see yourself helping the team?";
-
-    uploadField = `
-      <label>Upload a sample of your video editing work</label>
-      <input 
-        type="hidden" 
-        role="uploadcare-uploader" 
-        name="video_sample" 
-        data-clearable 
-        data-tabs="file url camera" 
-        data-multiple="false" 
-        data-images-only="false"
-        required />
-    `;
-  } else {
-    container.innerHTML = "";
-    return;
-  }
-
-  container.innerHTML = `
-    <label>${q1}</label>
-    <textarea name="track_q1" required data-words="100-250"></textarea>
-
-    <label>${q2}</label>
-    <textarea name="track_q2" required data-words="100-250"></textarea>
-
-    ${uploadField}
-  `;
-}
-
-      document.getElementById("multiStepForm").addEventListener("submit", function(e) {
-  if (!validateCurrentStep()) {
-    e.preventDefault();
-    return;
-  }
-});
-
-  </script>
 </body>
 </html>
