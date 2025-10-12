@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maadi MUN - High Board</title>
+  <title>Maadi MUN - Management Board</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-     html, body {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
-  }
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
     * {
       margin: 0;
       padding: 0;
@@ -145,11 +145,11 @@
       padding: 10px 25px;
     }
 
-    /* Hero Section */
+    /* Hero Section - Modified height */
     .hero-section {
       position: relative;
       width: 100vw;
-      min-height: 100vh;
+      min-height: 60vh; /* Reduced height */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -197,23 +197,249 @@
       line-height: 1.6;
     }
 
-    .apply-now-btn {
-      display: inline-block;
-      padding: 12px 30px;
-      background-color: gold;
-      color: black;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    /* Management Board Section - Centered */
+    .management-section {
+      padding: 80px 20px;
+      background: linear-gradient(to bottom, #001f4d, #000000);
+      text-align: center;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .apply-now-btn:hover {
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 60px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      color: white;
+    }
+
+    .management-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .management-card {
+      width: 260px;
+      height: 360px;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .management-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 191, 255, 0.3);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: all 0.5s ease;
+      background-color: #001f4d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 4rem;
+    }
+
+    .card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.5s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .management-card:hover .card-overlay {
+      transform: translateY(0);
+    }
+
+    .management-card:hover .card-image {
+      filter: blur(3px);
+    }
+
+    .member-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #00bfff;
+    }
+
+    .member-position {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: gold;
+    }
+
+    .member-email {
+      font-size: 1rem;
+      color: #e0e0e0;
+      word-break: break-word;
+    }
+
+    /* High Board Section - Updated */
+    .high-board-section {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #001f4d 0%, #003366 50%, #001f4d 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .high-board-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0, 191, 255, 0.1) 0%, transparent 70%);
+      z-index: 0;
+    }
+    
+    .high-board-section .section-title {
+      color: white;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-size: 3.5rem;
+      text-shadow: 0 0 10px rgba(0, 191, 255, 0.7), 0 0 20px rgba(0, 191, 255, 0.5);
+      background: linear-gradient(to right, #00bfff, gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 10px 0;
+    }
+    
+    .committee-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .committee-section {
+      margin-bottom: 60px;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    
+    .committee-section:hover {
+      transform: translateY(-5px);
+    }
+    
+    .committee-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #00bfff;
+      text-align: center;
+      padding-bottom: 10px;
+      border-bottom: 3px solid gold;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    .team-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    
+    .team-card {
+      width: 220px;
+      height: 320px;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 191, 255, 0.4);
+    }
+    
+    .team-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-color: rgba(0, 31, 77, 0.7);
+      transition: all 0.5s ease;
+    }
+    
+    .team-card:hover .team-image {
+      filter: blur(2px);
       transform: scale(1.05);
-      background-color: #ffd700;
+    }
+    
+    .team-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.5s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .team-card:hover .team-info {
+      transform: translateY(0);
+    }
+    
+    .team-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: white;
+    }
+    
+    .team-role {
+      font-size: 0.9rem;
+      color: #00bfff;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .team-email {
+      font-size: 0.8rem;
+      color: #e0e0e0;
+      word-break: break-word;
     }
 
     /* Footer Section */
@@ -341,6 +567,28 @@
       .hero-content p {
         font-size: 1rem;
       }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      .management-cards {
+        gap: 25px;
+      }
+      
+      .management-card {
+        width: 230px;
+        height: 330px;
+      }
+      
+      .team-card {
+        width: 200px;
+        height: 290px;
+      }
+      
+      .high-board-section .section-title {
+        font-size: 3rem;
+      }
     }
 
     @media (max-width: 768px) {
@@ -366,13 +614,56 @@
         padding: 0 20px;
       }
       
-      .apply-now-btn {
-        padding: 10px 25px;
-        font-size: 1rem;
+      .management-cards {
+        gap: 20px;
+      }
+      
+      .management-card {
+        width: 200px;
+        height: 300px;
       }
       
       .footer h1 {
         font-size: 2rem;
+      }
+      
+      .team-card {
+        width: 180px;
+        height: 260px;
+      }
+      
+      .high-board-section .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .committee-title {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .management-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .management-card {
+        width: 280px;
+        height: 380px;
+      }
+      
+      .team-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .team-card {
+        width: 250px;
+        height: 340px;
+      }
+      
+      .high-board-section .section-title {
+        font-size: 2.2rem;
       }
     }
 
@@ -397,6 +688,16 @@
         font-size: 0.9rem;
       }
       
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+      }
+      
+      .management-card {
+        width: 260px;
+        height: 360px;
+      }
+      
       .footer h1 {
         font-size: 1.8rem;
       }
@@ -408,6 +709,14 @@
       .social-icons img {
         width: 35px;
         height: 35px;
+      }
+      
+      .committee-title {
+        font-size: 1.6rem;
+      }
+      
+      .high-board-section .section-title {
+        font-size: 2rem;
       }
     }
   </style>
@@ -460,9 +769,324 @@
     </div>
 
     <div class="hero-content" data-aos="zoom-in">
-      <h1>We're Hiring High Board Members</h1>
-      <p>Step into a leadership role and shape the future of Maadi MUN. Join our team of passionate individuals and make a difference in the MUN community.</p>
-      <a href="apply.html" class="apply-now-btn">Apply Now</a>
+      <h1>Meet Our Management Board</h1>
+      <p>Get to know the dedicated team leading Maadi MUN. Our board members bring passion, expertise, and vision to drive our mission forward.</p>
+    </div>
+  </section>
+
+  <!-- Management Board Section -->
+  <section class="management-section" id="management-board">
+    <h2 class="section-title" data-aos="fade-up">Management Board</h2>
+    <div class="management-cards">
+      <!-- Fatma Hussien Card -->
+      <div class="management-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-image" style="background-image: url('fatma.jpg')">
+          <!-- Removed user icon -->
+        </div>
+        <div class="card-overlay">
+          <h3 class="member-name">Fatma Hussien</h3>
+          <p class="member-position">President</p>
+          <p class="member-email">fatma.hussien170@gmail.com</p>
+        </div>
+      </div>
+      
+      <!-- Samy Mohamed Card -->
+      <div class="management-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-image" style="background-image: url('Samy.jpg')">
+          <!-- Removed user icon -->
+        </div>
+        <div class="card-overlay">
+          <h3 class="member-name">Samy Mohamed</h3>
+          <p class="member-position">Vice President</p>
+          <p class="member-email">samytonygo@gmail.com</p>
+        </div>
+      </div>
+      
+      <!-- Nawal Abelaziz Card -->
+      <div class="management-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-image" style="background-image: url('Nawal.jpg')">
+          <!-- Removed user icon -->
+        </div>
+        <div class="card-overlay">
+          <h3 class="member-name">Nawal Abelaziz</h3>
+          <p class="member-position">Vice President</p>
+          <p class="member-email">nawalabdelaziz414@gmail.com</p>
+        </div>
+      </div>
+      
+      <!-- Nadeen Hamdy Card -->
+      <div class="management-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="card-image" style="background-image: url('Nadeen.jpg')">
+          <!-- Removed user icon -->
+        </div>
+        <div class="card-overlay">
+          <h3 class="member-name">Nadeen Hamdy</h3>
+          <p class="member-position">Secretary</p>
+          <p class="member-email">nodyhamdy.1088@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      
+  <!-- High Board Section - New Section -->
+  <section class="high-board-section" id="high-board">
+    <h2 class="section-title" data-aos="fade-up">High Board</h2>
+    <div class="committee-container">
+      <!-- PR Committee -->
+      <div class="committee-section" data-aos="fade-up">
+        <h3 class="committee-title">PR Committee</h3>
+        <div class="team-cards">
+          <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-image" style="background-image: url('nour.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Nour Mohamed</p>
+              <p class="team-role">Head</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image" style="background-image: url('karma.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Karma Mohamed</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-image" style="background-image: url('Renad.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Renad Adel</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- IT Committee -->
+      <div class="committee-section" data-aos="fade-up">
+        <h3 class="committee-title">IT Committee</h3>
+        <div class="team-cards">
+          <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-image" style="background-image: url('abanob.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Abanob George</p>
+              <p class="team-role">Head</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image" style="background-image: url('raghad.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Raghad Ahmed</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+      <!-- HR Committee -->
+      <div class="committee-section" data-aos="fade-up">
+        <h3 class="committee-title">HR Committee</h3>
+        <div class="team-cards">
+          <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-image" style="background-image: url('malak.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Malak Ezzeldin</p>
+              <p class="team-role">Head</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image" style="background-image: url('asmaa.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Asmaa Etaim</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-image" style="background-image: url('shahd.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Shahd Mohamoud</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+       <!-- Content Writing Committee -->
+      <div class="committee-section" data-aos="fade-up">
+        <h3 class="committee-title">Content Writing Committee</h3>
+        <div class="team-cards">
+          <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-image" style="background-image: url('adham.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Adham Mohamed</p>
+              <p class="team-role">Head</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image" style="background-image: url('zeina.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Zeina Ahmad</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-image" style="background-image: url('saja.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Saja Nashaat</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Organization Committee -->
+      <div class="committee-section" data-aos="fade-up">
+        <h3 class="committee-title">Organization Committee</h3>
+        <div class="team-cards">
+          <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-image" style="background-image: url('mo.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Mohamed Elsayed</p>
+              <p class="team-role">Head</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image" style="background-image: url('jana.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Jana Mohamed</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Marketing Committee -->
+      <div class="committee-section" data-aos="fade-up">
+        <h3 class="committee-title">Marketing Committee</h3>
+        <div class="team-cards">
+          <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-image" style="background-image: url('sara.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Sara Mohamed</p>
+              <p class="team-role">Head</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image" style="background-image: url('alya.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Alya Mohamed</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Multimedia Production -->
+      <div class="committee-section" data-aos="fade-up">
+        <h3 class="committee-title">Multimedia Production</h3>
+        <div class="team-cards">
+          <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-image" style="background-image: url('Jomana.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Jomana Mohamed</p>
+              <p class="team-role">Head Video Editing</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image" style="background-image: url('ganna.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Ganna Ahmed</p>
+              <p class="team-role">Head Graphic Design</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-image" style="background-image: url('yo.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Yomna Mohamed</p>
+              <p class="team-role">Vice Graphic Design</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Research Committee -->
+      <div class="committee-section" data-aos="fade-up">
+        <h3 class="committee-title">Research Committee</h3>
+        <div class="team-cards">
+          <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-image" style="background-image: url('gehad.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Gehad Ashraf</p>
+              <p class="team-role">Head</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+          <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image" style="background-image: url('batuol.jpg')">
+              <!-- Removed user icon -->
+            </div>
+            <div class="team-info">
+              <p class="team-name">Batoul El-Sayed</p>
+              <p class="team-role">Vice</p>
+              <p class="team-email">----</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
